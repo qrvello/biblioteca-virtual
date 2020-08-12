@@ -4015,6 +4015,7 @@ input[type=button].btn-block {
   margin-bottom: 0;
   list-style: none;
 }
+
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
@@ -7926,10 +7927,13 @@ button.bg-dark:focus {
   margin-left: auto !important;
 }
 
+
 @media (min-width: 576px) {
   .m-sm-0 {
     margin: 0 !important;
   }
+
+
 
   .mt-sm-0,
 .my-sm-0 {
@@ -10112,7 +10116,7 @@ img::-moz-selection {
     font-size: 1.5em;
     transition: font-size 0.3s ease-in-out;
   }
-  #mainNav .navbar-brand img {
+  #mainNav .navbar-brand img{
     height: 2rem;
     transition: height 0.3s ease-in-out;
   }

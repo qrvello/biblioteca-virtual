@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title', 'Contenido')
 
@@ -20,5 +20,7 @@
             </div>
         </div>
 </section>
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 @endsection
