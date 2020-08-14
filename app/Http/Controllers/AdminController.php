@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ContentController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        return view('content.index');
+        return view('admin.login');
     }
 
     /**
@@ -45,7 +45,7 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        return('hola');
+        //
     }
 
     /**

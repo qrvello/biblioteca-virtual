@@ -17,12 +17,23 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <ul class="navbar-nav text-uppercase mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{action('IndexController@index')}}"><i
-                            class="fas fa-home fa-2x"></i></a>
-                </li>
-            </ul>
+            <div class="home-container">
+                <ul class=" home-container-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{action('IndexController@index')}}">
+                            <i class="fas fa-home fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="searchbar">
+                            <input class="search_input" type="text" name="search" placeholder="Buscar">
+                            <a href="{{action('ContentController@index')}}" class="search_icon nav-link">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -31,15 +42,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link"
-                            href="{{action('ContentController@index')}}">Contenido</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="{{action('IndexController@nosotros')}}">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="{{action('UserController@login')}}">Iniciar sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{action('ContentController@index')}}">Contenido</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{action('IndexController@nosotros')}}">Nosotros</a>
+                    </li>
                 </ul>
-            </div>
+
         </div>
+    </div>
     </nav>
 
     <!-- Masthead-->

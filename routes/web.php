@@ -19,11 +19,12 @@ Route::get('/', 'IndexController@index')
 Route::get('/nosotros', 'IndexController@nosotros')
     ->name('nosotros');
 
-Route::get('/content', 'ContentController@index')
-    ->name('content');
+Route::resource('content','ContentController');
 
 Route::get('/register', 'UserController@register')
     ->name('register');
 
 Route::get('/login', 'UserController@login')
     ->name('login');
+
+Route::resource('admin', 'AdminController');

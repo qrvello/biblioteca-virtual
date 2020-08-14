@@ -25,6 +25,6 @@ class UsersTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSee('Iniciar Sesión');
+        $response->assertSee('Iniciar sesión');
     }
 }
