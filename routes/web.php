@@ -21,6 +21,8 @@ Route::get('/nosotros', 'IndexController@nosotros')
 
 Route::resource('content','ContentController');
 
+Route::resource('search', 'SearchController' );
+
 Route::get('/register', 'UserController@register')
     ->name('register');
 
@@ -28,3 +30,8 @@ Route::get('/login', 'UserController@login')
     ->name('login');
 
 Route::resource('admin', 'AdminController');
+
+Route::get('admin/create/content', 'AdminController@createContent');
+
+Route::get('admin/create/category', 'AdminController@createCategory');
+// Route::get('/content/search', 'ContentController@search');

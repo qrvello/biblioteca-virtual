@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Content;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +13,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.login');
+
+        return view('admin.index');
     }
 
     /**
@@ -21,9 +22,23 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createContent()
     {
-        //
+        $admins = Content::all();
+
+        return view('admin.create_content', compact('admins'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createCategory()
+    {
+        $admins = Content::all();
+
+        return view('admin.create_category', compact('admins'));
     }
 
     /**

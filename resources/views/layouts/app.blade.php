@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Biblioteca - @yield('title')</title>
+    <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap"
@@ -26,15 +26,16 @@
                     </li>
                     <li class="nav-item">
                         <div class="searchbar">
-                            <input class="search_input" type="text" name="search" placeholder="Buscar">
-                            <a href="{{action('ContentController@index')}}" class="search_icon nav-link">
-                                <i class="fas fa-search"></i>
-                            </a>
+                            <form class="searchbar" action="{{action('SearchController@index')}}" method="GET">
+                            <input class="search_input" type="text" name="search" value="" placeholder="Buscar">
+                                <button type="submit" class="search_icon nav-link">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </li>
                 </ul>
-            </div>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
                 Menú
@@ -48,8 +49,8 @@
                     </li>
                 </ul>
 
+            </div>
         </div>
-    </div>
     </nav>
 
     <!-- Masthead-->
@@ -59,17 +60,8 @@
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-left">Copyright © Biblioteca Digital 2020</div>
-                <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <div class="col-lg-4 text-lg-right">
-                    <a class="mr-3" href="#!">Políticas de privacidad</a>
-                    <a href="#!">Términos de uso</a>
-                </div>
+            <div class="col align-items-center">
+                <div class="">Copyright © Biblioteca Digital 2020</div>
             </div>
         </div>
     </footer>

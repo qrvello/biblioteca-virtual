@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Content;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
 {
@@ -11,9 +13,12 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('content.index');
+
+        $contents = Content::all();
+
+        return view('content.index', compact('contents'));
     }
 
     /**
@@ -23,7 +28,26 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+
     }
 
     /**
@@ -35,17 +59,6 @@ class ContentController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return('hola');
     }
 
     /**
