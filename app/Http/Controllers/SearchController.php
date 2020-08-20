@@ -15,7 +15,7 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $search = $request->input('input_search');
         // dd($data);
         // $title = $request->input('title');
         // $editorial = $request->input('editorial');
