@@ -15,11 +15,13 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->string('file')->nullable();;
-            $table->string('image')->nullable();;
+            $table->string('file')->nullable();
+            $table->string('image')->nullable();
             $table->text('description');
             $table->text('title');
+
+            $table->foreignId('user_id')->constrained();
+
             $table->timestamps();
         });
     }

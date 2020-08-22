@@ -4812,6 +4812,7 @@ input[type="button"].btn-block {
         flex-flow: row wrap;
         margin-right: -0.75rem;
         margin-left: -0.75rem;
+        margin-bottom: 0.75rem;
     }
     .card-deck .card {
         flex: 1 0 0%;
@@ -4931,6 +4932,17 @@ input[type="button"].btn-block {
 }
 
 .pagination {
+    font-size: 1.2rem;
+    margin-top: 2.5rem;
+    justify-content: center;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+.pagination-admin {
+    font-size: 1rem;
+    margin-top: 2.5rem;
     display: flex;
     padding-left: 0;
     list-style: none;
@@ -4944,6 +4956,7 @@ input[type="button"].btn-block {
     margin-left: -1px;
     line-height: 1.25;
     color: #fed136;
+    font-weight: bold;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
@@ -10567,6 +10580,11 @@ img::-moz-selection {
         transition: height 0.3s ease-in-out;
     }
     #mainNav.navbar-shrink {
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         padding-top: 1rem;
         padding-bottom: 1rem;
         background-color: #212529;
@@ -10984,11 +11002,11 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .search_input {
     color: white;
-    background-color: #ffffff;
-    background: none;
+    background-color: #1b1c1f;
     border-radius: 20px;
-    border-color: white;
-    width: 375px;
+    border-color: #1b1c1f !important;
+    border: 1px solid;
+    width: 400px;
     line-height: 35px;
     text-indent: 10px;
     margin-top: 5px;
@@ -10996,38 +11014,42 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .search_input:focus {
     outline: none !important;
+    border-color: #fed136 !important;
+    border: 1px solid;
 }
+
 /* .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 300px;
     caret-color:yellow;
-    transition: width 0.2s ease-out;
+    transition: width 0.3s ease-out;
     } */
 @media (max-width: 1200px) {
     .search_input {
-        width: 375px;
-        transition: width 0.2s linear;
+        width: 350px;
+        transition: width 0.3s linear;
     }
 }
 @media (max-width: 992px) {
     .search_input {
-        width: 300px;
+        width: 275px;
         transition: width 0.2s linear;
     }
 }
 @media (max-width: 768px) {
     .search_input {
-        width: 225px;
+        width: 200px;
         transition: width 0.2s linear;
     }
 }
 @media (max-width: 576px) {
     .search_input {
-        width: 150px;
+        width: 125px;
     }
 }
 
 .search_icon {
+    outline: none !important;
     background: black;
     color: #fed136;
     border-width: 0px;

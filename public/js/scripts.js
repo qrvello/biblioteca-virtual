@@ -64,6 +64,6 @@ $(document).ready(function () {
             $('button[type="submit"]').attr('disabled', false);
         } else {
             $('button[type="submit"]').attr('disabled', true);
-        }
+            }
     });
 });

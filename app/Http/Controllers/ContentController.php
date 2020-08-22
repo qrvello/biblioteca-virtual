@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Content;
+use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
@@ -16,7 +19,7 @@ class ContentController extends Controller
     public function index(Request $request)
     {
 
-        $contents = Content::all();
+        $contents = Content::paginate(9);
 
         return view('content.index', compact('contents'));
     }
@@ -92,6 +95,7 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Content::destroy($id);
+        return back();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Content;
+use App\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -24,9 +25,9 @@ class AdminController extends Controller
      */
     public function createContent()
     {
-        $admins = Content::all();
+        $contents = Content::paginate(15);
 
-        return view('admin.create_content', compact('admins'));
+        return view('admin.create_content', compact('contents'));
     }
 
     /**
@@ -36,9 +37,15 @@ class AdminController extends Controller
      */
     public function createCategory()
     {
-        $admins = Content::all();
+        $categorys = Category::paginate(15);
 
-        return view('admin.create_category', compact('admins'));
+        return view('admin.create_category', compact('categorys'));
+    }
+
+    public function editContent()
+    {
+
+        return view('admin.edit_content', compact('admins'));
     }
 
     /**
@@ -94,6 +101,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Content::destroy($id)
+
+        // return redirect()->route('create_content');
+        // Content::destroy($id);
+
+
+
     }
 }

@@ -31,7 +31,11 @@ Route::get('/login', 'UserController@login')
 
 Route::resource('admin', 'AdminController');
 
-Route::get('admin/create/content', 'AdminController@createContent');
+Route::get('admin/create/content', 'AdminController@createContent')
+    ->name('create.content');
 
 Route::get('admin/create/category', 'AdminController@createCategory');
+
+Route::get('admin/edit/content', 'AdminController@editContent');
+
 // Route::get('/content/search', 'ContentController@search');

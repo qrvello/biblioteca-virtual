@@ -14,7 +14,7 @@ class AddForeignKeyToContents extends Migration
     public function up()
     {
         Schema::table('contents', function (Blueprint $table) {
-            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('category_id')->constrained();
         });
     }
 

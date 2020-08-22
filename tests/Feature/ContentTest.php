@@ -2,19 +2,33 @@
 
 namespace Tests\Feature;
 
+use App\Category;
+use App\Content;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ContentTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
-    public function content_test()
+    public function muestra_el_contenido_de_la_tabla_contents()
     {
-        $response = $this->get('/content');
+        // $this->withoutExceptionHandling();
 
-        $response->assertStatus(200);
+        factory(Category::class)->create();
 
-        $response->assertSee('Contenido');
+        factory(User::class)->create();
+
+        factory(Content::class)->create([
+            'title' => 'harry potter',
+            'user_id' => 1,
+            'category_id' => 1,
+        ]);
+        $this->get('/content')
+            ->assertStatus(200)
+            ->assertSee('harry potter');
     }
 }

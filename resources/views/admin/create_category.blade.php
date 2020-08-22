@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Subir archivos')
 
@@ -46,10 +46,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($admins as $admin)
+                                    @foreach ($categorys as $category)
                                         <tr>
-                                            <td>{{$admin -> title}}</td>
-                                            <td>{{$admin -> description}}</td>
+                                            <td>{{$category -> title}}</td>
+                                            <td>{{$category -> description}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

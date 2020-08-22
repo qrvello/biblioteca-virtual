@@ -2,17 +2,18 @@
 
 namespace App;
 
+use App\Category;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
     protected $fillable = [
-        'image', 'file', 'author', 'editorial', 'title', 'description', 'matter',
+        'image', 'file', 'author', 'editorial', 'title', 'description', 'matter', 'category_id'
     ];
 
-    public function scopeAuthor($query, $author)
-    {
-        if($author)
-            return $query->where('author', 'LIKE', "%$author%");
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
+
 }
