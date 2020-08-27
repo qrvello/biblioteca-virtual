@@ -2,14 +2,6 @@
 
 @section('title', 'Nosotros')
 
-@section('header')
-
-<div class="container">
-    <div class="masthead-heading text-uppercase">Nosotros</div>
-</div>
-
-@endsection
-
 @section('content')
 
 <section class="page-section bg-dark" id="nosotros">

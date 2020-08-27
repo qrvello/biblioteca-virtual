@@ -20,7 +20,7 @@ class CreatePublicationsTable extends Migration
             $table->text('description');
             $table->text('title');
 
-            $table->foreignId('user_id')->constrained();
+            // $table->foreignId('user_id')->constrained();
 
             $table->timestamps();
         });

@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
@@ -18,18 +20,32 @@
             <div class="home-container">
                 <ul class=" home-container-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{action('IndexController@index')}}"><i class="fas fa-home fa-2x"></i></a>
+                        <a class="nav-link" href="{{action('IndexController@index')}}"><i
+                                class="fas fa-home fa-2x"></i></a>
                     </li>
                     <li class="nav-item">
-                        <form class="searchbar" action="{{action('SearchController@index')}}" method="GET" autocomplete="off">
-                            <input class="search_input" id="input_search" type="text" name="input_search" value="" placeholder="Buscar">
-                            <button type="submit" id="search" name="button" class=" search_icon nav-link">
+                        <form class="searchbar" action="{{action('ContentController@index')}}" method="GET"
+                            autocomplete="off">
+                            <input class="search_input" id="search" type="text" name="search" placeholder="Buscar">
+
+                            <select name="type" class="search_select">
+                                <option selected value="title">Título</option>
+                                <option value="author">Autor</option>
+                                <option value="editorial">Editorial</option>
+                                <option value="description">Descripción</option>
+                                <option value="date_published">Fecha de publicación</option>
+                                <option value="matter">Materia</option>
+                            </select>
+
+                            <button type="submit" id="search" class=" search_icon nav-link">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
                     </li>
                 </ul>
-            </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
                 Menú
                 <i class="fas fa-bars ml-1"></i>
             </button>
@@ -37,6 +53,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{{action('ContentController@index')}}">Contenido</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{action('CategoryController@index')}}">Categorias</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{action('IndexController@nosotros')}}">Nosotros</a>
                     </li>

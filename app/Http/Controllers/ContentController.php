@@ -18,10 +18,36 @@ class ContentController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request) {
+            $search = trim($request->get('search'));
 
-        $contents = Content::paginate(9);
+            $type = $request->get('type');
 
-        return view('content.index', compact('contents'));
+            $count_result = count(Content::type($type, $search)->get());
+
+            $contents = Content::type($type, $search)
+                ->orderBy('id', 'asc')
+                ->paginate(9);
+
+            if (count($contents) >= 1) {
+                return view('content.index', compact('contents', 'search', 'count_result'));
+            } else {
+                $error = 'No hay coincidencias con tu búsqueda de ' . $search . '.';
+                return view('content.index', compact('contents', 'error'));
+            }
+        }
+
+        if($request->get('categoria')){
+            $search = $request->get('categoria');
+            $contents = Content::where('category_id', 'LIKE', "%$search%")
+                ->paginate(9);
+            if (count($contents) >= 1) {
+                return view('content.index', compact('contents', 'search', 'count_result'));
+            } else {
+                $error = 'No hay coincidencias con tu búsqueda de ' . $search . '.';
+                return view('content.index', compact('contents', 'error'));
+            }
+        }
     }
 
     /**
@@ -31,17 +57,10 @@ class ContentController extends Controller
      */
     public function create()
     {
-
+        $categories = Category::all();
+        return view('admin.create_content', compact('categories'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
 
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +69,6 @@ class ContentController extends Controller
      */
     public function show()
     {
-
     }
 
     /**
@@ -59,20 +77,11 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $content = Content::find($id);
+        return view('admin.edit_content', compact('content', 'categories'));
     }
 
     /**
@@ -84,8 +93,50 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $content = Content::find($id);
+        $content->file = $request->input('file');;
+        $content->author = $request->input('author');
+        $content->editorial = $request->input('editorial');
+        $content->title = $request->input('title');
+        $content->description = $request->input('description');
+        $content->date_published = $request->input('date_published');
+        $content->image = $request->file('image');
+        $content->matter = $request->input('matter');
+        $content->category_id = $request->input('category_id');
+        $content->save();
+
+        return redirect()->route('admin.content');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/images/', $name);
+        }
+
+        $content = new Content();
+        $content->file = $request->input('file');
+        $content->author = $request->input('author');
+        $content->editorial = $request->input('editorial');
+        $content->title = $request->input('title');
+        $content->description = $request->input('description');
+        $content->date_published = $request->input('date_published');
+        $content->image = $name;
+        $content->matter = $request->input('matter');
+        $content->category_id = $request->input('category_id');
+        $content->save();
+
+        return redirect()->route('admin.content');
+    }
+
 
     /**
      * Remove the specified resource from storage.

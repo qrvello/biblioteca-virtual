@@ -24,7 +24,7 @@
                 </div>
                 <div class="row text-center">
                     <div class="col-md-6">
-                        <a href="{{ action('AdminController@createCategory') }}">
+                        <a href="{{ action('AdminController@categories') }}">
                             <span class="fa-stack fa-4x">
                                 <i class="fas fa-circle fa-stack-2x text-primary"></i>
                                 <i class="fas fa-book fa-stack-1x fa-inverse"></i>
@@ -34,7 +34,7 @@
                             <p class="text-muted">Creá, editá o borrá las categorías que querés.</p>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ action('AdminController@createContent') }}">
+                        <a href="{{action('AdminController@contents')}}">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-university fa-stack-1x fa-inverse"></i>

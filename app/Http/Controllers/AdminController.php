@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Content;
 use App\Category;
 use Illuminate\Http\Request;
@@ -18,45 +19,24 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createContent()
+    public function contents()
     {
         $contents = Content::paginate(15);
 
-        return view('admin.create_content', compact('contents'));
+        return view('admin.content', compact('contents'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function createCategory()
+    public function categories()
     {
-        $categorys = Category::paginate(15);
+        $categories = Category::paginate(15);
 
-        return view('admin.create_category', compact('categorys'));
-    }
-
-    public function editContent()
-    {
-
-        return view('admin.edit_content', compact('admins'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('admin.category', compact('categories'));
     }
 
     /**
@@ -65,9 +45,22 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function ver()
     {
-        //
+        return view('adminlte.index');
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        return view('adminlte.index');
+
     }
 
     /**

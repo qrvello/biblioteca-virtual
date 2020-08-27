@@ -59,7 +59,7 @@
 $(document).ready(function () {
     $('button[type="submit"]').attr('disabled', true);
     $('input[type="text"]').on('keyup', function () {
-        var text_value = $('input[name="input_search"]').val();
+        var text_value = $('input[name="search"]').val();
         if (text_value != '') {
             $('button[type="submit"]').attr('disabled', false);
         } else {

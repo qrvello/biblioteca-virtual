@@ -19,9 +19,11 @@ Route::get('/', 'IndexController@index')
 Route::get('/nosotros', 'IndexController@nosotros')
     ->name('nosotros');
 
-Route::resource('content','ContentController');
+Route::resource('/contenidos','ContentController');
 
-Route::resource('search', 'SearchController' );
+Route::get('/categorias', 'CategoryController@index');
+
+Route::get('/categoria/{id}', 'CategoryController@show');
 
 Route::get('/register', 'UserController@register')
     ->name('register');
@@ -29,13 +31,21 @@ Route::get('/register', 'UserController@register')
 Route::get('/login', 'UserController@login')
     ->name('login');
 
+Route::get('admin/contenidos', 'AdminController@contents')
+    ->name('admin.content');
+
+Route::get('admin/categorias', 'AdminController@categories')
+->name('admin.categories');
+
+Route::get('admin/contenido/crear', 'ContentController@store')
+->name('create.content');
+
+Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
+->name('edit.content');
+
+Route::post('admin/contenido/crear', 'ContentController@store');
+
+Route::get('admin/lte', 'AdminController@ver');
+
 Route::resource('admin', 'AdminController');
 
-Route::get('admin/create/content', 'AdminController@createContent')
-    ->name('create.content');
-
-Route::get('admin/create/category', 'AdminController@createCategory');
-
-Route::get('admin/edit/content', 'AdminController@editContent');
-
-// Route::get('/content/search', 'ContentController@search');

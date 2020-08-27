@@ -16,4 +16,11 @@ class Content extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function scopeType($query, $type, $search){
+        if( $type && $search){
+            return $query-> where($type, 'LIKE', "%$search%");
+        }
+    }
+
+
 }

@@ -12,9 +12,11 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
+
 <body>
 
-@yield('content')
+    @yield('content')
+
 </body>
 <!-- Footer-->
 

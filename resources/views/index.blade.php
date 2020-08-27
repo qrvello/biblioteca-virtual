@@ -16,7 +16,7 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Novedades</h2>
-            <h3 class="section-subheading text-muted">Aquí se encuentran las entradas más recientes de la página.</h3>
+            <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4">
@@ -29,7 +29,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Asistencia Psicológica</div>
-                        <div class="portfolio-caption-subheading text-muted">Llamá al 11-2268-3174</div>
+                        <div class="portfolio-caption-subheading">Llamá al 11-2268-3174</div>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Vuelta a clases</div>
-                        <div class="portfolio-caption-subheading text-muted">Descripción</div>
+                        <div class="portfolio-caption-subheading">Descripción</div>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Charla de educación sexual</div>
-                        <div class="portfolio-caption-subheading text-muted">Descripción</div>
+                        <div class="portfolio-caption-subheading">Descripción</div>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Covid-19</div>
-                        <div class="portfolio-caption-subheading text-muted">Descripción</div>
+                        <div class="portfolio-caption-subheading">Descripción</div>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Título</div>
-                        <div class="portfolio-caption-subheading text-muted">Descripción</div>
+                        <div class="portfolio-caption-subheading">Descripción</div>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Título</div>
-                        <div class="portfolio-caption-subheading text-muted">Descripción</div>
+                        <div class="portfolio-caption-subheading">Descripción</div>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contenido</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
         <div class="row text-center">
             <div class="col-md-4">
@@ -121,7 +121,7 @@
                     <i class="fas fa-book fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Audiolibros y libros electrónicos</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
             <div class="col-md-4">
@@ -130,7 +130,7 @@
                     <i class="fas fa-university fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Material de estudio</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
             <div class="col-md-4">
@@ -139,7 +139,7 @@
                     <i class="fas fa-play-circle fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Videos</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p>
             </div>
         </div>

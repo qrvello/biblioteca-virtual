@@ -10313,7 +10313,7 @@ a.text-dark:focus {
 }
 
 .text-muted {
-    color: #6c757d !important;
+    color: rgb(136, 136, 136);
 }
 
 .text-black-50 {
@@ -10458,11 +10458,13 @@ p {
     padding: 6rem 0;
 }
 .page-section h2.section-heading {
+    color: white;
     font-size: 2.5rem;
     margin-top: 0;
     margin-bottom: 1rem;
 }
 .page-section h3.section-subheading {
+    color: white;
     font-size: 1rem;
     font-weight: 400;
     font-style: italic;
@@ -11006,7 +11008,7 @@ section#contact form#contactForm :-ms-input-placeholder {
     border-radius: 20px;
     border-color: #1b1c1f !important;
     border: 1px solid;
-    width: 400px;
+    width: 300px;
     line-height: 35px;
     text-indent: 10px;
     margin-top: 5px;
@@ -11018,33 +11020,61 @@ section#contact form#contactForm :-ms-input-placeholder {
     border: 1px solid;
 }
 
-/* .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 300px;
-    caret-color:yellow;
-    transition: width 0.3s ease-out;
-    } */
+.search_select {
+    color: white;
+    background-color: #1b1c1f;
+    border-radius: 20px;
+    border-color: #1b1c1f !important;
+    border: 1px solid;
+    width: 150px;
+    line-height: 35px;
+    text-indent: 10px;
+    margin-top: 5px;
+    height: 40px;
+
+}
+.search_select:hover {
+    cursor: pointer;
+
+}
+
+.search_select:focus {
+    outline: none !important;
+    border-color: #fed136 !important;
+    border: 1px solid;
+}
+
+
 @media (max-width: 1200px) {
     .search_input {
-        width: 350px;
-        transition: width 0.3s linear;
+        width: 200px;
+    }
+    .search_select {
+        width: 175px;
     }
 }
 @media (max-width: 992px) {
     .search_input {
-        width: 275px;
-        transition: width 0.2s linear;
+        width: 175px;
+    }
+    .search_select {
+        width: 150px;
     }
 }
 @media (max-width: 768px) {
     .search_input {
-        width: 200px;
-        transition: width 0.2s linear;
+        width: 100px;
+    }
+    .search_select {
+        width: 100px;
     }
 }
 @media (max-width: 576px) {
     .search_input {
-        width: 125px;
+        width: 80px;
+    }
+    .search_select {
+        width: 80px;
     }
 }
 
