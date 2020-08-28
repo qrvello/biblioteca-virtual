@@ -45,34 +45,28 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function ver()
+    
+    public function edit($id)
     {
-        return view('adminlte.index');
-
+        $categories = Category::all();
+        $content = Content::find($id);
+        return view('admin.project-edit', compact('content', 'categories'));
     }
 
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function detalle()
     {
-        return view('adminlte.index');
+
+        return view('admin.project-detail');
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

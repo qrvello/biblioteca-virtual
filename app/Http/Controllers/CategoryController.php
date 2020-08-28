@@ -19,6 +19,18 @@ class CategoryController extends Controller
         return view('content.categories', compact('categories'));
     }
 
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(){
+        
+        $categories= Category::all();
+
+        return view('admin.create_category', compact('categories'));
+
+    }
     public function show($id)
     {
         if ($id) {

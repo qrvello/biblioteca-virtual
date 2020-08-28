@@ -31,21 +31,20 @@ Route::get('/register', 'UserController@register')
 Route::get('/login', 'UserController@login')
     ->name('login');
 
-Route::get('admin/contenidos', 'AdminController@contents')
+Route::get('admin/categorias', 'AdminController@categories')
+    ->name('admin.categories');
+
+Route::get('admin/categorias/crear', 'CategoryController@create');
+
+Route::get('admin/contenido', 'AdminController@contents')
     ->name('admin.content');
 
-Route::get('admin/categorias', 'AdminController@categories')
-->name('admin.categories');
-
-Route::get('admin/contenido/crear', 'ContentController@store')
-->name('create.content');
-
-Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
-->name('edit.content');
+Route::get('admin/contenido/crear', 'ContentController@create')
+    ->name('create.content');
 
 Route::post('admin/contenido/crear', 'ContentController@store');
 
-Route::get('admin/lte', 'AdminController@ver');
+Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
+    ->name('edit.content');
 
 Route::resource('admin', 'AdminController');
-
