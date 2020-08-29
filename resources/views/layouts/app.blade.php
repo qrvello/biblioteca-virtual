@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -44,9 +43,7 @@
                     </li>
                 </ul>
             </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menú
+                data-target="#navbarResponsive"<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
                 <i class="fas fa-bars ml-1"></i>
             </button>
 
