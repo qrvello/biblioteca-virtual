@@ -13,23 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'IndexController@index')
-    ->name('index');
+Route::get('/', 'GuestController@index');
 
-Route::get('/nosotros', 'IndexController@nosotros')
-    ->name('nosotros');
+Route::get('/nosotros', 'GuestController@nosotros');
 
-Route::resource('/contenidos','ContentController');
+Route::get('/contenidos', 'GuestController@contents');
 
-Route::get('/categorias', 'CategoryController@index');
+Route::get('/categorias', 'GuestController@categories');
 
-Route::get('/categoria/{id}', 'CategoryController@show');
-
-Route::get('/register', 'UserController@register')
-    ->name('register');
-
-Route::get('/login', 'UserController@login')
-    ->name('login');
+Route::get('/categoria/{id}', 'GuestController@category_show');
 
 Route::get('admin/categorias', 'AdminController@categories')
     ->name('admin.categories');
@@ -48,3 +40,7 @@ Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
     ->name('edit.content');
 
 Route::resource('admin', 'AdminController');
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

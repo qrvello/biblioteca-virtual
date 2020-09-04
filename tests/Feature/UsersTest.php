@@ -5,26 +5,67 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class UsersTest extends TestCase
 {
-    /** @test */
-    public function register_test()
-    {
-        $response = $this->get('/register');
-
-        $response->assertStatus(200);
-
-        $response->assertSee('Registrarse');
-    }
+    use RefreshDatabase;
 
     /** @test */
-    public function login_test()
+    public function test_user_can_view_a_login_form()
     {
         $response = $this->get('/login');
 
-        $response->assertStatus(200);
+        $response->assertSuccessful();
+        $response->assertViewIs('auth.login');
+    }
 
-        $response->assertSee('Iniciar sesión');
+    public function test_user_cannot_view_a_login_form_when_authenticated()
+    {
+        $user = User::create([
+            'username' => 'admin',
+            'password' => bcrypt('admin'),
+        ]);
+
+        $response = $this->actingAs($user)->get('/login');
+
+        $response->assertRedirect('/');
+    }
+
+    /** @test */
+    public function test_user_can_login_with_correct_credentials()
+    {
+        $user = User::create([
+            'username' => $username = 'admin',
+            'password' => bcrypt($password = 'admin'),
+        ]);
+
+        $response = $this->post('/login', [
+            'username' => $username,
+            'password' => $password,
+        ]);
+
+        $response->assertRedirect('/');
+        $this->assertAuthenticatedAs($user);
+    }
+
+    /** @test */
+    public function test_user_cannot_login_with_incorrect_password()
+    {
+        $user = User::create([
+            'username' => $username = 'admin',
+            'password' => bcrypt('i-love-laravel'),
+        ]);
+
+        $response = $this->from('/login')->post('/login', [
+            'username' => $username,
+            'password' => 'invalid-password',
+        ]);
+
+        $response->assertRedirect('/login');
+        $response->assertSessionHasErrors('username');
+        $this->assertTrue(session()->hasOldInput('username'));
+        $this->assertFalse(session()->hasOldInput('password'));
+        $this->assertGuest();
     }
 }

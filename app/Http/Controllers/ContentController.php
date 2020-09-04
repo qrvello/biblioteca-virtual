@@ -11,45 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function __construct()
     {
-        if ($request) {
-            $search = trim($request->get('search'));
-
-            $type = $request->get('type');
-
-            $count_result = count(Content::type($type, $search)->get());
-
-            $contents = Content::type($type, $search)
-                ->orderBy('id', 'asc')
-                ->paginate(9);
-
-            if (count($contents) >= 1) {
-                return view('content.index', compact('contents', 'search', 'count_result'));
-            } else {
-                $error = 'No hay coincidencias con tu búsqueda de ' . $search . '.';
-                return view('content.index', compact('contents', 'error'));
-            }
-        }
-
-        if($request->get('categoria')){
-            $search = $request->get('categoria');
-            $contents = Content::where('category_id', 'LIKE', "%$search%")
-                ->paginate(9);
-            if (count($contents) >= 1) {
-                return view('content.index', compact('contents', 'search', 'count_result'));
-            } else {
-                $error = 'No hay coincidencias con tu búsqueda de ' . $search . '.';
-                return view('content.index', compact('contents', 'error'));
-            }
-        }
+        $this->middleware('auth');
     }
-
     /**
      * Show the form for creating a new resource.
      *

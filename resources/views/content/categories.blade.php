@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ $category -> title }}</h2>
                     <p class="card-text">Descripción: {{ $category -> description }}</p>
-                <h6 class="card-text"><a href="{{action('CategoryController@show', $category)}}">Ver contenidos</a></h6>
+                <h6 class="card-text"><a href="{{action('GuestController@category_show', $category)}}">Ver contenidos</a></h6>
                 </div>
             </div>
             @endforeach

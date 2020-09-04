@@ -8,16 +8,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        $categories = Category::paginate(9);
-        return view('content.categories', compact('categories'));
+        $this->middleware('auth');
     }
+
 
      /**
      * Display a listing of the resource.
@@ -25,22 +20,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        
+
         $categories= Category::all();
 
         return view('admin.create_category', compact('categories'));
 
     }
-    public function show($id)
-    {
-        if ($id) {
-            $category = Category::find($id);
-            $contents = Content::where('category_id', '=', $id)
-                ->orderBy('id', 'asc')
-                ->paginate(9);
-            if (count($contents) >= 1) {
-                return view('content.index', compact('contents', 'category'));
-            }
-        }
-    }
+
 }

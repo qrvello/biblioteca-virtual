@@ -13,15 +13,20 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-
         return view('admin.index');
     }
 
     public function contents()
     {
+
         $contents = Content::paginate(15);
+
 
         return view('admin.content', compact('contents'));
     }
@@ -45,7 +50,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     public function edit($id)
     {
         $categories = Category::all();

@@ -19,11 +19,11 @@
             <div class="home-container">
                 <ul class=" home-container-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{action('IndexController@index')}}"><i
+                        <a class="nav-link" href="{{url('/')}}"><i
                                 class="fas fa-home fa-2x"></i></a>
                     </li>
                     <li class="nav-item">
-                        <form class="searchbar" action="{{action('ContentController@index')}}" method="GET"
+                        <form class="searchbar" action="{{ url('/contenidos')}}" method="GET"
                             autocomplete="off">
                             <input class="search_input" id="search" type="text" name="search" placeholder="Buscar">
 
@@ -43,18 +43,23 @@
                     </li>
                 </ul>
             </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive"<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
+                data-target="#navbarResponsive" <link rel="icon" type="image/x-icon"
+                href="{{ asset('assets/img/favicon.ico')}}">
                 <i class="fas fa-bars ml-1"></i>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{action('ContentController@index')}}">Contenido</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/contenidos')}}">Contenido</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{action('CategoryController@index')}}">Categorias</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/categorias')}}">Categorias</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{action('IndexController@nosotros')}}">Nosotros</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros')}}">Nosotros</a>
                     </li>
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/admin')}}">Panel</a>
+                        </li>
+                    @endauth
                 </ul>
 
             </div>

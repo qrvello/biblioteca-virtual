@@ -42,8 +42,26 @@
 		</li>
 		<li class="nav-item d-none d-sm-inline-block">
 			<a href="#" class="nav-link">Contact</a>
-		</li>
-		</ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->username }}
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </li>
+        </ul>
+
 
 		<!-- SEARCH FORM -->
 		<!-- <form class="form-inline ml-3">
@@ -166,33 +184,33 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 			<!-- Add icons to the links using the .nav-icon class
 				with font-awesome or any other icon font library -->
-			<li class="nav-item has-treeview menu-open">
-				<a href="{{action('AdminController@index')}}" class="nav-link active">
-				<i class="nav-icon fas fa-tachometer-alt"></i>
-				<p>
-					Panel
-				</p>
+			<li class="nav-item has-treeview">
+				<a href="{{action('AdminController@index')}}" class="nav-link">
+					<i class="nav-icon fas fa-tachometer-alt"></i>
+					<p>
+						Panel
+					</p>
 				</a>
 			</li>
 			<li class="nav-item has-treeview">
-				<a href="#" class="nav-link">
+			<a href="#" class="nav-link">
 				<i class="nav-icon fas fa-book"></i>
 				<p>
-					Pages
+					Agregar
 					<i class="fas fa-angle-left right"></i>
 				</p>
-				</a>
+			</a>
 				<ul class="nav nav-treeview">
 					<li class="nav-item">
 						<a href="{{action('ContentController@create')}}" class="nav-link">
 						<i class="far fa-circle nav-icon"></i>
-						<p>Subir contenido</p>
+						<p>Agregar contenido</p>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="{{action('CategoryController@create')}}" class="nav-link">
 						<i class="far fa-circle nav-icon"></i>
-						<p>Subir categoria</p>
+						<p>Agregar categoria</p>
 						</a>
 					</li>
 				</ul>

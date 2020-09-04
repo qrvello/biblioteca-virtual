@@ -40,7 +40,7 @@
                                 <p class="card-text">Fecha de publicación: {{ $content -> date_published }}</p>
                                 <p class="card-text">Materia: {{ $content -> matter }}</p>
                                 <p class="card-text">Categoría: <a
-                                        href="{{action('CategoryController@show', $content -> category -> id)}}">{{ $content -> category -> title }}</a>
+                                        href="{{action('GuestController@category_show', $content -> category -> id)}}">{{ $content -> category -> title }}</a>
                                 </p>
                             </div>
                         </div>

@@ -61,47 +61,47 @@
                             <thead>
                                 <tr>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Imagen" >
-										</div>
-									</th>
+                                            <div class="input-group input-group-sm" style="width: 100px;">
+                                                <input type="text" name="table_search" class="form-control float-right"  value="Imagen" >
+                                            </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Titulo" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="title" class="form-control float-right"  value="Titulo" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Autor" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Autor" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Categoría" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Categoría" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Descr" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Descr" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Editorial" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Editorial" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Archivo" >
-										</div>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Archivo" >
+                                        </div>
+                                    </th>
                                     <th>
-										<div class="input-group input-group-sm" style="width: 100px;">
-											<input type="text" name="table_search" class="form-control float-right"  value="Materia" >
-										</div>
-									</th>
-									<th>
-									</th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Materia" >
+                                        </div>
+                                    </th>
+                                    <th>
+                                    </th>
                                 </tr>
                             </thead>
                             @foreach ($contents as $content)
