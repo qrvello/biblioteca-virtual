@@ -16,5 +16,6 @@ $factory->define(Content::class, function (Faker $faker) {
         'matter'=>$faker->text(5),
         'date_published'=>$faker->date($format = 'Y-m-d', $max = 'now'),
         'category_id' => random_int(1, 10),
+        'active' => true,
     ];
 });

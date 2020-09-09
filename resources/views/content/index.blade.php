@@ -21,7 +21,7 @@
         {{-- Cantidad de resultados de la búsqueda --}}
         @if ($search ?? '')
             <div class="alert alert-secondary" role="alert">
-                Hay {{ $count_result }} resultados para tu búsqueda de '{{ $search }}'.
+                Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
             </div>
         @endif
 
@@ -54,7 +54,7 @@
             @endforelse
 
             {{-- Paginación --}}
-            {{ $contents->links() }}
+            {{ $contents->appends(['search' => $search ?? ''])->links() }}
         @endif
 
 

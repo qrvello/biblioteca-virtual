@@ -1,24 +1,10 @@
 @extends('layouts.admin')
 
+@section('title', 'Contenido')
+
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Contenido</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{action('AdminController@create')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Contenido</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -61,9 +47,9 @@
                             <thead>
                                 <tr>
                                     <th>
-                                            <div class="input-group input-group-sm" style="width: 100px;">
-                                                <input type="text" name="table_search" class="form-control float-right"  value="Imagen" >
-                                            </div>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Imagen" >
+                                        </div>
                                     </th>
                                     <th>
                                         <div class="input-group input-group-sm" style="width: 100px;">
@@ -101,6 +87,11 @@
                                         </div>
                                     </th>
                                     <th>
+                                        <div class="input-group input-group-sm" style="width: 100px;">
+                                            <input type="text" name="table_search" class="form-control float-right"  value="Active" >
+                                        </div>
+                                    </th>
+                                    <th>
                                     </th>
                                 </tr>
                             </thead>
@@ -116,8 +107,9 @@
                                     <td>{{ $content -> editorial }}</td>
                                     <td>{{ $content -> file }}</td>
                                     <td>{{ $content -> matter }}</td>
+                                    <td>{{ $content -> active }}</td>
                                     <td class="admin-button">
-                                        <form action="{{ action('ContentController@destroy', $content -> id) }}"
+                                        <form action="{{ action('ContentController@destroy', $content->id) }}"
                                             method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE')}}
@@ -133,7 +125,7 @@
                                             </button>
                                         </form>
 
-                                        <a href="{{ action('ContentController@edit', $content -> id) }}" type="button"
+                                        <a href="{{ action('ContentController@edit', $content->id) }}" type="button"
                                             class="btn btn-secondary">
                                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                                 class="bi bi-pencil-square" fill="currentColor"

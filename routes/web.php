@@ -36,11 +36,20 @@ Route::get('admin/contenido/crear', 'ContentController@create')
 
 Route::post('admin/contenido/crear', 'ContentController@store');
 
+Route::delete('admin/contenido/borrar', 'ContentController@destroy');
+
 Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
     ->name('edit.content');
 
 Route::resource('admin', 'AdminController');
 
+Route::resource('/contenidos/admin', 'ContentController');
+// Route::resource('admin/contenido/', 'ContentController');
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('publicaciones', 'GuestController@publications');
+
+Route::post('admin/categoria/agregar', 'CategoryController@store');

@@ -26,16 +26,6 @@
                         <form class="searchbar" action="{{ url('/contenidos')}}" method="GET"
                             autocomplete="off">
                             <input class="search_input" id="search" type="text" name="search" placeholder="Buscar">
-
-                            <select name="type" class="search_select">
-                                <option selected value="title">Título</option>
-                                <option value="author">Autor</option>
-                                <option value="editorial">Editorial</option>
-                                <option value="description">Descripción</option>
-                                <option value="date_published">Fecha de publicación</option>
-                                <option value="matter">Materia</option>
-                            </select>
-
                             <button type="submit" id="search" class=" search_icon nav-link">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -66,7 +56,6 @@
         </div>
     </nav>
 
-    <!-- Masthead-->
 
     @yield('content')
 

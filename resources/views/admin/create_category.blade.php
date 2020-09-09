@@ -1,34 +1,23 @@
 @extends('layouts.admin')
 
+@section('title', 'Agregar categoria')
+
 @section('content')
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Project Add</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Project Add</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{action('ContentController@store')}}" method="POST" autocomplete="off"
-            enctype="multipart/form-data">
+        <form action="{{action('CategoryController@store')}}" method="POST" autocomplete="off">
             @csrf
-            <div class="row">
+            <div class="row justify-content-md-center">
 
-                <div class="col-md-6">
+                <div class="col-md-11">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">General</h3>
@@ -49,20 +38,23 @@
                             </div>
 
                         </div>
+                        <div class="form-group text-center">
+                            <div class="col-12">
+                                    <button type="submit" class="btn btn-success col-lg-2">
+                                        Crear
+                                    </button>
+
+                                    <a href="{{action('AdminController@categories')}}" name="button" class="btn btn-danger col-lg-2">
+                                        Cancelar
+                                    </a>
+                            </div>
+                        </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{action('AdminController@categories')}}" name="button" class="btn btn-danger">
-                        Cancelar
-                    </a>
-                    <button type="submit" class="btn btn-success float-right">
-                        Guardar
-                    </button>
-                </div>
+
             </div>
         </form>
     </section>

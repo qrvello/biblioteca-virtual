@@ -19,10 +19,12 @@ class CreateContentsTable extends Migration
             $table->text('file')->nullable();
             $table->text('author')->nullable();
             $table->text('editorial')->nullable();
-            $table->text('title')->nullable();
-            $table->text('description')->nullable();
+            $table->text('title');
+            $table->text('description');
             $table->text('matter')->nullable();
             $table->date('date_published')->nullable();
+            $table->boolean('active')->default(true)->nullable();
+
 
             // $table->foreignId('user_id')->constrained();
 

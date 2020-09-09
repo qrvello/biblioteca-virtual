@@ -58,6 +58,7 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $content = Content::find($id);
         $content->file = $request->input('file');;
         $content->author = $request->input('author');
@@ -67,6 +68,7 @@ class ContentController extends Controller
         $content->date_published = $request->input('date_published');
         $content->image = $request->file('image');
         $content->matter = $request->input('matter');
+        $content->active = $request->input('active');
         $content->category_id = $request->input('category_id');
         $content->save();
 
@@ -96,6 +98,7 @@ class ContentController extends Controller
         $content->date_published = $request->input('date_published');
         $content->image = $name;
         $content->matter = $request->input('matter');
+        $content->active = $request->input('active');
         $content->category_id = $request->input('category_id');
         $content->save();
 
@@ -112,6 +115,6 @@ class ContentController extends Controller
     public function destroy($id)
     {
         Content::destroy($id);
-        return back();
+        return redirect()->route('admin.content');
     }
 }

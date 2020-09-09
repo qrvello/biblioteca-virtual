@@ -27,4 +27,14 @@ class CategoryController extends Controller
 
     }
 
+    public function store(Request $request){
+        $category = new Category();
+        $category->title = $request->input('title');
+        $category->description = $request->input('description');
+
+        $category->save();
+        $status = "Agregaste la categoría correctamente";
+        return back()->with(compact('status'));
+    }
+
 }
