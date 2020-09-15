@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="description">Descripción</label>
-                                <input type="text" class="form-control" name="description">
+                                <textarea class="form-control" name="description" rows="3"></textarea>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="date_published">Fecha de Publicación</label>

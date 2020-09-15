@@ -22,16 +22,33 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function contents()
-    {
+    public function contents(Request $request)
+    {   
+            $search = trim($request->get('search'));
 
-        $contents = Content::paginate(15);
-
-
-        return view('admin.content', compact('contents'));
+            $content = Content::orderByDesc('id')
+                ->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%$search%")
+                        ->orWhere('editorial', 'like', "%$search%")
+                        ->orWhere('description', 'like', "%$search%")
+                        ->orWhere('date_published', 'like', "%$search%")
+                        ->orWhere('matter', 'like', "%$search%")
+                        ->orWhere('author', 'like', "%$search%");
+                })
+                ->with('category')
+                ->orderByDesc('created_at')
+                ->paginate(15);
+                
+                if (count($content) >= 1) {
+                    return view('admin.content', compact('content', 'search'));
+                } else {
+                    $error = "No hay coincidencias con tu búsqueda de '$search'.";
+                    return view('admin.content', compact('content', 'error'));
+                }
+        
     }
 
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -39,38 +56,10 @@ class AdminController extends Controller
      */
     public function categories()
     {
-        $categories = Category::paginate(15);
+        $category = Category::paginate(15);
 
-        return view('admin.category', compact('categories'));
+        return view('admin.category', compact('category'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function edit($id)
-    {
-        $categories = Category::all();
-        $content = Content::find($id);
-        return view('admin.project-edit', compact('content', 'categories'));
-    }
-
-     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function detalle()
-    {
-
-        return view('admin.project-detail');
-
-    }
-
 
 
     /**
@@ -93,11 +82,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        // Content::destroy($id)
-
-        // return redirect()->route('create_content');
-        // Content::destroy($id);
-
 
 
     }

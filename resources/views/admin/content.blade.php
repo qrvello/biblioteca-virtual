@@ -14,17 +14,30 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Listado de contenido</h3>
-                            <div class="card-tools">
-                                <!-- <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-                                </div> -->
+                            {{-- Cantidad de resultados de la búsqueda --}}
+                            @if ($search ?? '')
+                                <br><h3><div class="card-title" role="alert">
+                                    Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
+                                </div></h3>
+                            @endif
+                            @if ($error ?? '')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $error }}
                             </div>
+                            @endif
                             <div class="card-tools">
-                                <a href="{{ action('ContentController@create')}}">
+                                <form action="{{ action('AdminController@contents')}}">
+                                    <div class="input-group input-group-sm float-right">
+                                        <input type="text" name="search" class="form-control ">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div> 
+                                </form>   
+                            </div>
+                            <!-- <div class="card-tools">
+                                 <a href="{{ action('ContentController@create')}}">
                                     <button type="button" class="btn btn-secondary">
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                             class="bi bi-arrow-up-square" fill="currentColor"
@@ -37,66 +50,30 @@
                                                 d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
                                         </svg>
                                     </button>
-                                </a>
-                            </div>
+                                </a> 
+                            </div> -->
                         </div>
                     </div>
-                    <div class="">
-                        {{ $contents->links() }}
-                        <table class="table table-bordered">
-                            <thead>
+                    <div class="card-body table-responsive p-0">
+                        {{ $content->links() }}
+                        <table class="table table-bordered table-hover">
+                            
+                        <thead>
                                 <tr>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Imagen" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="title" class="form-control float-right"  value="Titulo" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Autor" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Categoría" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Descr" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Editorial" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Archivo" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Materia" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="input-group input-group-sm" style="width: 100px;">
-                                            <input type="text" name="table_search" class="form-control float-right"  value="Active" >
-                                        </div>
-                                    </th>
-                                    <th>
-                                    </th>
+                                    <th>Imagen</th>
+                                    <th>Titulo</th>
+                                    <th>Autor</th>
+                                    <th>Categoría</th>
+                                    <th>Descr</th>
+                                    <th>Editorial</th>
+                                    <th>Archivo</th>
+                                    <th>Materia</th>
+                                    <th>Active</th>
+                                    <th>{{-- <a href="{{action('ContentController@show', $content->title)}}">Asc/Desc</a> --}}</th>
                                 </tr>
                             </thead>
-                            @foreach ($contents as $content)
                             <tbody>
+                            @foreach ($content as $content)
                                 <tr>
                                     <td><img width="100%" class="" src="{{ $content -> image }}" alt="Card image cap">
                                     </td>
@@ -109,8 +86,7 @@
                                     <td>{{ $content -> matter }}</td>
                                     <td>{{ $content -> active }}</td>
                                     <td class="admin-button">
-                                        <form action="{{ action('ContentController@destroy', $content->id) }}"
-                                            method="POST">
+                                        <form action="{{ action('ContentController@destroy', $content->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE')}}
                                             <button type="submit" class="btn btn-danger">
@@ -138,10 +114,9 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
-                            @endforeach
                         </table>
-
                     </div>
                 </div>
             </div>

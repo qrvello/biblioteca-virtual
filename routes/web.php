@@ -28,6 +28,13 @@ Route::get('admin/categorias', 'AdminController@categories')
 
 Route::get('admin/categorias/crear', 'CategoryController@create');
 
+Route::post('admin/categoria/crear', 'CategoryController@store');
+
+Route::delete('admin/categorias/borrar', 'CategoryController@destroy');
+
+Route::get('admin/categorias/editar/{category}', 'CategoryController@edit')
+    ->name('edit.category');
+
 Route::get('admin/contenido', 'AdminController@contents')
     ->name('admin.content');
 
@@ -43,7 +50,10 @@ Route::get('admin/contenido/editar/{content}', 'ContentController@edit')
 
 Route::resource('admin', 'AdminController');
 
+Route::resource('categorias/admin', 'CategoryController');
 Route::resource('/contenidos/admin', 'ContentController');
+
+Route::get('/contenidos/admin/{content}', 'ContentController@show');
 // Route::resource('admin/contenido/', 'ContentController');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -51,5 +61,3 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('publicaciones', 'GuestController@publications');
-
-Route::post('admin/categoria/agregar', 'CategoryController@store');

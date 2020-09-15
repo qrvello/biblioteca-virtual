@@ -1,15 +1,18 @@
 @extends('layouts.admin')
 
-@section('title', 'Agregar categoria')
+@section('title', 'Editar contenido')
+
+@section('id', '$content -> id')
 
 @section('content')
 
-
+<!-- Content Wrapper. Contains page content -->
 
     <!-- Main content -->
-    <section class="content">
-        <form action="{{action('CategoryController@store')}}" method="POST" autocomplete="off">
+    <form action="{{action('CategoryController@update', $category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+            @method('PUT')    
             @csrf
+        <section class="content">
             <div class="row justify-content-md-center">
 
                 <div class="col-md-11">
@@ -30,11 +33,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="title">Titulo</label>
-                                <input type="text" class="form-control" value=" " name="title" placeholder="">
+                                <input type="text" class="form-control" value="{{ $category -> title }}" name="title">
                             </div>
                             <div class="form-group">
                                 <label for="description">Descripción</label>
-                                <textarea class="form-control" name="description" rows="3"></textarea>
+                                <textarea class="form-control" name="description" rows="3">{{ $category -> description }}</textarea>
                             </div>
 
                         </div>
@@ -56,9 +59,9 @@
             </div>
 
             </div>
-        </form>
-    </section>
-    <!-- /.content -->
+        </section>
+    </form>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
