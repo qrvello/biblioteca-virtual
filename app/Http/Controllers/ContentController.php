@@ -34,9 +34,9 @@ class ContentController extends Controller
      */
     public function show()
     {
-        $content = Content::OrderByDesc('title');
 
-        return view ('admin.content',compact('content'));
+
+        return view ('admin.content', compact('content'));
     }
 
     /**

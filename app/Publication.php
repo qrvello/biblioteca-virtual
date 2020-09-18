@@ -9,4 +9,5 @@ class Publication extends Model
     protected $fillable = [
         'title', 'image', 'file', 'description',
     ];
+
 }

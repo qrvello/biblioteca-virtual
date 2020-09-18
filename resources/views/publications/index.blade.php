@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="page-section bg-info" id="publicaciones">
+<section class="page-section" id="publicaciones">
     <div class="container">
 
         {{-- Listado de publicaciones --}}

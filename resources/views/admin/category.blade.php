@@ -12,17 +12,30 @@
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header">
-						<h3 class="card-title">Responsive Hover Table</h3>
+						<h3 class="card-title"></h3>
 
-						<div class="card-tools">
-							<div class="input-group input-group-sm">
-								<input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-								<div class="input-group-append">
-									<button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-								</div>
-							</div>
-						</div>
+						{{-- Cantidad de resultados de la búsqueda --}}
+                            @if ($search ?? '')
+                                <br><h3><div class="card-title" role="alert">
+                                    Hay {{ $category->total() }} resultados para tu búsqueda de '{{ $search }}'.
+                                </div></h3>
+                            @endif
+                            @if ($error ?? '')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $error }}
+                            </div>
+                            @endif
+                            <div class="card-tools">
+                                <form action="{{ action('AdminController@categories')}}">
+                                    <div class="input-group input-group-sm float-right">
+                                        <input type="text" name="search" class="form-control ">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body table-responsive p-0">

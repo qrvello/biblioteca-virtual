@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="page-section bg-info" id="contenido">
+<section class="page-section" id="contenido">
     <div class="container">
 
         {{-- Header de la página --}}

@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function contents(Request $request)
-    {   
+    {
             $search = trim($request->get('search'));
 
             $content = Content::orderByDesc('id')
@@ -38,27 +38,40 @@ class AdminController extends Controller
                 ->with('category')
                 ->orderByDesc('created_at')
                 ->paginate(15);
-                
+
                 if (count($content) >= 1) {
                     return view('admin.content', compact('content', 'search'));
                 } else {
                     $error = "No hay coincidencias con tu búsqueda de '$search'.";
                     return view('admin.content', compact('content', 'error'));
                 }
-        
+
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function categories()
+    public function categories(Request $request)
     {
-        $category = Category::paginate(15);
+        $search = trim($request->get('search'));
 
-        return view('admin.category', compact('category'));
+        $category = Category::orderByDesc('id')
+            ->where(function ($query) use ($search) {
+                $query->where('title', 'like', "%$search%");
+            })
+            ->orderByDesc('created_at')
+            ->paginate(15);
+
+        if (count($category) >= 1) {
+            return view('admin.category', compact('category', 'search'));
+        } else {
+            $error = "No hay coincidencias con tu búsqueda de '$search'.";
+            return view('admin.category', compact('category', 'error'));
+        }
+
     }
 
 

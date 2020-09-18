@@ -33,7 +33,7 @@
                     </li>
                 </ul>
             </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" <link rel="icon" type="image/x-icon"
+                data-target="#navbarResponsive" link rel="icon" type="image/x-icon"
                 href="{{ asset('assets/img/favicon.ico')}}">
                 <i class="fas fa-bars ml-1"></i>
             </button>
@@ -42,9 +42,9 @@
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/contenidos')}}">Contenido</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/categorias')}}">Categorias</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/categorias')}}">Categorías</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros')}}">Nosotros</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros')}}">Institución</a>
                     </li>
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ url('/admin')}}">Panel</a>
