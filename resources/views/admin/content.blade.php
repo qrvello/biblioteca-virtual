@@ -14,6 +14,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"></h3>
+
                             {{-- Cantidad de resultados de la búsqueda --}}
                             @if ($search ?? '')
                                 <br><h3><div class="card-title" role="alert">

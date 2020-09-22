@@ -69,7 +69,7 @@
                                                 <li>Autor/a: {{ $content -> author }}</li>
                                                 <li>Editorial: {{ $content -> editorial }}</li>
                                                 <li>Materia: {{ $content -> matter }}</li>
-                                                <li class="card-text">Categoría: <a
+                                                <li>Categoría: <a
                                                         href="{{action('GuestController@category_show', $content -> category -> id)}}">{{ $content -> category -> title }}</a>
                                                 </li>
                                             </ul>

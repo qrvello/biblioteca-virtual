@@ -8,7 +8,6 @@
     <div class="container">
         <h2 class="section-heading">Nuestra institución</h2>
         <div class="text-center">
-
             <h3 class="section-subheading"><p>
                 La Escuela de Enseñanza Secundaria N° 5 comenzó a funcionar en marzo de 1968 en turno vespertino, dado que no tenía
                 edificio propio y le cedieron para su funcionamiento, las instalaciones de la escuela primaria, actual 153 “República de

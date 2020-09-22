@@ -14,17 +14,15 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-4" id="mainNav">
         <div class="container">
             <div class="home-container">
                 <ul class=" home-container-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/')}}"><i
-                                class="fas fa-home fa-2x"></i></a>
+                        <a class="nav-link" href="{{url('/')}}"><i class="fas fa-home fa-2x"></i></a>
                     </li>
                     <li class="nav-item">
-                        <form class="searchbar" action="{{ url('/contenidos')}}" method="GET"
-                            autocomplete="off">
+                        <form class="searchbar" action="{{ url('/contenidos')}}" method="GET" autocomplete="off">
                             <input class="search_input" id="search" type="text" name="search" placeholder="Buscar">
                             <button type="submit" id="search" class=" search_icon nav-link">
                                 <i class="fas fa-search"></i>
@@ -40,15 +38,17 @@
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/contenidos')}}">Contenido</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/contenidos')}}">Contenidos</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/categorias')}}">Categorías</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/publicaciones')}}">Novedades</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros')}}">Institución</a>
                     </li>
                     @auth
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/admin')}}">Panel</a>
-                        </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/admin')}}">Panel</a>
+                    </li>
                     @endauth
                 </ul>
 
@@ -63,6 +63,7 @@
     <footer class="footer py-4">
         <div class="container">
             <div class="col align-items-center">
+            Cuando se renueven las actividades escolares van a poder acercarse de lunes a viernes, por la mañana de 8 a 11.30 y a la tarde de 13.30 a 17 hs.
                 <div class="">Copyright © Biblioteca Digital 2020</div>
             </div>
         </div>

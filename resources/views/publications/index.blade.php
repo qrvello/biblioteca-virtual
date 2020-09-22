@@ -6,7 +6,7 @@
 
 <section class="page-section" id="publicaciones">
     <div class="container">
-
+        <h2 class="section-header text-uppercase">Publicaciones</h2>
         {{-- Listado de publicaciones --}}
             @forelse($publications->chunk(3) as $chunk)
                 <div class="card-deck">
@@ -16,8 +16,8 @@
                             <div class="card-body">
                                 <h2 class="card-title">{{ $publication->title }}</h2>
                                 <p class="card-text">{{ $publication->description }}</p>
+                                <div class="card-text">{{ $publication->created_at->format('d/m/Y') }}</div>
                             </div>
-                            <div class="card-footer">Fecha de publicación: {{ $publication->created_at }}</div>
                         </div>
                     @endforeach
                 </div>

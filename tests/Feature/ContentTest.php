@@ -40,14 +40,14 @@ class ContentTest extends TestCase
             'category_id' => $category->id,
         ]);
 
-        $this->get('/contenidos?search=harry+potter&type=title')
+        $this->get('/contenidos?search=harry+potter')
             ->assertStatus(200)
             ->assertSee($category->title)
             ->assertSee($content->author)
             ->assertSee($content->editorial)
             ->assertSee($content->description)
             ->assertSee($content->matter)
-            ->assertSee($content->date_published)
+            ->assertSee($content->created_at->format('d/m/Y'))
             ->assertSee('harry potter');
     }
 
@@ -62,36 +62,16 @@ class ContentTest extends TestCase
             'author' => 'J. K. Rowling',
             'category_id' => $category->id
         ]);
-        $this->get('/contenidos?search=J.+K.+Rowling&type=author')
+        $this->get('/contenidos?search=J.+K.+Rowling')
             ->assertStatus(200)
             ->assertSee($category->title)
             ->assertSee($content->author)
             ->assertSee($content->editorial)
             ->assertSee($content->description)
             ->assertSee($content->matter)
-            ->assertSee($content->date_published)
+            ->assertSee($content->created_at->format('d/m/Y'))
             ->assertSee('J. K. Rowling');
     }
 
-    /** @test */
-    public function muestra_el_resultado_de_la_busqueda_por_editorial()
-    {
-        // $this->withoutExceptionHandling();
-        $category = factory(Category::class)->create();
-
-        $content = factory(Content::class)->create([
-            'editorial' => 'pepe',
-            'category_id' => $category->id
-        ]);
-        $this->get('/contenidos?search=pepe&type=editorial')
-        ->assertStatus(200)
-            ->assertSee('pepe')
-            ->assertSee($category->title)
-            ->assertSee($content->title)
-            ->assertSee($content->author)
-            ->assertSee($content->description)
-            ->assertSee($content->matter)
-            ->assertSee($content->date_published);
-    }
 
 }

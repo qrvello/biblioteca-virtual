@@ -2132,8 +2132,8 @@ pre code {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
+    border: 1px solid #fff;
+    border-radius: 1rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -2660,9 +2660,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-    color: #fff;
     background-color:  rgb(0, 0, 238);
-    font-size: 20px;
+    color: #fff;
     text-align: center;
     border-radius: 2rem;
     border-color:  rgb(0, 0, 238);
@@ -2699,6 +2698,7 @@ fieldset:disabled a.btn {
 .btn-secondary {
     color: #fff;
     background-color: #6c757d;
+    border-radius: 2rem;
     border-color: #6c757d;
 }
 .btn-secondary:hover {
@@ -3628,6 +3628,7 @@ input[type="button"].btn-block {
     flex-wrap: wrap;
     align-items: stretch;
     width: 100%;
+
 }
 .input-group > .form-control,
 .input-group > .form-control-plaintext,
@@ -3638,6 +3639,7 @@ input[type="button"].btn-block {
     width: 1%;
     min-width: 0;
     margin-bottom: 0;
+
 }
 .input-group > .form-control + .form-control,
 .input-group > .form-control + .custom-select,
@@ -4697,7 +4699,6 @@ input[type="button"].btn-block {
     background: linear-gradient(90deg, rgba(51,102,153,1) 0%, rgba(0,68,119,1) 100%);
     background-clip: border-box;
     border-radius: 2rem;
-    color: white;
 }
 .card > hr {
     margin-right: 0;
@@ -4724,6 +4725,7 @@ input[type="button"].btn-block {
 
 .card-title {
     margin-bottom: 0.75rem;
+    color: white;
 }
 
 .card-subtitle {
@@ -4735,6 +4737,7 @@ input[type="button"].btn-block {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: white;
 }
 
 .card-text:last-child {
@@ -10517,8 +10520,8 @@ img::-moz-selection {
 }
 
 #mainNav {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     background-color: #003366;
 }
 #mainNav .navbar-toggler {
@@ -10562,8 +10565,8 @@ img::-moz-selection {
 
 @media (min-width: 992px) {
     #mainNav {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         border: none;
         background-color: #003366;
         transition: padding-top 0.3s ease-in-out,
@@ -10583,8 +10586,8 @@ img::-moz-selection {
         -ms-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
         background-color: #003366;
     }
     #mainNav.navbar-shrink .navbar-brand {

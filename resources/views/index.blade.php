@@ -11,6 +11,60 @@
     </div>
 </header>
 
+<section class="page-section" id="informacion">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Nuestra biblioteca</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <h3 class="section-subheading">
+                    Según su nombre, una biblioteca es el lugar donde se guardan libros; el nombre quedó desde
+                    los tiempos antiguos en que era realmente eso pero en la actualidad, además de sus colecciones
+                    bibliográficas, en una biblioteca nos encontramos con audiovisuales, redes informáticas, y
+                    puesta en servicio de innumerables medios para satisfacer las necesidades de quienes buscan información,
+                    conocimientos nuevos, lecturas recreativas y tantos etcéteras. La llave para entrar a este mundo, un ser humano;
+                    en la Escuela 5.
+                    <br>
+                    En nuestra escuela, la biblioteca es una parte importante dentro del proyecto institucional:
+                    los profesores encuentran en su material un gran apoyo a su práctica pedagógica, los alumnos,
+                    todo lo necesario para realizar sus actividades escolares, desarrollar su espíritu crítico, distraerse con lecturas recreativas.
+                    <br>
+                    Cuando volvamos a las actividades escolares van a poder acercarse para leer aquí o llevar un libro a casa,
+                    estamos de lunes a viernes, por la mañana de 8 a 11.30 y a la tarde de 13.30 a 17 hs.
+                    <br>
+                    Para ser considerado socio se paga una cuota anual lo que permite  llevar 2 libros en carácter de préstamo por una semana.
+                    Con esta colaboración se acrecienta y actualiza el fondo bibliográfico y se brinda mejor información a toda la institución
+                    y a la comunidad.
+                    <br>
+                    Las bibliotecarias: En el turno de la mañana está Griselda y Mónica, a la tarde, María Victoria y en el anexo, Nora.
+                <h3>
+            </div>
+        </div>
+        <!-- <div class="text-center">
+            <h3 class="section-subheading">
+                Según su nombre, una biblioteca es el lugar donde se guardan libros; el nombre quedó desde
+                los tiempos antiguos en que era realmente eso pero en la actualidad, además de sus colecciones
+                bibliográficas, en una biblioteca nos encontramos con audiovisuales, redes informáticas, y
+                puesta en servicio de innumerables medios para satisfacer las necesidades de quienes buscan información,
+                conocimientos nuevos, lecturas recreativas y tantos etcéteras. La llave para entrar a este mundo, un ser humano;
+                en la Escuela 5.
+                <br>
+                En nuestra escuela, la biblioteca es una parte importante dentro del proyecto institucional:
+                los profesores encuentran en su material un gran apoyo a su práctica pedagógica, los alumnos,
+                todo lo necesario para realizar sus actividades escolares, desarrollar su espíritu crítico, distraerse con lecturas recreativas.
+                <br>
+                Cuando volvamos a las actividades escolares van a poder acercarse para leer aquí o llevar un libro a casa,
+                estamos de lunes a viernes, por la mañana de 8 a 11.30 y a la tarde de 13.30 a 17 hs.
+                <br>
+                Las bibliotecarias: En el turno de la mañana está Griselda y Mónica, a la tarde, María Victoria y en el anexo, Nora.
+            </h3>
+            <h3 class="section-subheading"></h3>
+        </div> -->
+    </div>
+</section>
 {{-- Novedades --}}
 <section class="page-section" id="portfolio">
     <div class="container">
@@ -28,7 +82,7 @@
                     </a>
                     <div class="card-body">
                         <h3 class="card-title">{{ $publication->title }}</h3>
-                        <p>{{ $publication->description}}</p>
+                        <p class=card-text>{{ $publication->description}}</p>
                     </div>
 
 
@@ -70,7 +124,7 @@
         @endforeach
     </div>
     <center>
-        <a href="{{ url('publicaciones')}}" class="btn btn-primary col-lg-3">Ver todas las novedades</a>
+        <a href="{{ url('publicaciones')}}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
     </center>
 </section>
 

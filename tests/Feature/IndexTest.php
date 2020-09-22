@@ -14,6 +14,6 @@ class IndexTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk()
-            ->assertSee('¡Bienvenido a nuestra biblioteca digital!');
+            ->assertSee('¡Bienvenido/a a nuestra biblioteca digital!');
     }
 }
