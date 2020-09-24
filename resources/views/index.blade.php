@@ -43,31 +43,6 @@
                 <h3>
             </div>
         </div>
-        <!-- <div class="text-center">
-            <h3 class="section-subheading">
-                Según su nombre, una biblioteca es el lugar donde se guardan libros; el nombre quedó desde
-                los tiempos antiguos en que era realmente eso pero en la actualidad, además de sus colecciones
-                bibliográficas, en una biblioteca nos encontramos con audiovisuales, redes informáticas, y
-                puesta en servicio de innumerables medios para satisfacer las necesidades de quienes buscan información,
-                conocimientos nuevos, lecturas recreativas y tantos etcéteras. La llave para entrar a este mundo, un ser humano;
-                en la Escuela 5.
-                <br>
-                En nuestra escuela, la biblioteca es una parte importante dentro del proyecto institucional:
-                los profesores encuentran en su material un gran apoyo a su práctica pedagógica, los alumnos,
-                todo lo necesario para realizar sus actividades escolares, desarrollar su espíritu crítico, distraerse con lecturas recreativas.
-                <br>
-                Cuando volvamos a las actividades escolares van a poder acercarse para leer aquí o llevar un libro a casa,
-                estamos de lunes a viernes, por la mañana de 8 a 11.30 y a la tarde de 13.30 a 17 hs.
-                <br>
-                Las bibliotecarias: En el turno de la mañana está Griselda y Mónica, a la tarde, María Victoria y en el anexo, Nora.
-            </h3>
-            <h3 class="section-subheading"></h3>
-        </div> -->
-    </div>
-</section>
-{{-- Novedades --}}
-<section class="page-section" id="portfolio">
-    <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Novedades</h2>
             <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
@@ -76,7 +51,7 @@
             @forelse($publications->chunk(3) as $chunk)
             <div class="card-deck">
                 @foreach ($chunk as $publication)
-                <div class="card mb-3">
+                <div class="shadow card mb-3">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal{{$publication->id}}">
                         <img class="card-img-top" src="{{ $publication->image }}" alt="">
                     </a>

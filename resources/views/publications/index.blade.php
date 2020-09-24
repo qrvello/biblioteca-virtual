@@ -11,7 +11,7 @@
             @forelse($publications->chunk(3) as $chunk)
                 <div class="card-deck">
                     @foreach ($chunk as $publication)
-                        <div class="card">
+                        <div class="shadow card mb-3">
                             <img class="card-img-top" src="{{ $publication->image }}" alt="Card image cap">
                             <div class="card-body">
                                 <h2 class="card-title">{{ $publication->title }}</h2>
@@ -22,7 +22,7 @@
                     @endforeach
                 </div>
             @empty
-                Aún no hay publicaciones
+                Aún no hay publicaciones.
             @endforelse
             {{-- Paginación --}}
             {{ $publications->links() }}

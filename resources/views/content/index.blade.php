@@ -14,9 +14,8 @@
         @else
         {{-- Header de la página de contenidos --}}
         <h2 class="section-heading text-uppercase">Contenidos</h2>
-        <h3 class="section-subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum erat et
-            dolor pulvinar, in scelerisque ipsum
-            dapibus. Maecenas pellentesque commodo ante. Phasellus bibendum lectus at tortor volutpat sagittis.</h3>
+        <h3 class="section-subheading">Libros existentes en la biblioteca con los datos catalográficos correspondientes:
+        Autor, título, editorial, lugar y fecha de edición, páginas, tema o materia.</h3>
         @endif
 
         {{-- Cantidad de resultados de la búsqueda --}}
@@ -31,7 +30,7 @@
         @forelse($contents->chunk(3) as $chunk)
         <div class="card-deck">
             @foreach ($chunk as $content)
-            <div class="shadow-lg card mb-3">
+            <div class="shadow card mb-3">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal{{$content->id}}">
                     <img class="card-img-top" src="{{ $content -> image }}" alt="Card image cap">
                 </a>
@@ -61,8 +60,7 @@
                                             <!-- Project Details Go Here-->
                                             <h2 class="text-uppercase">{{$content->title}}</h2>
                                             <p class="item-intro text-muted"></p>
-                                            <img class="img-fluid d-block mx-auto" src="{{$content->image}}"
-                                                alt="" />
+                                            <img class="img-fluid d-block mx-auto" src="{{$content->image}}" alt="" />
                                             <p>{{$content->description}}</p>
                                             <ul class="list-inline">
                                                 <li>Fecha: {{$content->created_at->format('d/m/Y')}}</li>
@@ -91,17 +89,17 @@
             </div>
             @endforeach
 
-    </div>
-    @empty
-    {{-- Errores --}}
-    <div class="alert alert-danger" role="alert">
-        {{ $error }}
-    </div>
-    @endforelse
+        </div>
+        @empty
+        {{-- Errores --}}
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+        @endforelse
 
-    {{-- Paginación --}}
-    {{ $contents->appends(['search' => $search ?? ''])->links() }}
-    @endif
+        {{-- Paginación --}}
+        {{ $contents->appends(['search' => $search ?? ''])->links() }}
+        @endif
 
 
 </section>

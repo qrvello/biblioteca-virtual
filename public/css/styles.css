@@ -330,7 +330,7 @@ input[type="checkbox"] {
 
 textarea {
     overflow: auto;
-    resize: vertical;
+    resize: none;
 }
 
 fieldset {
@@ -2134,8 +2134,10 @@ pre code {
     background-clip: padding-box;
     border: 1px solid #fff;
     border-radius: 1rem;
+    resize: none;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 @media (prefers-reduced-motion: reduce) {
     .form-control {
         transition: none;
@@ -2265,6 +2267,7 @@ select.form-control[multiple] {
 
 textarea.form-control {
     height: auto;
+    resize: none;
 }
 
 .form-group {
@@ -4696,7 +4699,7 @@ input[type="button"].btn-block {
     flex-direction: column;
     min-width: 0;
     background: rgb(51,102,153);
-    background: linear-gradient(90deg, rgba(51,102,153,1) 0%, rgba(0,68,119,1) 100%);
+    background: linear-gradient(90deg, rgba(51,102,153,1) 0%, rgba(65,124,169,1) 100%);
     background-clip: border-box;
     border-radius: 2rem;
 }
@@ -5238,9 +5241,10 @@ a.badge-dark.focus {
 }
 
 .alert-secondary {
-    color: #383d41;
-    background-color: #e2e3e5;
-    border-color: #d6d8db;
+    color: white;
+    background-color: #407ba8;
+    border-color: #407ba8;
+    border-radius: 2rem;
 }
 .alert-secondary hr {
     border-top-color: #c8cbcf;
@@ -5288,7 +5292,8 @@ a.badge-dark.focus {
 .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
-    border-color: #f5c6cb;
+    border-color: #f8d7da;
+    border-radius: 2rem;
 }
 .alert-danger hr {
     border-top-color: #f1b0b7;
@@ -11004,9 +11009,9 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .search_input {
     color: white;
-    background-color: #1b1c1f;
+    background-color: rgb(51,102,153);
     border-radius: 20px;
-    border-color: #1b1c1f !important;
+    border-color: rgb(51,102,153) !important;
     border: 1px solid;
     width: 300px;
     line-height: 35px;
@@ -11016,32 +11021,16 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 .search_input:focus {
     outline: none !important;
-    border-color: #fed136 !important;
-    border: 1px solid;
-}
-
-.search_select {
-    color: white;
-    background-color: #1b1c1f;
-    border-radius: 20px;
-    border-color: #1b1c1f !important;
-    border: 1px solid;
-    width: 150px;
-    line-height: 35px;
-    text-indent: 10px;
-    margin-top: 5px;
-    height: 40px;
-
-}
-.search_select:hover {
-    cursor: pointer;
-
 }
 
 .search_select:focus {
     outline: none !important;
-    border-color: #fed136 !important;
-    border: 1px solid;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 
 

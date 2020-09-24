@@ -10,13 +10,15 @@
         {{-- Header de la página --}}
 
         <h2 class="section-heading text-uppercase">Categorías</h2>
-        <h3 class="section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 class="section-subheading">Material bibliográfico según el sistema de clasificación:
+        Obras generales, Filosofía y Psicología, Ciencias sociales, Ciencias naturales, Tecnología, Lengua y Literatura, Arte,
+        Deporte, Geografía, Historia, biografías.</h3>
 
         @if ($categories)
         @foreach($categories->chunk(3) as $chunk)
         <div class="card-deck">
             @foreach ($chunk as $category)
-            <div class="card">
+            <div class="shadow card mb-3">
                 <div class="card-body">
                     <h2 class="card-title">{{ $category -> title }}</h2>
                     <p class="card-text">Descripción: {{ $category -> description }}</p>

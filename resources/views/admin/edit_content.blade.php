@@ -26,19 +26,14 @@
                     </div>
                     <div class="card-body">
                         <div class="form-row">
-                            {{-- <input class="form-checkbox" type="checkbox" name="active">
-                                <label for="active">
-                                    Mostrar contenido
-                                </label> --}}
                             <div class="form-group col-md-6">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" value="{{ $content -> active}} " name="active"
-                                                aria-label="Checkbox for following text input">
+                                            <input type="checkbox" @if ($content->active) checked="checked" @endif name="active">
                                         </div>
                                     </div>
-                                    <label for="active" class="form-control" aria-label="Text input with checkbox">
+                                    <label for="active" class="form-control">
                                         Mostrar contenido
                                     </label>
                                 </div>
