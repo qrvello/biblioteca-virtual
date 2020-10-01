@@ -1,18 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Editar contenido')
-
-@section('id', '$content -> id')
+@section('title', 'Agregar Sub-categoria')
 
 @section('content')
 
-<!-- Content Wrapper. Contains page content -->
-
     <!-- Main content -->
-    <form action="{{action('CategoryController@update', $category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
-            @method('PUT')
+    <section class="content">
+        <form action="{{action('SubcategoryController@store')}}" method="POST" autocomplete="off">
             @csrf
-        <section class="content">
             <div class="row justify-content-md-center">
 
                 <div class="col-md-11">
@@ -32,22 +27,29 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="category_id">Categoria</label>
+                                <select class="custom-select" name="category_id">
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category -> id }}">{{ $category -> title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="title">Titulo</label>
-                                <input type="text" class="form-control" value="{{ $category -> title }}" name="title">
+                                <input type="text" class="form-control" value=" " name="title" placeholder="">
                             </div>
                             <div class="form-group">
                                 <label for="description">Descripción</label>
-                                <textarea class="form-control" name="description" rows="3">{{ $category -> description }}</textarea>
+                                <textarea class="form-control" name="description" rows="3"></textarea>
                             </div>
-
                         </div>
                         <div class="form-group text-center">
                             <div class="col-12">
                                     <button type="submit" class="btn btn-success col-lg-2">
-                                        Guardar
+                                        Crear
                                     </button>
 
-                                    <a href="{{action('AdminController@categories')}}" name="button" class="btn btn-danger col-lg-2">
+                                    <a href="{{action('AdminController@Subcategories')}}" name="button" class="btn btn-danger col-lg-2">
                                         Cancelar
                                     </a>
                             </div>
@@ -59,9 +61,9 @@
             </div>
 
             </div>
-        </section>
-    </form>
-<!-- /.content -->
+        </form>
+    </section>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

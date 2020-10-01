@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToContents extends Migration
+class CreateSubcategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddForeignKeyToContents extends Migration
      */
     public function up()
     {
-        Schema::table('contents', function (Blueprint $table) {
+        Schema::create('subcategories', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->foreignId('category_id')->constrained();
+
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddForeignKeyToContents extends Migration
      */
     public function down()
     {
-        Schema::table('contents', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('subcategories');
     }
 }

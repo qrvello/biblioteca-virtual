@@ -23,8 +23,15 @@ Route::get('/categorias', 'GuestController@categories');
 
 Route::get('/categoria/{id}', 'GuestController@category_show');
 
+Route::get('/categoria/{id}/subcategorias', 'GuestController@subcategories');
+
+
+Route::get('/categorias/subcategoria/{subcategory:title}/contenidos','GuestController@subcategory_show');
+
 Route::get('admin/categorias', 'AdminController@categories')
     ->name('admin.categories');
+
+Route::get('admin/subcategorias', 'AdminController@subcategories');
 
 Route::get('admin/categorias/crear', 'CategoryController@create');
 

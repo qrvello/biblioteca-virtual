@@ -11,8 +11,9 @@
 
         <h2 class="section-heading text-uppercase">Categorías</h2>
         <h3 class="section-subheading">Material bibliográfico según el sistema de clasificación:
-        Obras generales, Filosofía y Psicología, Ciencias sociales, Ciencias naturales, Tecnología, Lengua y Literatura, Arte,
-        Deporte, Geografía, Historia, biografías.</h3>
+            Obras generales, Filosofía y Psicología, Ciencias sociales, Ciencias naturales, Tecnología, Lengua y
+            Literatura, Arte,
+            Deporte, Geografía, Historia, biografías.</h3>
 
         @if ($categories)
         @foreach($categories->chunk(3) as $chunk)
@@ -22,13 +23,18 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ $category -> title }}</h2>
                     <p class="card-text">Descripción: {{ $category -> description }}</p>
-                <h6 class="card-text"><a href="{{action('GuestController@category_show', $category)}}">Ver contenidos</a></h6>
+
+                    @if($category->subcategories->count() >= 1)
+                    <h6 class="card-text"><a href="{{action('GuestController@subcategories', $category)}}">Ver subcategorías</a></h6>
+                    @else
+                    <h6 class="card-text"><a href="{{action('GuestController@category_show', $category)}}">Ver contenidos</a></h6>
+                    @endif
                 </div>
             </div>
             @endforeach
         </div>
         @endforeach
-        {{-- {{ $categories->links() }} --}}
+            {{ $categories->links() }}
         @endif
 
         {{-- Paginación --}}

@@ -41,8 +41,12 @@
                     <p class="card-text">Descripción: {{ $content -> description }}</p>
                     <p class="card-text">Fecha de publicación: {{ $content->created_at->format('d/m/Y')}}</p>
                     <p class="card-text">Materia: {{ $content -> matter }}</p>
-                    <p class="card-text">Categoría: <a
-                            href="{{action('GuestController@category_show', $content -> category -> id)}}">{{ $content -> category -> title }}</a>
+                    <p class="card-text">
+                        @if($content->subcategory ?? '')
+                        Subcategoría: <a href="{{action('GuestController@subcategory_show', $content->subcategory_id)}}"> {{ $content -> subcategory -> title }} </a>
+                        @else
+                            Categoria: <a href="{{action('GuestController@category_show', $content->category_id)}}"> {{ $content -> category -> title }} </a>
+                        @endif
                     </p>
                 </div>
 
@@ -67,8 +71,14 @@
                                                 <li>Autor/a: {{ $content -> author }}</li>
                                                 <li>Editorial: {{ $content -> editorial }}</li>
                                                 <li>Materia: {{ $content -> matter }}</li>
-                                                <li>Categoría: <a
-                                                        href="{{action('GuestController@category_show', $content -> category -> id)}}">{{ $content -> category -> title }}</a>
+                                                <li>
+                                                    @if($content->subcategory ?? '')
+                                                    Subcategoría: <a href="{{action('GuestController@subcategory_show', $content->subcategory_id)}}">
+                                                        {{ $content -> subcategory -> title }} </a>
+                                                    @else
+                                                    Categoria: <a href="{{action('GuestController@category_show', $content->category_id)}}">
+                                                        {{ $content -> category -> title }} </a>
+                                                    @endif
                                                 </li>
                                             </ul>
                                             <button class="btn btn-secondary" data-dismiss="modal" type="button">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -25,7 +26,7 @@ class CategoryController extends Controller
         return view('admin.create_category', compact('categories'));
 
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *

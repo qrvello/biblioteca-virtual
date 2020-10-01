@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Subcategory;
 use App\Content;
 use App\Publication;
 use Illuminate\Http\Request;
@@ -67,15 +68,35 @@ class GuestController extends Controller
         return view('content.categories', compact('categories'));
     }
 
+
     public function category_show($id)
     {
         if ($id) {
             $category = Category::find($id);
             $contents = Content::where('category_id', '=', $id)
-                ->orderBy('id', 'asc')
+            ->orderBy('id', 'asc')
                 ->paginate(9);
             if (count($contents) >= 1) {
                 return view('content.index', compact('contents', 'category'));
+            }
+        }
+    }
+
+    public function subcategories($category)
+    {
+        $subcategories = Subcategory::paginate(9)
+        ->where('category_id', $category);
+        return view('content.subcategories', compact('subcategories'));
+    }
+
+    public function subcategory_show($id){
+        if ($id) {
+            $contents = Content::where('subcategory_id', '=', $id)
+                ->orderBy('id', 'asc')
+                ->paginate(9);
+            if (count($contents) >= 1) {
+
+                return view('content.index', compact('contents'));
             }
         }
     }

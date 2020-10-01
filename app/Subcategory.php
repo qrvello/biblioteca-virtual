@@ -2,15 +2,15 @@
 
 namespace App;
 
+use App\Category;
 use App\Content;
-use App\Subcategory;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Subcategory extends Model
 {
     protected $fillable = [
-        'title', 'description',
+        'title', 'description', 'category_id'
     ];
 
     public function contents()
@@ -18,9 +18,8 @@ class Category extends Model
         return $this->hasMany(Content::class);
     }
 
-    public function subcategories()
+    public function category()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->belongsTo(Category::class);
     }
-
 }
