@@ -15,7 +15,7 @@ class SubcategoryController extends Controller
 
         $subcategory= Subcategory::all();
 
-        return view('admin.create_category', compact('subcategory'));
+        return view('admin.create_subcategory', compact('subcategory'));
     }
 
     /**
@@ -29,7 +29,6 @@ class SubcategoryController extends Controller
         $subcategory = Subcategory::find($id);
         return view('admin.edit_category', compact('subcategory'));
     }
-
 
     public function update(Request $request, $id){
 

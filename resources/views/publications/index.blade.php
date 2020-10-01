@@ -11,14 +11,8 @@
             @forelse($publications->chunk(3) as $chunk)
                 <div class="card-deck">
                     @foreach ($chunk as $publication)
-                        <div class="shadow card mb-3">
-                            <img class="card-img-top" src="{{ $publication->image }}" alt="Card image cap">
-                            <div class="card-body">
-                                <h2 class="card-title">{{ $publication->title }}</h2>
-                                <p class="card-text">{{ $publication->description }}</p>
-                                <div class="card-text">{{ $publication->created_at->format('d/m/Y') }}</div>
-                            </div>
-                        </div>
+                        <x-card-publication-full :publication="$publication" />
+                        <x-modal-publication :publication="$publication" />
                     @endforeach
                 </div>
             @empty

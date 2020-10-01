@@ -4737,10 +4737,12 @@ input[type="button"].btn-block {
 }
 
 .card-text {
-    white-space: nowrap;
+    color: white;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: white;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .card-text:last-child {
