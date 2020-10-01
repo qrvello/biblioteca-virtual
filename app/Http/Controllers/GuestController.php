@@ -37,6 +37,7 @@ class GuestController extends Controller
                         ->orWhere('author', 'like', "%$search%");
                 })
                 ->with('category')
+                ->with('subcategory')
                 ->orderByDesc('created_at')
                 ->orderByDesc('id')
                 ->paginate(9);

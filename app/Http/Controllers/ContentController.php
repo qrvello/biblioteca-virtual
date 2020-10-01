@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Content;
+use App\Subcategory;
 use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -34,8 +35,6 @@ class ContentController extends Controller
      */
     public function show()
     {
-
-
         return view ('admin.content', compact('content'));
     }
 
@@ -48,8 +47,9 @@ class ContentController extends Controller
     public function edit($id)
     {
         $categories = Category::all();
+        $subcategories = Subcategory::all();
         $content = Content::find($id);
-        return view('admin.edit_content', compact('content', 'categories'));
+        return view('admin.edit_content', compact('content', 'categories', 'subcategories'));
     }
 
     /**

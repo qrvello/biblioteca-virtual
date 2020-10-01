@@ -84,12 +84,22 @@
                                 <input type="text" class="form-control" value="{{ $content -> matter }} " name="matter">
                             </div>
                             <div class="form-group col-mb-6">
-                                <label for="category_id">Categoria</label>
+                                <label for="category_id">Categoría</label>
                                 <select class="custom-select " value="{{ $content -> category_id}} " name="category_id">
                                     @foreach ($categories as $category)
                                     <option value="{{ $category -> id }}">{{ $category -> title }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group col-mb-6">
+                                <label for="subcategory_id">Subcategoría</label>
+                                @if($content->subcategory->count() >= 1)
+                                <select class="custom-select " value="{{ $content -> subcategory_id}} " name="subcategory_id">
+                                    @foreach ($subcategories as $subcategory)
+                                    <option value="{{ $subcategory -> id }}">{{ $subcategory -> title }}</option>
+                                    @endforeach
+                                </select>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group text-center mt-4">
@@ -115,4 +125,5 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script src="{{ asset('js/admin/select.js') }}"></script>
 @endsection

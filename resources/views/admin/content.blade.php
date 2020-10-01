@@ -51,6 +51,7 @@
                                 <th>Titulo</th>
                                 <th>Autor</th>
                                 <th>Categoría</th>
+                                <th>Subcategoría</th>
                                 <th>Descr</th>
                                 <th>Editorial</th>
                                 <th>Archivo</th>
@@ -71,7 +72,12 @@
                                 </td>
                                 <td>{{ $content -> title }}</td>
                                 <td>{{ $content -> author }}</td>
+                                @if($content->subcategory)
+                                <td>{{ $content -> subcategory -> category -> title }}</td>
+                                <td>{{ $content -> subcategory -> title }}</td>
+                                @else
                                 <td>{{ $content -> category -> title }}</td>
+                                @endif
                                 <td>{{ $content -> description }}</td>
                                 <td>{{ $content -> editorial }}</td>
                                 <td>{{ $content -> file }}</td>
@@ -83,8 +89,8 @@
                                         method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE')}}
-                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                            data-target="#exampleModal">
+                                        <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
+                                            data-target="#exampleModal" >
                                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash"
                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -121,7 +127,7 @@
 
 
                                     <a href="{{ action('ContentController@edit', $content->id) }}" type="button"
-                                        class="btn btn-secondary">
+                                        class="btn btn-secondary mb-2">
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                             class="bi bi-pencil-square" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +175,11 @@
                                                         <li>Autor/a: {{ $content -> author }}</li>
                                                         <li>Editorial: {{ $content -> editorial }}</li>
                                                         <li>Materia: {{ $content -> matter }}</li>
-                                                        <li>Categoría: {{ $content -> category -> title }}</li>
+                                                        <li>@if($content->subcategory)
+                                                        <li>Subcategoría: {{ $content -> subcategory -> title }}</li>
+                                                        @else
+                                                        <li>Categoría: {{ $content->category->title }}</li>
+                                                        @endif</li>
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer">
