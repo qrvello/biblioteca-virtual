@@ -15,7 +15,7 @@ $factory->define(Content::class, function (Faker $faker) {
         'description'=>$faker->sentence(30),
         'matter'=>$faker->text(5),
         'date_published'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-        'subcategory_id' => random_int(1, 15),
+        'subcategory_id' => random_int(1, 26),
         'active' => true,
     ];
 });

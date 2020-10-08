@@ -14,25 +14,16 @@ class ContentController extends Controller
 {
     public function __construct()
     {
+        // Solo usuarios autentificados pueden usar métodos de este controller
         $this->middleware('auth');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         $categories = Category::all();
         return view('admin.create_content', compact('categories'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         return view ('admin.content', compact('content'));

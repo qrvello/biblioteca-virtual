@@ -5,9 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
@@ -30,9 +28,7 @@
                         </form>
                     </li>
                 </ul>
-            </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" link rel="icon" type="image/x-icon"
-                href="{{ asset('assets/img/favicon.ico')}}">
+            </div> <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico')}}">
                 <i class="fas fa-bars ml-1"></i>
             </button>
 
@@ -61,10 +57,24 @@
 
     <!-- Footer-->
     <footer class="footer py-4">
-        <div class="container">
-            <div class="col align-items-center">
-            Cuando se renueven las actividades escolares van a poder acercarse de lunes a viernes, por la mañana de 8 a 11.30 y a la tarde de 13.30 a 17 hs.
-                <div class="">Copyright © Biblioteca Digital 2020</div>
+        <div class="">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container">
+                        <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
+                            <div class="p-2 bd-highlight"><b>Biblioteca</b> "Islas Malvinas"<br><br>
+                                Tel.: <a href="tel:4450-5044">4450-5044</a><br>
+                                ANEXO: Miguel Cane 2991. Tel.: <a href="tel:4460-5748">4460-5748</a><br>
+                                Bermúdez 2936, Villa Luzuriaga, Provincia de Buenos Aires - C.P. 1753<br>
+                                Correo electrónico: bibliotecaees5069@gmail.com<br>
+                                Cuando se renueven las actividades escolares van a poder acercarse de lunes a viernes, por la mañana de 8:00 a 11:30 hs. y a la tarde de 13:30 a 17:00 hs</div>
+                            <div class="p-2 bd-highlight">Copyright © Biblioteca Digital 2020</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13125.957572122856!2d-58.578837!3d-34.667596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11314b4ab3608e8c!2sEscuela%20De%20Educaci%C3%B3n%20Secundaria%20N%C2%BA5%20%22Islas%20Malvinas%22!5e0!3m2!1ses-419!2sar!4v1602026100503!5m2!1ses-419!2sar" width="400" height="200" frameborder="0" style="border:0; border-radius: 2rem;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
             </div>
         </div>
     </footer>
