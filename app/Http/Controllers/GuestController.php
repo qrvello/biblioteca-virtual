@@ -77,9 +77,8 @@ class GuestController extends Controller
     {
         if ($id) {
             $category = Category::find($id);
-            $contents = Content::where('category_id', $id)
-                ->with('category')
-                ->orderBy('id', 'asc')
+            $contents = Content::where('category_id', '=', $id)
+            ->orderBy('id', 'asc')
                 ->paginate(9);
             if (count($contents) >= 1) {
                 return view('content.index', compact('contents', 'category'));
@@ -87,18 +86,23 @@ class GuestController extends Controller
         }
     }
 
-    public function subcategories($category)
+    public function subcategories($id)
     {
-        $subcategories = Subcategory::paginate(9)
-            ->where('category_id', $category);
-        return view('content.subcategories', compact('subcategories'));
+        if ($id) {
+            $subcategories = Subcategory::where('category_id','=', $id)
+                ->orderBy('id', 'asc')
+                ->paginate(9);
+            if (count($subcategories) >= 1) {
+
+                return view('content.subcategories', compact('subcategories'));
+            }
+        }
     }
 
     public function subcategory_show($id){
         if ($id) {
-            $contents = Content::where('subcategory_id', $id)
-                ->orderByDesc('created_at')
-                ->orderByDesc('id')
+            $contents = Content::where('subcategory_id', '=', $id)
+                ->orderBy('id', 'asc')
                 ->paginate(9);
             if (count($contents) >= 1) {
 
