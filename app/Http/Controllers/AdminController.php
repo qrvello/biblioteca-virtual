@@ -37,6 +37,7 @@ class AdminController extends Controller
                         ->orWhere('author', 'like', "%$search%");
                 })
                 ->with('category')
+                ->with('subcategory')
                 ->orderByDesc('created_at')
                 ->paginate(15);
 

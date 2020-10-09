@@ -51,27 +51,28 @@
             </div>
         </div>
 
+        @if($publications->count() > 1)
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Novedades</h2>
             <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
         </div>
 
+        @forelse($publications->chunk(3) as $chunk)
         <div class="card-deck">
-            @forelse($publications->chunk(3) as $chunk)
-                <div class="card-deck">
-                    @foreach ($chunk as $publication)
+            @foreach ($chunk as $publication)
 
-                        <x-card-publication :publication="$publication" />
-                        <x-modal-publication :publication="$publication" />
+            <x-card-publication :publication="$publication" />
+            <x-modal-publication :publication="$publication" />
 
-                    @endforeach
-                </div>
             @endforeach
         </div>
-
+        @endforeach
         <center>
             <a href="{{ url('publicaciones')}}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
         </center>
+        @endif
+
+
 
 </section>
 

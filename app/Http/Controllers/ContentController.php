@@ -14,10 +14,10 @@ class ContentController extends Controller
 {
     public function __construct()
     {
-        // Solo usuarios autentificados pueden usar métodos de este controller
+        // Solo usuarios autentificados pueden usar métodos de este controlador
         $this->middleware('auth');
     }
- 
+
     public function create()
     {
         $categories = Category::all();
@@ -29,12 +29,6 @@ class ContentController extends Controller
         return view ('admin.content', compact('content'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $categories = Category::all();
@@ -43,18 +37,11 @@ class ContentController extends Controller
         return view('admin.edit_content', compact('content', 'categories', 'subcategories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
         $content = Content::find($id);
-        $content->file = $request->input('file');;
+        $content->file = $request->input('file');
         $content->author = $request->input('author');
         $content->editorial = $request->input('editorial');
         $content->title = $request->input('title');
@@ -69,30 +56,31 @@ class ContentController extends Controller
         return redirect()->route('admin.content');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        $content = new Content();
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $name = time() . $file->getClientOriginalName();
-            $file->move(public_path() . '/images/', $name);
+            $image = $request->file('image');
+            $nameImage = time() . $image->getClientOriginalName();
+            $image->move(public_path() . '/imagenes/contenido/', $nameImage);
+            $content->image = $nameImage;
         }
 
-        $content = new Content();
-        $content->file = $request->input('file');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $nameFile = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/archivos/contenido/', $nameFile);
+
+            $content->file = $nameFile;
+        }
+
         $content->author = $request->input('author');
         $content->editorial = $request->input('editorial');
         $content->title = $request->input('title');
         $content->description = $request->input('description');
         $content->date_published = $request->input('date_published');
-        $content->image = $name;
         $content->matter = $request->input('matter');
-        $content->active = $request->input('active');
+        $content->active = $request->boolean('active');
         $content->category_id = $request->input('category_id');
         $content->save();
 

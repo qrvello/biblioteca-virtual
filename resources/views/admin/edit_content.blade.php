@@ -39,14 +39,26 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><img
-                                                src="{{ asset('assets/upload.svg')}}"></span>
+                                <label for="image">Imagen</label>
+                                <input type="file" class="form-control" value="{{ $content -> image }} " name="image">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="file-upload">
+                                    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Agregar
+                                        imagen</button>
+
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type="file" name="image" onchange="readURL(this);" accept="image/*" />
+                                        <div class="drag-text">
+                                            <h3>Arrastra y suelta una imagen o seleccionala</h3>
+                                        </div>
                                     </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Elegir imagen</label>
+                                    <div class="file-upload-content">
+                                        <img class="file-upload-image" src="{{ '/imagenes/contenido/'.$content -> image }}" alt="your image" />
+                                        <div class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="remove-image">Borrar <span
+                                                    class="image-title">Imagen subida</span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,10 +86,7 @@
                                 <label for="date_published">Fecha de Publicación</label>
                                 <input type="date" class="form-control" value="{{ $content ->  date_published}} " name="date_published">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="image">Imagen</label>
-                                <input type="file" class="form-control" value="{{ $content -> image }} " name="image">
-                            </div>
+
 
                             <div class="form-group col-md-6">
                                 <label for="matter">Materia</label>
@@ -125,5 +134,5 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script src="{{ asset('js/admin/select.js') }}"></script>
+{{-- <script src="{{ asset('js/admin/select.js') }}"></script> --}}
 @endsection

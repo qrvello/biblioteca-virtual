@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Content::class, function (Faker $faker) {
     return [
-        'image'=>$faker->imageUrl($width = 724, $height = 400),
+        'image'=>'example'.random_int(1, 9).'.jpg',
         'file'=>$faker->url,
         'author'=>$faker->name,
         'editorial'=>$faker->text(15),

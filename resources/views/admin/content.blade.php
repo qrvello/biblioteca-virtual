@@ -67,21 +67,38 @@
 
                                 <td>
                                     <a href="" data-toggle="modal" data-target="#contentModal{{$content->id}}">
-                                        <img width="100%" class="" src="{{ $content -> image }}" alt="Card image cap">
+                                        <img width="100%" class="" src="{{'/imagenes/contenido/'.$content -> image}}" alt="Card image cap">
                                     </a>
                                 </td>
                                 <td>{{ $content -> title }}</td>
+                                @if($content->author)
                                 <td>{{ $content -> author }}</td>
+                                @else
+                                <td></td>
+                                @endif
                                 @if($content->subcategory)
                                 <td>{{ $content -> subcategory -> category -> title }}</td>
                                 <td>{{ $content -> subcategory -> title }}</td>
                                 @else
+                                <td></td>
                                 <td>{{ $content -> category -> title }}</td>
                                 @endif
                                 <td>{{ $content -> description }}</td>
+                                @if($content->editorial)
                                 <td>{{ $content -> editorial }}</td>
+                                @else
+                                <td></td>
+                                @endif
+                                @if($content->file)
                                 <td>{{ $content -> file }}</td>
+                                @else
+                                <td></td>
+                                @endif
+                                @if($content->matter)
                                 <td>{{ $content -> matter }}</td>
+                                @else
+                                <td></td>
+                                @endif
                                 <td>@if( $content->active) Sí @else No @endif </td>
 
                                 <td class="admin-button">
@@ -162,7 +179,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img width="100%" class="" src="{{ $content -> image }}"
+                                                    <img width="100%" class="" src="{{'/imagenes/contenido/'.$content -> image}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="modal-body">

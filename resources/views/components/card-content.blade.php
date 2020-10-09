@@ -1,6 +1,6 @@
 <div class="shadow card mb-3">
     <a class="portfolio-link" data-toggle="modal" href="#contenido{{$content->id}}">
-        <img class="card-img-top" src="{{ $content -> image }}" alt="Card image cap">
+        <img class="card-img-top" src="{{ 'imagenes/contenido/'.$content -> image }}">
 
         <div class="card-body">
             <h1 class="card-title">{{ $content -> title }}</h1>

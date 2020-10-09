@@ -9,7 +9,7 @@ $factory->define(Publication::class, function (Faker $faker) {
     return [
         // 'user_id'=>random_int(1, 5),
         'title'=>$faker->sentence(2),
-        'image'=>$faker->imageUrl($width = 640, $height = 480),
+        'image' => 'example' . random_int(1, 9) . '.jpg',
         'file'=>$faker->url(),
         'description'=>$faker->text(30),
     ];

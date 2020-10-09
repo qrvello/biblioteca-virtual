@@ -12,7 +12,7 @@
                             <!-- Project Details Go Here-->
                             <h2 class="text-uppercase">{{$content->title}}</h2>
                             <p class="item-intro text-muted"></p>
-                            <img class="img-fluid d-block mx-auto" src="{{$content->image}}" alt="" />
+                            <img class="img-fluid d-block mx-auto" src="{{'imagenes/contenido/'.$content -> image}}" alt="" />
                             <p>{{$content->description}}</p>
                             <ul class="list-inline">
                                 <li>Fecha: {{$content->created_at->format('d/m/Y')}}</li>

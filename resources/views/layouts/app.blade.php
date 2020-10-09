@@ -21,8 +21,8 @@
                     </li>
                     <li class="nav-item">
                         <form class="searchbar" action="{{ url('/contenidos')}}" method="GET" autocomplete="off">
-                            <input class="search_input" id="search" type="text" name="search" placeholder="Buscar">
-                            <button type="submit" id="search" class=" search_icon nav-link">
+                            <input class="search_input" id="search_input" type="text" name="search" placeholder="Buscar">
+                            <button type="submit" id="search_button" class="search_icon nav-link">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
@@ -66,7 +66,7 @@
                                 Tel.: <a href="tel:4450-5044">4450-5044</a><br>
                                 ANEXO: Miguel Cane 2991. Tel.: <a href="tel:4460-5748">4460-5748</a><br>
                                 Bermúdez 2936, Villa Luzuriaga, Provincia de Buenos Aires - C.P. 1753<br>
-                                Correo electrónico: bibliotecaees5069@gmail.com<br>
+                                Correo electrónico: <a href="mailto:bibliotecaees5069@gmail.com">bibliotecaees5069@gmail.com</a><br>
                                 Cuando se renueven las actividades escolares van a poder acercarse de lunes a viernes, por la mañana de 8:00 a 11:30 hs. y a la tarde de 13:30 a 17:00 hs</div>
                             <div class="p-2 bd-highlight">Copyright © Biblioteca Digital 2020</div>
                         </div>

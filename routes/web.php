@@ -21,10 +21,10 @@ Route::get('/contenidos', 'GuestController@contents');
 
 Route::get('/categorias', 'GuestController@categories');
 
-Route::get('/categoria/{id}', 'GuestController@category_show');
+Route::get('/categoria/{id}', 'GuestController@category_show')
+->name('category_show');
 
 Route::get('/categoria/{id}/subcategorias', 'GuestController@subcategories');
-
 
 Route::get('/categorias/subcategoria/{subcategory:title}/contenidos','GuestController@subcategory_show');
 

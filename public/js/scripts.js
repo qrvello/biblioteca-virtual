@@ -67,3 +67,13 @@ $(document).ready(function () {
             }
     });
 });
+
+// Buscar al presionar enter
+
+const inputSearch = document.getElementById("search_input");
+inputSearch.addEventListener("keyup", function (event) {
+    if (event === 13) {
+        event.preventDefault();
+        document.getElementById("search_button").click();
+    }
+});

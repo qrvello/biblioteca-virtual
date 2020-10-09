@@ -12,10 +12,10 @@
             <h2 class="section-heading text-uppercase">{{$category->title}}</h2>
             <h3 class="section-subheading">{{$category->description}}</h3>
         @else
-        {{-- Header de la página de contenidos --}}
-        <h2 class="section-heading text-uppercase">Contenidos</h2>
-        <h3 class="section-subheading">Libros existentes en la biblioteca con los datos catalográficos correspondientes:
-            Autor, título, editorial, lugar y fecha de edición, páginas, tema o materia.</h3>
+
+            {{-- Header de la página de contenidos --}}
+            <h2 class="section-heading text-uppercase">Contenidos</h2>
+            <h3 class="section-subheading">Libros existentes en la biblioteca con los datos catalográficos correspondientes: Autor, título, editorial, lugar y fecha de edición, páginas, tema o materia.</h3>
         @endif
 
         {{-- Cantidad de resultados de la búsqueda --}}
@@ -26,7 +26,7 @@
         @endif
 
         {{-- Listado de contenidos --}}
-        @if ($contents)
+        @if ($contents ?? '')
 
             @forelse($contents->chunk(3) as $chunk)
 
@@ -34,26 +34,29 @@
 
                     @foreach ($chunk as $content)
 
-                        <x-card-content :content="$content"/>
-
+                        <x-card-content :content="$content" />
                         <x-modal-content :content="$content" />
 
                     @endforeach
 
                 </div>
 
-                @empty
+            @empty
 
                 {{-- Errores --}}
-                <div class="alert alert-danger" role="alert">
-                    {{ $error }}
-                </div>
+                @if($error ?? '')
+
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error ?? '' }}
+                    </div>
+
+                @endif
+
             @endforelse
 
             {{-- Paginación --}}
             {{ $contents->appends(['search' => $search ?? ''])->links() }}
         @endif
-
 
 </section>
 

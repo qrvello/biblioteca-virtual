@@ -11015,7 +11015,7 @@ section#contact form#contactForm :-ms-input-placeholder {
     border-radius: 20px;
     border-color: rgb(51,102,153) !important;
     border: 1px solid;
-    width: 300px;
+    width: 350px;
     line-height: 35px;
     text-indent: 10px;
     margin-top: 5px;
@@ -11038,34 +11038,22 @@ section#contact form#contactForm :-ms-input-placeholder {
 
 @media (max-width: 1200px) {
     .search_input {
-        width: 200px;
-    }
-    .search_select {
-        width: 175px;
+        width: 325px;
     }
 }
 @media (max-width: 992px) {
     .search_input {
-        width: 175px;
-    }
-    .search_select {
-        width: 150px;
+        width: 275px;
     }
 }
 @media (max-width: 768px) {
     .search_input {
-        width: 100px;
-    }
-    .search_select {
-        width: 100px;
+        width: 225px;
     }
 }
 @media (max-width: 576px) {
     .search_input {
-        width: 80px;
-    }
-    .search_select {
-        width: 80px;
+        width: 175px;
     }
 }
 
