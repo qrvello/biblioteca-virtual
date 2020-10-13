@@ -102,7 +102,7 @@
                                 <td>@if( $content->active) Sí @else No @endif </td>
 
                                 <td class="admin-button">
-                                    <form action="{{ action('ContentController@destroy', $content->id) }}"
+      /                              <form action="{{ action('ContentController@destroy', $content->id) }}"
                                         method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE')}}
