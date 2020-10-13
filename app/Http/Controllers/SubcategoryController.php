@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Category;
+use App\Content;
+use App\Subcategory;
 class SubcategoryController extends Controller
 {
     public function __construct()
@@ -55,4 +57,6 @@ class SubcategoryController extends Controller
         Subcategory::destroy($id);
         return redirect()->route('admin.categories');
     }
+
+
 }

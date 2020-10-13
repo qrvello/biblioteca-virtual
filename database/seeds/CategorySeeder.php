@@ -34,6 +34,9 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'title' => 'Tecnologías'
         ]);
-        
+        DB::table('categories')->insert([
+            'title' => 'Categoría sin subcategorías'
+        ]);
+
     }
 }

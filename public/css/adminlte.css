@@ -246,6 +246,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  border-radius: 1.25px;
 }
 
 button,
@@ -2540,7 +2541,7 @@ textarea.form-control {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 0.25rem;
+  border-radius: 2rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -31228,19 +31229,17 @@ a.text-muted:hover {
   width: 100%;
   margin: 0;
   color: #fff;
-  background: #1FB264;
+  background: #007bff;
   border: none;
   padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824B;
+  border-radius: 2rem;
   transition: all .2s ease;
   outline: none;
-  text-transform: uppercase;
   font-weight: 700;
 }
 
 .file-upload-btn:hover {
-  background: #1AA059;
+  background: #005ab9;
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;
@@ -31269,13 +31268,14 @@ a.text-muted:hover {
 
 .image-upload-wrap {
   margin-top: 20px;
-  border: 4px dashed #1FB264;
+  border: 4px dashed #007bff;
+  border-radius: 2rem;
   position: relative;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-color: #1FB264;
+  background-color: #6eb2fc;
   border: 4px dashed #ffffff;
 }
 
@@ -31290,8 +31290,7 @@ a.text-muted:hover {
 
 .drag-text h3 {
   font-weight: 100;
-  text-transform: uppercase;
-  color: #15824B;
+  color: #007bff;
   padding: 60px 0;
 }
 
@@ -31303,17 +31302,15 @@ a.text-muted:hover {
 }
 
 .remove-image {
-  width: 200px;
+  width: 100%;
   margin: 0;
   color: #fff;
   background: #cd4535;
   border: none;
   padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #b02818;
+  border-radius: 2rem;
   transition: all .2s ease;
   outline: none;
-  text-transform: uppercase;
   font-weight: 700;
 }
 
@@ -31328,3 +31325,4 @@ a.text-muted:hover {
   border: 0;
   transition: all .2s ease;
 }
+

@@ -1,6 +1,6 @@
 <div class="shadow card mb-3">
     <a class="portfolio-link" data-toggle="modal" href="#contenido{{$content->id}}">
-        <img class="card-img-top" src="{{ 'imagenes/contenido/'.$content -> image }}">
+        <img class="card-img-top" src="{{ '/imagenes/contenido/'.$content -> image }}">
 
         <div class="card-body">
             <h1 class="card-title">{{ $content -> title }}</h1>
@@ -11,11 +11,17 @@
             <p class="card-text"><strong>Materia:</strong> {{ $content -> matter }}</p>
             @endif
         </a>
-            <p class="card-text">
+        <p class="card-text">
                 @if($content->subcategory)
-                <strong>Subcategoría:</strong> <a class="card-link"
-                    href="{{action('GuestController@subcategory_show', $content->subcategory_id)}}">
-                    {{ $content -> subcategory -> title }} </a>
+                <strong>Categoría:</strong>
+                <a class="card-link" href="{{action('GuestController@category_show', $content->category_id)}}">
+                    {{ $content -> category -> title }}
+                </a>
+                </class=>
+                <strong>Subcategoría:</strong>
+                <a class="card-link" href="{{action('GuestController@subcategory_show', $content->subcategory_id)}}">
+                    {{ $content -> subcategory -> title }}
+                </a>
                 @else
                 <strong>Categoría:</strong> <a class="card-link" href="{{action('GuestController@category_show', $content->category_id)}}">
                     {{ $content -> category -> title }} </a>

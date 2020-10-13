@@ -89,12 +89,19 @@
                                 <label for="matter">Materia</label>
                                 <input type="text" class="form-control" name="matter">
                             </div>
-                            <div class="form-group col-mb-6">
-                                <label for="category_id">Categoria</label>
-                                <select class="custom-select " name="category_id">
+                            <div class="form-group col-mb-3">
+                                <label for="category_id">Categoría</label>
+                                <select class="custom-select" name="category_id" id="select-category">
+                                    <option value="">Seleccione categoría</option>
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category -> id }}">{{ $category -> title }}</option>
+                                        <option value="{{ $category -> id }}">{{ $category -> title }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group-col-mb-3">
+                                <label for="subcategory_id">Subcategoría</label>
+                                <select class="custom-select" name="subcategory_id" id="select-subcategory" disabled="disabled">
+                                    <option value="">Seleccione subcategoría</option>
                                 </select>
                             </div>
                         </div>

@@ -26,7 +26,7 @@ Route::get('/categoria/{id}', 'GuestController@category_show')
 
 Route::get('/categoria/{id}/subcategorias', 'GuestController@subcategories');
 
-Route::get('/categorias/subcategoria/{subcategory:title}/contenidos','GuestController@subcategory_show');
+Route::get('subcategoria/{id}/contenidos','GuestController@subcategory_show');
 
 Route::get('admin/categorias', 'AdminController@categories')
     ->name('admin.categories');

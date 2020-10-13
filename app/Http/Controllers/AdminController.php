@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct(){
         $this->middleware('auth');
     }
@@ -50,12 +45,6 @@ class AdminController extends Controller
 
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function categories(Request $request)
     {
         $search = trim($request->get('search'));
@@ -76,11 +65,6 @@ class AdminController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function subcategories(){
 
         $subcategory = Subcategory::all();
@@ -88,27 +72,14 @@ class AdminController extends Controller
         return view('admin.subcategory', $subcategory);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
 
-
     }
+
 }

@@ -80,8 +80,8 @@
                                 <td>{{ $content -> subcategory -> category -> title }}</td>
                                 <td>{{ $content -> subcategory -> title }}</td>
                                 @else
+                                <td>{{ $content ->category ->title }}</td>
                                 <td></td>
-                                <td>{{ $content -> category -> title }}</td>
                                 @endif
                                 <td>{{ $content -> description }}</td>
                                 @if($content->editorial)
