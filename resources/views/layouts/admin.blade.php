@@ -27,10 +27,10 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{action('AdminController@index')}}" class="nav-link">Home</a>
+                    <a href="{{ url('/admin')}}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{action('GuestController@index')}}" class="nav-link">Principal</a>
+                    <a href="{{ url('/') }}" class="nav-link">Principal</a>
                 </li>
             </ul>
 
@@ -63,7 +63,7 @@
                     <!-- Add icons to the links using the .nav-icon class
 					with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
-                        <a href="{{action('AdminController@index')}}" class="nav-link">
+                        <a href="{{ url('/admin') }}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Panel
@@ -80,15 +80,21 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{action('ContentController@create')}}" class="nav-link">
+                                <a href="{{ url('/admin/contenido/crear')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Contenido</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{action('CategoryController@create')}}" class="nav-link">
+                                <a href="{{url('/admin/categoria/crear')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Categoría</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/admin/subcategoria/crear')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Subcategoría</p>
                                 </a>
                             </li>
                         </ul>
@@ -103,15 +109,27 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{action('AdminController@contents')}}" class="nav-link">
+                                <a href="{{ url('/admin/contenidos') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Contenido</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{action('AdminController@categories')}}" class="nav-link">
+                                <a href="{{ url('/admin/categorias') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Categorías</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/subcategorias')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Subcategorías</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/admin/publicaciones')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Publicaciones</p>
                                 </a>
                             </li>
                         </ul>
@@ -134,7 +152,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{action('AdminController@index')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/admin')}}">Home</a></li>
                             <li class="breadcrumb-item active">@yield('title')</li>
                         </ol>
                     </div>

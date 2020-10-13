@@ -8,7 +8,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{action('CategoryController@store')}}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/categoria/crear'.$category->id) }}" method="POST" autocomplete="off">
             @csrf
             <div class="row justify-content-md-center">
 
@@ -44,7 +44,7 @@
                                         Crear
                                     </button>
 
-                                    <a href="{{action('AdminController@categories')}}" name="button" class="btn btn-danger col-lg-2">
+                                    <a href="{{ url('/admin/categorias')}}" name="button" class="btn btn-danger col-lg-2">
                                         Cancelar
                                     </a>
                             </div>

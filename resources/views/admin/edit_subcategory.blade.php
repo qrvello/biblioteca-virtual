@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
-@section('title', 'Agregar Subcategoría')
+@section('title', 'Editar subcategoría')
 
 @section('content')
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('/admin/subcategoria/crear')}}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/subcategoria/editar/'.$subcategory->id)}}" method="POST" autocomplete="off">
             @csrf
+            @method('PUT')
             <div class="row justify-content-md-center">
-
                 <div class="col-md-11">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -27,29 +27,21 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="category_id">Categoria</label>
-                                <select class="custom-select" name="category_id">
-                                    @foreach ($categories as $category)
-                                            <option value="{{ $category -> id }}">{{ $category -> title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="title">Titulo</label>
-                                <input type="text" class="form-control" name="title" placeholder="">
+                                <input type="text" class="form-control" value="{{$subcategory -> title }}" name="title">
                             </div>
                             <div class="form-group">
                                 <label for="description">Descripción</label>
-                                <textarea class="form-control" name="description" rows="3"></textarea>
+                                <textarea class="form-control" name="description" rows="3">{{$subcategory -> description }}</textarea>
                             </div>
                         </div>
                         <div class="form-group text-center">
                             <div class="col-12">
                                     <button type="submit" class="btn btn-success col-lg-2">
-                                        Crear
+                                        Guardar
                                     </button>
 
-                                    <a href="{{ url('/admin/subcategorias')}}" name="button" class="btn btn-danger col-lg-2">
+                                    <a href="{{url('/admin/subcategorias')}}" name="button" class="btn btn-danger col-lg-2">
                                         Cancelar
                                     </a>
                             </div>

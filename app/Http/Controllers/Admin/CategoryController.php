@@ -1,56 +1,38 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Category;
 use App\Subcategory;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct()
+    public function create()
     {
-        $this->middleware('auth');
-    }
-
-
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(){
-
-        $categories= Category::all();
-
+        $categories = Category::all();
         return view('admin.create_category', compact('categories'));
-
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $category = Category::find($id);
         return view('admin.edit_category', compact('category'));
     }
 
-
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id)
+    {
         $category = Category::find($id);
         $category->title = $request->input('title');
         $category->description = $request->input('description');
         $category->save();
 
-        return redirect()->route('admin.categories');
+        return redirect('/admin/categorias');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $category = new Category();
         $category->title = $request->input('title');
         $category->description = $request->input('description');
@@ -60,15 +42,9 @@ class CategoryController extends Controller
         return back()->with(compact('status'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route('admin.categories');
+        return redirect('/admin/categorias');
     }
 }

@@ -8,9 +8,9 @@
     <div class="container">
 
         {{-- Header de la página SI se muestran contenidos de una categoría específica --}}
-        @if ($category ?? '')
-            <h2 class="section-heading text-uppercase">{{$category->title}}</h2>
-            <h3 class="section-subheading">{{$category->description}}</h3>
+        @if ($category ?? $subcategory ?? '')
+            <h2 class="section-heading text-uppercase">{{$category->title ?? $subcategory->title ?? ''}}</h2>
+            <h3 class="section-subheading">{{$category->description ?? $subcategory->description ?? ''}}</h3>
         @else
 
             {{-- Header de la página de contenidos --}}

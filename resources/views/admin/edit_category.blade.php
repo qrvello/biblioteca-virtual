@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Editar contenido')
+@section('title', 'Editar categoría')
 
 @section('id', '$content -> id')
 
@@ -9,7 +9,7 @@
 <!-- Content Wrapper. Contains page content -->
 
     <!-- Main content -->
-    <form action="{{action('CategoryController@update', $category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <form action="{{ url('/admin/categoria/editar/}'.$category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
             @method('PUT')
             @csrf
         <section class="content">
@@ -47,7 +47,7 @@
                                         Guardar
                                     </button>
 
-                                    <a href="{{action('AdminController@categories')}}" name="button" class="btn btn-danger col-lg-2">
+                                    <a href="{{ url('/admin/categorias')}}" name="button" class="btn btn-danger col-lg-2">
                                         Cancelar
                                     </a>
                             </div>

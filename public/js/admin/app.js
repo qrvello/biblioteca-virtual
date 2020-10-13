@@ -31,6 +31,7 @@ $('.image-upload-wrap').bind('dragleave', function () {
     $('.image-upload-wrap').removeClass('image-dropping');
 });
 
+
 // Detecta cambios en select-category
 $(function() {
     $('#select-category').on('change', onSelectCategoryChange);
@@ -41,7 +42,7 @@ function onSelectCategoryChange() {
     const category_id = $(this).val();
     // AJAX
     $.get('/api/categoria/'+category_id+'/subcategorias', function (data) {
-        var html_select = '<option value="">Seleccione subcategoria</option>';
+        var html_select = '';
         for (var i = 0; i < data.length; ++i)
             html_select += '<option value="'+data[i].id+'">'+data[i].title+'</option>';
             if (data.length >= 1) {

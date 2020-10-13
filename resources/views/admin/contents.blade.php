@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Contenido')
+@section('title', 'Contenidos')
 
 @section('content')
 
@@ -13,37 +13,38 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"></h3>
 
-                        {{-- Cantidad de resultados de la búsqueda --}}
-                        @if ($search ?? '')
-                        <br>
-                        <h3>
-                            <div class="card-title" role="alert">
-                                Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
-                            </div>
-                        </h3>
-                        @endif
-                        @if ($error ?? '')
-                        <div class="alert alert-danger" role="alert">
-                            {{ $error }}
-                        </div>
-                        @endif
-                        <div class="card-tools">
-                            <form action="{{ action('AdminController@contents')}}">
-                                <div class="input-group input-group-sm float-right">
-                                    <input type="text" name="search" class="form-control ">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i></button>
-                                    </div>
+                        <div class="d-flex">
+
+                            @if ($search ?? '')
+                                {{-- Cantidad de resultados de la búsqueda --}}
+                                <div class="alert alert-info align-middle" role="alert">
+                                    Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
                                 </div>
-                            </form>
+
+                                @endif
+
+                                @if ($error ?? '')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $error }}
+                                </div>
+                                @endif
+                            <div class="ml-auto p-2">
+                                <form action="{{url('/admin/contenidos')}}">
+                                    <div class="input-group input-group-sm float-right">
+                                        <input type="text" name="search" class="form-control ">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    {{ $content->links() }}
+                    {{ $contents->links() }}
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -62,12 +63,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($content as $content)
+
+                            @foreach ($contents as $content)
                             <tr>
 
                                 <td>
                                     <a href="" data-toggle="modal" data-target="#contentModal{{$content->id}}">
-                                        <img width="100%" class="" src="{{'/imagenes/contenido/'.$content -> image}}" alt="Card image cap">
+                                        <img width="100%" class="" src="{{'/imagenes/contenido/'.$content -> image}}"
+                                            alt="Card image cap">
                                     </a>
                                 </td>
                                 <td>{{ $content -> title }}</td>
@@ -102,12 +105,12 @@
                                 <td>@if( $content->active) Sí @else No @endif </td>
 
                                 <td class="admin-button">
-      /                              <form action="{{ action('ContentController@destroy', $content->id) }}"
+                                    <form action="{{ url('/admin/contenido/borrar/'.$content->id) }}"
                                         method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE')}}
                                         <button type="button" class="btn btn-danger mb-2" data-toggle="modal"
-                                            data-target="#exampleModal" >
+                                            data-target="#confirmacionBorrar">
                                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash"
                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -117,33 +120,11 @@
                                             </svg>
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Borrar contenido
-                                                        </h5>
-                                                        <button type="submit" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        ¿Desea borrar el contenido?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary"
-                                                            data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" class="btn btn-danger">Borrar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <x-alert-confirm-delete/>
                                     </form>
 
 
-                                    <a href="{{ action('ContentController@edit', $content->id) }}" type="button"
+                                    <a href="{{ url('/admin/contenido/editar/'.$content->id ) }}" type="button"
                                         class="btn btn-secondary mb-2">
                                         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                             class="bi bi-pencil-square" fill="currentColor"
@@ -179,7 +160,8 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img width="100%" class="" src="{{'/imagenes/contenido/'.$content -> image}}"
+                                                    <img width="100%" class=""
+                                                        src="{{'/imagenes/contenido/'.$content -> image}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="modal-body">

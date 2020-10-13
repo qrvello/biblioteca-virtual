@@ -16,13 +16,13 @@
             Deporte, Geografía, Historia, biografías.</h3>
 
         @if ($categories)
-        @foreach($categories->chunk(3) as $chunk)
-        <div class="card-deck">
-            @foreach ($chunk as $category)
-                <x-card-category :category="$category" />
+            @foreach($categories->chunk(3) as $chunk)
+            <div class="card-deck">
+                @foreach ($chunk as $category)
+                    <x-card-category :category="$category" />
+                @endforeach
+            </div>
             @endforeach
-        </div>
-        @endforeach
             {{ $categories->links() }}
         @endif
 
