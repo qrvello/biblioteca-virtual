@@ -55,7 +55,8 @@
             @endforelse
 
             {{-- Paginación --}}
-            {{ $contents->appends(['search' => $search ?? ''])->links() }}
+            {{-- {{ $contents->appends(['search' => $search ?? ''])->links() }} --}}
+            {{ $contents->withQueryString()->links() }}
         @endif
 
 </section>

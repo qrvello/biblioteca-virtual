@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    {{ $contents->links() }}
+                    {{ $contents->withQueryString()->links() }}
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>

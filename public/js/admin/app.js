@@ -52,6 +52,4 @@ function onSelectCategoryChange() {
             }
         $('#select-subcategory').html(html_select);
     });
-
-
 }

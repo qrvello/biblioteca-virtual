@@ -62,6 +62,7 @@ class ContentController extends Controller
 
     public function store(Request $request)
     {
+        return $request;
         $content = new Content();
         if ($request->hasFile('image')) {
             $image = $request->file('image');
