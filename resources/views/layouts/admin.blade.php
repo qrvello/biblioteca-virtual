@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,6 +96,12 @@
                                     <p>Subcategoría</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{url('/admin/publicacion/crear')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Publicación</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
@@ -169,8 +174,5 @@
     <script src="{{ asset('admins/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admins/js/adminlte.js')}}"></script>
-
-    <script src="{{ asset('admins/js/adminlte.js')}}"></script>
     <script src="{{ asset('js/admin/app.js')}}"></script>
-
 </body>

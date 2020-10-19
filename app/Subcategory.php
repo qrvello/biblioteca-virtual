@@ -13,11 +13,13 @@ class Subcategory extends Model
         'title', 'description', 'category_id'
     ];
 
+    // Relación: una subcategoría tiene muchos contenidos
     public function contents()
     {
         return $this->hasMany(Content::class);
     }
 
+    // Relación: una subcategoría pertenece a una categoría
     public function category()
     {
         return $this->belongsTo(Category::class);

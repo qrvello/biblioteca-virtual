@@ -81,7 +81,7 @@ body {
     line-height: 1.5;
     color: black;
     text-align: left;
-    background-color: #f5f6ff;
+    background-color: #e4ecf1;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -180,7 +180,7 @@ sup {
 }
 
 a {
-    color: #fed136;
+    color: #8285ff;
     text-decoration: none;
     background-color: transparent;
 }
@@ -191,11 +191,11 @@ a {
     background-color: transparent;
 }
 .container .home-container .home-container-2 .nav-item .nav-link:hover {
-    color: #fed136;
+    color: #4245fa;
 }
 
 a:hover {
-    color: #e6b301;
+    color: #4245fa;
     text-decoration: none;
 }
 
@@ -229,7 +229,7 @@ figure {
 }
 
 img {
-    border-radius: 1.2rem;
+    border-radius: 1.5rem;
     vertical-align: middle;
     border-style: none;
 }
@@ -2700,14 +2700,14 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
     color: #fff;
-    background-color: #6c757d;
+    background-color: #336699;
     border-radius: 2rem;
-    border-color: #6c757d;
+    border-color: #336699;
 }
 .btn-secondary:hover {
     color: #fff;
-    background-color: #5a6268;
-    border-color: #545b62;
+    background-color: #4482c0;
+    border-color: #4482c0;
 }
 .btn-secondary:focus,
 .btn-secondary.focus {
@@ -2726,8 +2726,8 @@ fieldset:disabled a.btn {
 .btn-secondary:not(:disabled):not(.disabled).active,
 .show > .btn-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
+    background-color: #224364;
+    border-color: #224364;
 }
 .btn-secondary:not(:disabled):not(.disabled):active:focus,
 .btn-secondary:not(:disabled):not(.disabled).active:focus,
@@ -4698,10 +4698,9 @@ input[type="button"].btn-block {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    background: rgb(51,102,153);
-    background: linear-gradient(90deg, rgba(51,102,153,1) 0%, rgba(65,124,169,1) 100%);
+    background-color: #fcfcfc;
     background-clip: border-box;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
 }
 .card > hr {
     margin-right: 0;
@@ -4728,7 +4727,7 @@ input[type="button"].btn-block {
 
 .card-title {
     margin-bottom: 0.75rem;
-    color: white;
+    color: black;
 }
 
 .card-subtitle {
@@ -4737,7 +4736,7 @@ input[type="button"].btn-block {
 }
 
 .card-text {
-    color: white;
+    color: black;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -4804,6 +4803,7 @@ input[type="button"].btn-block {
 .card-img-bottom {
     flex-shrink: 0;
     width: 100%;
+    border-radius: 1.5rem;
 }
 
 .card-deck .card {
@@ -10564,10 +10564,10 @@ img::-moz-selection {
 }
 #mainNav .navbar-nav .nav-item .nav-link.active,
 #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fed136;
+    color: #acaeff;
 }
 .container .home-container .home-container-2 .nav-item .nav-link:hover {
-    color: #fed136;
+    color: #acaeff;
 }
 
 @media (min-width: 992px) {

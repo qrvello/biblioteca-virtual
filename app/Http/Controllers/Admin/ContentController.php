@@ -12,6 +12,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+
 class ContentController extends Controller
 {
     public function create()
@@ -20,32 +21,47 @@ class ContentController extends Controller
         return view('admin.create_content', compact('categories'));
     }
 
-    public function edit($id)
+    public function edit(Content $content)
     {
-        $content = Content::find($id);
         $categories = Category::all();
         $subcategories = Subcategory::where('category_id', $content->category_id)->get();
         return view('admin.edit_content', compact('content', 'categories', 'subcategories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Content $content)
     {
-        $content = Content::find($id);
+        // TODO Validar request
         if ($request->hasFile('image')) {
+            // Agrega la nueva imagen
             $image = $request->file('image');
-            $nameImage = time() . $image->getClientOriginalName();
-            $image->move(public_path() . '/imagenes/contenido/', $nameImage);
+            $nameImage = time() . '.' . $image->getClientOriginalName();
+            $rute = public_path('storage/imagenes/contenido/') . $nameImage;
+            Image::make($image)->resize(null, 900)->save($rute);
+
+            // Borra la antigua imagen
+            $oldNameImage = $content->image;
+            Storage::delete('public/imagenes/contenido/' . $oldNameImage);
+
+            // Actualiza la base de datos
             $content->image = $nameImage;
         }
 
         if ($request->hasFile('file')) {
+            // Agrega el nuevo archivo
             $file = $request->file('file');
-            $nameFile = time() . $file->getClientOriginalName();
-            $file->move(public_path() . '/archivos/contenido/', $nameFile);
+            $filename = time() . $file->getClientOriginalName();
+            $file->move(public_path('storage/') . 'archivos/', $filename);
 
-            $content->file = $nameFile;
+            // Borra el antiguo archivo
+            $oldFilename = $content->file;
+            Storage::delete('public/archivos/' . $oldFilename);
+
+            //Actualiza la base de datos
+            $content->file = $filename;
         }
+        // $content->file = '';
 
+        $content->link = $request->input('link');
         $content->author = $request->input('author');
         $content->editorial = $request->input('editorial');
         $content->title = $request->input('title');
@@ -57,28 +73,45 @@ class ContentController extends Controller
         $content->subcategory_id = $request->input('subcategory_id');
         $content->save();
 
-        return redirect('/admin/contenidos');
+        return redirect('/admin/contenidos'); // TODO Agregar alerta de que se actualizó correctamente
+    }
+
+    public function destroy_image(Content $content)
+    {
+        // Si existe la imagen, la borra de la base de datos y del storage
+        if ($content->image) {
+            Storage::delete('public/imagenes/contenido/' . $content->image);
+            $content->image = null;
+            $content->save();
+            return back()->with('status', 'Imagen borrada exitosamente.');
+        } else {
+            return back();
+        }
     }
 
     public function store(Request $request)
     {
-        return $request;
+        // TODO validar archivos y alertar de que se guardó correctamente
         $content = new Content();
+
+        // Verifica si existe una imagen y lo guarda
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $nameImage = time() . $image->getClientOriginalName();
-            $image->move(public_path() . '/imagenes/contenido/', $nameImage);
+            $rute = public_path('storage') . '/imagenes/contenido/' . $nameImage;
             $content->image = $nameImage;
+            Image::make($image)->resize(null, 900)->save($rute);
         }
 
+        // Verifica si existe una archivo y lo guarda
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $nameFile = time() . $file->getClientOriginalName();
-            $file->move(public_path() . '/archivos/contenido/', $nameFile);
-
-            $content->file = $nameFile;
+            $filename = time() . $file->getClientOriginalName();
+            $file->move(public_path('storage/') . 'archivos/', $filename);
+            $content->file = $filename;
         }
 
+        $content->link = $request->input('link');
         $content->author = $request->input('author');
         $content->editorial = $request->input('editorial');
         $content->title = $request->input('title');
@@ -93,10 +126,11 @@ class ContentController extends Controller
         return redirect('/admin/contenidos');
     }
 
-    public function destroy($id)
+    public function destroy(Content $content)
     {
-        Content::destroy($id);
+        //TODO Alertar de que se borró correctamente
+        Content::destroy($content->id);
+        Storage::delete(['public/imagenes/contenido/' . $content->image, 'public/archivos/' . $content->file]);
         return redirect('/admin/contenidos');
     }
 }
-

@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                ¿Desea borrar el contenido?
+                ¿Desea borrar?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>

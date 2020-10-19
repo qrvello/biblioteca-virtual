@@ -15,15 +15,13 @@ class CategoryController extends Controller
         return view('admin.create_category', compact('categories'));
     }
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::find($id);
         return view('admin.edit_category', compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $category = Category::find($id);
         $category->title = $request->input('title');
         $category->description = $request->input('description');
         $category->save();
@@ -42,9 +40,9 @@ class CategoryController extends Controller
         return back()->with(compact('status'));
     }
 
-    public function destroy($id)
+    public function destroy($category)
     {
-        Category::destroy($id);
-        return redirect('/admin/categorias');
+        Category::destroy($category->id);
+        return redirect('/admin/categorias'); // TODO borrar categorias hijos
     }
 }

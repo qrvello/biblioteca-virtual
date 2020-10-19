@@ -7,7 +7,7 @@
 <!-- Content Wrapper. Contains page content -->
 
 <!-- Main content -->
-<form action="{{ url('/admin/categoria/crear')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+<form action="{{ url('/admin/contenido/crear')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
     @csrf
     <section class="content">
         <div class="row">

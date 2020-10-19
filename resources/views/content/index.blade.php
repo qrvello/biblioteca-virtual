@@ -4,61 +4,67 @@
 
 @section('content')
 
-<section class="page-section" id="contenido">
-    <div class="container">
+    <section class="page-section" id="contenido">
+        <div class="container">
 
-        {{-- Header de la página SI se muestran contenidos de una categoría específica --}}
-        @if ($category ?? $subcategory ?? '')
-            <h2 class="section-heading text-uppercase">{{$category->title ?? $subcategory->title ?? ''}}</h2>
-            <h3 class="section-subheading">{{$category->description ?? $subcategory->description ?? ''}}</h3>
-        @else
+            {{-- Header de la página SI se muestran contenidos de una subcategoría específica
+            --}}
+            @if (isset($subcategory))
+                <h2 class="section-heading text-uppercase">{{ $subcategory->title }}</h2>
+                <h3 class="section-subheading">{{ $subcategory->description }}</h3>
+            @endif
 
-            {{-- Header de la página de contenidos --}}
-            <h2 class="section-heading text-uppercase">Contenidos</h2>
-            <h3 class="section-subheading">Libros existentes en la biblioteca con los datos catalográficos correspondientes: Autor, título, editorial, lugar y fecha de edición, páginas, tema o materia.</h3>
-        @endif
+            {{-- Header de la página SI se muestran contenidos de una categoría específica
+            --}}
+            @if (isset($category))
+                <h2 class="section-heading text-uppercase">{{ $category->title }}</h2>
+                <h3 class="section-subheading">{{ $category->description }}</h3>
+            @endif
 
-        {{-- Cantidad de resultados de la búsqueda --}}
-        @if ($search ?? '')
-            <div class="alert alert-secondary" role="alert">
-                Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
-            </div>
-        @endif
+            @if(isset($contents))
+                {{-- Header de la página de contenidos --}}
+                <h2 class="section-heading text-uppercase">Contenidos</h2>
+                <h3 class="section-subheading">Libros existentes en la biblioteca con los datos catalográficos
+                    correspondientes: Autor, título, editorial, lugar y fecha de edición, páginas, tema o materia.</h3>
+            @endif
 
-        {{-- Listado de contenidos --}}
-        @if ($contents ?? '')
+            {{-- Cantidad de resultados de la búsqueda --}}
+            @if (isset($search))
+                <div class="alert alert-secondary" role="alert">
+                    Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
+                </div>
+            @endif
 
-            @forelse($contents->chunk(3) as $chunk)
+            {{-- Listado de contenidos --}}
+            @if (isset($contents))
 
-                <div class="card-deck">
+                @forelse($contents->chunk(2) as $chunk)
 
-                    @foreach ($chunk as $content)
+                    <div class="card-deck">
 
-                        <x-card-content :content="$content" />
-                        <x-modal-content :content="$content" />
+                        @foreach ($chunk as $content)
 
-                    @endforeach
+                            <x-card-content :content="$content" />
+                            <x-modal-content :content="$content" />
 
+                        @endforeach
+
+                    </div>
+                @empty
+            @endforelse
+            {{-- Paginación --}}
+            {{ $contents->withQueryString()->links() }}
+            @endif
+
+            {{-- Errores --}}
+            @if (isset($error))
+
+                <div class="alert alert-danger" role="alert">
+                    {{ $error }}
                 </div>
 
-            @empty
+            @endif
 
-                {{-- Errores --}}
-                @if($error ?? '')
-
-                    <div class="alert alert-danger" role="alert">
-                        {{ $error ?? '' }}
-                    </div>
-
-                @endif
-
-            @endforelse
-
-            {{-- Paginación --}}
-            {{-- {{ $contents->appends(['search' => $search ?? ''])->links() }} --}}
-            {{ $contents->withQueryString()->links() }}
-        @endif
-
-</section>
+    </section>
 
 @endsection

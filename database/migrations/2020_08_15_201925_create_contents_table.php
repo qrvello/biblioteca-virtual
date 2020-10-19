@@ -15,12 +15,17 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->text('image')->nullable();
-            $table->text('file')->nullable();
-            $table->text('author')->nullable();
-            $table->text('editorial')->nullable();
             $table->text('title');
             $table->text('description');
+            $table->text('image')->nullable();
+            $table->text('file')->nullable();
+            $table->text('link')->nullable();
+            $table->text('author')->nullable();
+            $table->text('editorial')->nullable();
+            $table->text('level')->nullable();
+            $table->text('cdd')->nullable();
+            $table->text('isbn')->nullable();
+            $table->text('access')->nullable();
             $table->text('matter')->nullable();
             $table->date('date_published')->nullable();
             $table->boolean('active')->default(true)->nullable();

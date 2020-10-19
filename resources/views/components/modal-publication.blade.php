@@ -11,7 +11,7 @@
                             <!-- Project Details Go Here-->
                             <h2 class="text-uppercase">{{$publication->title}}</h2>
                             <p class="item-intro text-muted"></p>
-                            <img class="img-fluid d-block mx-auto" src="{{'/imagenes/publicaciones/'.$publication -> image}}" alt="" />
+                            <img class="img-fluid d-block mx-auto" src="{{'/storage/imagenes/publicaciones/'.$publication -> image}}" alt="" />
                             <p>{{$publication->description}}</p>
                             <ul class="list-inline">
                                 <li>Fecha: {{$publication->created_at->format('d/m/Y')}}</li>

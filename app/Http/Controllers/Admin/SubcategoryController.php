@@ -10,27 +10,20 @@ use App\Subcategory;
 
 class SubcategoryController extends Controller
 {
-    public function index()
-    {
-    }
-
     public function create()
     {
-
         $categories = Category::whereHas('subcategories')->orWhereDoesntHave('contents')->get();
 
         return view('admin.create_subcategory', compact('categories'));
     }
 
-    public function edit($id)
+    public function edit(Subcategory $subcategory)
     {
-        $subcategory = Subcategory::find($id);
         return view('admin.edit_subcategory', compact('subcategory'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Subcategory $subcategory)
     {
-        $subcategory = Subcategory::find($id);
         $subcategory->title = $request->input('title');
         $subcategory->description = $request->input('description');
         $subcategory->save();

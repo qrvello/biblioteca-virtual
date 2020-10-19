@@ -7,6 +7,7 @@ use App\Subcategory;
 use App\Content;
 use App\Publication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuestController extends Controller
 {
@@ -35,10 +36,15 @@ class GuestController extends Controller
             } else {
                 $contents = Content::where('active', 1)
                     ->orderBy('created_at', 'desc')
-                    ->paginate(9);
+                    ->paginate(6);
                 return view('content.index', compact('contents'));
             }
         }
+    }
+
+    public function download_file(Content $content)
+    {
+        return response()->download(public_path('storage/archivos/' . $content->file));
     }
 
     public function search($search)
@@ -56,7 +62,7 @@ class GuestController extends Controller
             ->with('subcategory')
             ->orderByDesc('created_at')
             ->orderByDesc('id')
-            ->paginate(9);
+            ->paginate(6);
 
         if (count($contents) >= 1) {
             return view('content.index', compact('contents', 'search'));
@@ -69,52 +75,55 @@ class GuestController extends Controller
     public function categories()
     {
         $categories = Category::orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->paginate(9);
+            ->orderBy('title', 'asc')
+            ->paginate(8);
         return view('content.categories', compact('categories'));
     }
 
-    public function category_show($id)
+    public function category_show(Category $category)
     {
-        if ($id) {
-            $category = Category::find($id);
-            $contents = Content::where('category_id', '=', $id)
-                ->orderBy('id', 'asc')
-                ->paginate(9);
-            if (count($contents) >= 1) {
-                return view('content.index', compact('contents', 'category'));
-            }
+        $contents = Content::where('category_id', '=', $category->id)
+            ->orderBy('id', 'asc')
+            ->paginate(6);
+        if (count($contents) >= 1) {
+            return view('content.index', compact('contents', 'category'));
+        } else {
+            $error = 'No hay contenidos en esta categoría.';
+            return view('content.index', compact('category', 'error'));
         }
     }
 
-    public function subcategories($id)
+    public function subcategories(Category $category)
     {
-        $category = Category::find($id);
-
-        $subcategories = Subcategory::where('category_id', $id)
+        $subcategories = Subcategory::where('category_id', $category->id)
             ->orderBy('id', 'asc')
-            ->paginate(9);
+            ->paginate(6);
         if (count($subcategories) >= 1) {
-
             return view('content.subcategories', compact('subcategories', 'category'));
+        } else {
+            $error = 'No hay subcategorías en esta categoría.';
+            return view('content.subcategories', compact('category', 'error'));
         }
     }
 
-    public function subcategory_show($id)
+    public function subcategory_show(Subcategory $subcategory)
     {
-        $subcategory = Subcategory::find($id);
-        $contents = Content::where('subcategory_id', $id)
-            ->orderBy('id', 'asc')
-            ->paginate(9);
-
-        return view('content.index', compact('contents', 'subcategory'));
+        $contents = Content::where('subcategory_id', $subcategory->id)
+            ->orderBy('id', 'desc')
+            ->paginate(6);
+        if (count($contents) >= 1) {
+            return view('content.index', compact('contents', 'subcategory'));
+        } else {
+            $error = 'No hay contenidos en esta subcategoría.';
+            return view('content.index', compact('subcategory', 'error'));
+        }
     }
 
     public function publications()
     {
         $publications = Publication::orderByDesc('created_at')
             ->orderByDesc('id')
-            ->paginate(9);
+            ->paginate(6);
         return view('publications.index', compact('publications'));
     }
 

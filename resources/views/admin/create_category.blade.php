@@ -4,11 +4,9 @@
 
 @section('content')
 
-
-
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('/admin/categoria/crear'.$category->id) }}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/categoria/crear') }}" method="POST" autocomplete="off">
             @csrf
             <div class="row justify-content-md-center">
 

@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'Agregar Subcategoría')
+@section('title', 'Crear publicación')
 
 @section('content')
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('/admin/subcategoria/crear')}}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/publicacion/crear')}}" method="POST" autocomplete="off">
             @csrf
             <div class="row justify-content-md-center">
 
@@ -27,10 +27,10 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="category_id">Categoría</label>
-                                <select class="custom-select" name="category_id">
+                                <label for="publication_category_id">Categoría</label>
+                                <select class="custom-select" name="publication_category_id">
                                     @foreach ($categories as $category)
-                                            <option value="{{ $category -> id }}">{{ $category -> title }}</option>
+                                            <option value="{{ $category -> id }}">{{ $category -> name }}</option>
                                     @endforeach
                                 </select>
                             </div>

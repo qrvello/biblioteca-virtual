@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             'users',
             'categories',
             'subcategories',
+            'publications_categories',
             'publications',
             'contents',
         ]);
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(SubcategorySeeder::class);
+        $this->call(PublicationCategorySeeder::class);
         $this->call(PublicationSeeder::class);
         $this->call(ContentSeeder::class);
 

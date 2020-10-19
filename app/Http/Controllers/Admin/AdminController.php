@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Content;
 use App\Category;
@@ -20,27 +19,55 @@ class AdminController extends Controller
 
     public function contents(Request $request)
     {
+        if($request->get('order')){
+            $order = trim($request->get('order'));
+        }else{
+            $order = 'created_at';
+        }
+        if ($request->get('orderby')) {
+            $orderby = trim($request->get('orderby'));
+        } else {
+            $orderby = 'desc';
+        }
         $search = trim($request->get('search'));
 
-        $contents = Content::orderByDesc('id')
+        if ($search) {
+            return $this->search($request, $order, $orderby, $search);
+        } else{
+            $contents = Content::orderBy($order,$orderby)
+                ->paginate(5);
+            return view('admin.contents', compact('contents'));
+        }
+    }
+
+    public function search(Request $request, $order, $orderby, $search){
+
+            $contents = Content::orderBy($order, $orderby)
             ->where(function ($query) use ($search) {
                 $query->where('title', 'like', "%$search%")
-                ->orWhere('editorial', 'like', "%$search%")
                 ->orWhere('description', 'like', "%$search%")
+                ->orWhere('editorial', 'like', "%$search%")
                 ->orWhere('date_published', 'like', "%$search%")
                 ->orWhere('matter', 'like', "%$search%")
-                ->orWhere('author', 'like', "%$search%");
+                ->orWhere('author', 'like', "%$search%")
+                ->orWhere('file', 'like', "%$search%")
+                ->orWhere('link', 'like', "%$search%")
+                ->orWhere('level', 'like', "%$search%")
+                ->orWhere('cdd', 'like', "%$search%")
+                ->orWhere('isbn', 'like', "%$search%")
+                ->orWhere('access', 'like', "%$search%");
             })
             ->with('category')
             ->with('subcategory')
-            ->orderByDesc('created_at')
-            ->paginate(15);
+            ->paginate(5);
 
         if (count($contents) >= 1) {
             return view('admin.contents', compact('contents', 'search'));
         } else {
-            $error = "No hay coincidencias con tu búsqueda de '$search'.";
-            return view('admin.contents', compact('contents', 'error'));
+            $contents = Content::orderBy($order, $orderby)
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+                return view('admin.contents', compact('contents', 'error'));
         }
     }
 
@@ -75,7 +102,9 @@ class AdminController extends Controller
     {
         $publications = Publication::orderByDesc('created_at')
             ->orderByDesc('id')
+            ->with('publication_category')
             ->paginate(9);
-        return view('admin.publications', compact('publications'));
+        return view('admin.publications.list', compact('publications'));
     }
+
 }
