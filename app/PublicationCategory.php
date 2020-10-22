@@ -11,10 +11,4 @@ class PublicationCategory extends Model
     protected $fillable = [
         'name',
     ];
-
-    // Relación: una categoría tiene muchos subcategorías
-    public function subcategories()
-    {
-        return $this->hasMany(Publication::class);
-    }
 }

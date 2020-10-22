@@ -53,66 +53,99 @@
                 </div>
             </div>
 
-            @if ($publications->count() > 1)
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Novedades</h2>
+            @if (isset($contents) && count($contents) >= 1)
+                <div class="text-center mb-5">
+                    <h2 class="section-heading text-uppercase">Ultimos libros ingresados</h2>
                     <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
                 </div>
-
-                @forelse($publications->chunk(3) as $chunk)
-                    <div class="card-deck">
-                        @foreach ($chunk as $publication)
-
-                            <x-card-publication :publication="$publication" />
-                            <x-modal-publication :publication="$publication" />
-
-                        @endforeach
-                    </div>
-                @endforeach
-                <center>
-                    <a href="{{ url('publicaciones') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
-                </center>
-                @endif
-
-
-
-
-        <!-- Servicios-->
-                <div class="text-center mt-5">
-                    <h2 class="section-heading text-uppercase">Contenido</h2>
-                    <h3 class="section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="card-deck">
+                    @foreach ($contents as $content)
+                        <x-card-content :content="$content" />
+                        <x-modal-content :content="$content" />
+                    @endforeach
                 </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-book fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Audiolibros y libros electrónicos</h4>
-                        <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                            architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-university fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Material de estudio</h4>
-                        <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                            architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-play-circle fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Videos</h4>
-                        <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                            architecto quo inventore harum ex magni, dicta impedit.</p>
-                    </div>
+            @endif
+
+            @if (isset($efemerides) && count($efemerides) >= 1)
+                <div class="text-center my-5">
+                    <h2 class="section-heading text-uppercase">Efemérides mensual</h2>
+                    <h3 class="section-subheading"></h3>
+                </div>
+                <div class="card-deck">
+                    @foreach ($efemerides as $publication)
+                        <x-card-publication :publication="$publication" />
+                        <x-modal-publication :publication="$publication" />
+                    @endforeach
+                </div>
+            @endif
+            @if (isset($news) && count($news) >= 1)
+                <div class="text-center my-5">
+                    <h2 class="section-heading text-uppercase">Noticias escolares</h2>
+                    <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
+                </div>
+                <div class="card-deck">
+                    @foreach ($news as $publication)
+                        <x-card-publication :publication="$publication" />
+                        <x-modal-publication :publication="$publication" />
+                    @endforeach
+                </div>
+            @endif
+            @if (isset($journalistic_notes) && count($journalistic_notes) >= 1)
+                <div class="text-center my-5">
+                    <h2 class="section-heading text-uppercase">Notas periodísticas</h2>
+                    <h3 class="section-subheading">Acá se encuentras las ultimas notas periodísticas.</h3>
+                </div>
+                <div class="card-deck">
+                    @foreach ($journalistic_notes as $publication)
+                        <x-card-publication :publication="$publication" />
+                        <x-modal-publication :publication="$publication" />
+                    @endforeach
+                </div>
+            @endif
+            @if ($publications != null)
+                <div class="text-center mt-5">
+                    <a href="{{ url('publicaciones') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
+                </div>
+            @endif
+
+
+
+            <!-- Servicios-->
+            <div class="text-center mt-5">
+                <h2 class="section-heading text-uppercase">Contenido</h2>
+                <h3 class="section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-book fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Audiolibros y libros electrónicos</h4>
+                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                        architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-university fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Material de estudio</h4>
+                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                        architecto quo inventore harum ex magni, dicta impedit.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fas fa-play-circle fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="my-3">Videos</h4>
+                    <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+                        architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
 
-    @endsection
+@endsection

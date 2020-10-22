@@ -6,6 +6,7 @@ use App\Category;
 use App\Subcategory;
 use App\Content;
 use App\Publication;
+use App\PublicationCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,12 +14,59 @@ class GuestController extends Controller
 {
     public function index()
     {
-        // Devuelve la vista index con 6 publicaciones ordenadas de manera decreciente por fecha de creación.
-        $publications = Publication::orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->take(6)
+        $news_id = PublicationCategory::where('name', 'Noticias escolares')
+            ->get('id')
+            ->first();
+        if ($news_id) {
+            $news = Publication::orderByDesc('created_at')
+                ->where('publication_category_id', $news_id->id)
+                ->take(3)
+                ->get();
+        } else {
+            $news = null;
+        }
+        // Devuelve la vista index con 3 Noticias escolares ordenadas de manera decreciente por fecha de creación.
+
+        $efemerides_id = PublicationCategory::where('name', 'Efemérides')
+            ->get('id')
+            ->first();
+        if ($efemerides_id) {
+            $efemerides = Publication::orderByDesc('created_at')
+                ->where('publication_category_id', $efemerides_id->id)
+                ->take(3)
+                ->get();
+        } else {
+            $efemerides = null;
+        }
+
+        // Devuelve la vista index con 3 Efemérides ordenadas de manera decreciente por fecha de creación.
+
+        $journalistic_notes_id = PublicationCategory::where('name', 'Notas periodísticas')
+            ->get('id')
+            ->first();
+        if ($journalistic_notes_id) {
+            $journalistic_notes = Publication::orderByDesc('created_at')
+                ->where('publication_category_id', $journalistic_notes_id->id)
+                ->take(3)
+                ->get();
+        } else {
+            $journalistic_notes = null;
+        }
+        // Devuelve la vista index con 3 Notas periódisticas ordenadas de manera decreciente por fecha de creación.
+
+        $contents = Content::orderByDesc('created_at')
+            ->take(3)
             ->get();
-        return view('index', compact('publications'));
+        if (!$contents) {
+            $contents = null;
+        }
+
+        $publications = Publication::get()->first();
+        if(!$publications){
+            $publications = null;
+        }
+
+        return view('index', compact('news', 'efemerides', 'journalistic_notes', 'contents', 'publications'));
     }
 
     public function nosotros()
@@ -121,6 +169,7 @@ class GuestController extends Controller
 
     public function publications()
     {
+        $contents = Content::orderByDesc('created_at')->paginate(2);
         $publications = Publication::orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate(6);
