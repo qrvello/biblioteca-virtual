@@ -44,7 +44,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/categorias') }}">Categorías</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/publicaciones') }}">Novedades</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/novedades/categorias') }}">Novedades</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Institución</a>
                     </li>

@@ -15,15 +15,17 @@
             Literatura, Arte,
             Deporte, Geografía, Historia, biografías.</h3>
 
-        @if ($categories)
+        @if (isset($categories))
             @foreach($categories->chunk(3) as $chunk)
-            <div class="card-deck">
-                @foreach ($chunk as $category)
-                    <x-card-category :category="$category" />
-                @endforeach
-            </div>
+                <div class="card-deck">
+                    @foreach ($chunk as $category)
+                        <x-card-category :category="$category" />
+                    @endforeach
+                </div>
             @endforeach
             {{ $categories->links() }}
+        @else
+
         @endif
 
         {{-- Paginación --}}

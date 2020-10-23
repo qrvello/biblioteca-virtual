@@ -14,7 +14,9 @@ Route::get('/categoria/{category}/subcategorias', 'GuestController@subcategories
     ->where('category', '[0-9]+');
 Route::get('/subcategoria/{subcategory}/contenidos', 'GuestController@subcategory_show')
     ->where('subcategory', '[0-9]+');
-Route::get('/publicaciones', 'GuestController@publications');
+Route::get('/novedades', 'GuestController@publications');
+Route::get('/novedades/categorias', 'GuestController@publications_categories');
+Route::get('/novedades/categoria/{category}', 'GuestController@publications_categories_show');
 
 
 Route::middleware('auth')->group(function () {

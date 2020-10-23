@@ -34,7 +34,7 @@
                                             <div class="input-group-text">
                                                 <input type="checkbox" @if ($content->active)
                                                 checked="checked" @endif
-                                                name="active">
+                                                name="active" value="1">
                                             </div>
                                         </div>
                                         <label for="active" class="form-control">
@@ -77,19 +77,25 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="link">Link</label>
-                                    <input type="text" class="form-control" value="{{ $content->link }} "
-                                        name="link">
+                                    <input type="text" class="form-control" value="{{ $content->link }} " name="link">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="title">Título</label>
-                                    <input type="text" class="form-control" value="{{ $content->title }} " name="title">
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                        value="{{ $content->title }} " name="title" required>
+                                    @error('title')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="description">Descripción</label>
-                                    <textarea class="form-control" name="description"
-                                        rows="3">{{ $content->description }}</textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror"
+                                        name="description" rows="3">{{ $content->description }}</textarea>
+                                    @error('description')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -106,13 +112,16 @@
                                 </div>
                                 <div class="form-group col-mb-6">
                                     <label for="category_id">Categoría</label>
-                                    <select class="custom-select" name="category_id" id="select-category">
+                                    <select class="custom-select @error('category_id') is-invalid @enderror" name="category_id" id="select-category">
                                         @foreach ($categories as $category)
                                             <option @if ($category->id === $content->category_id) selected
                                         @endif
                                         value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-mb-6">
                                     <label for="subcategory_id">Subcategoría</label>
@@ -145,17 +154,7 @@
             </div>
 
         </section>
-    </form>
-    {{-- // TODO arreglar boton --}}
-    <form action="{{ url('admin/contenido/borrar/imagen/' . $content->id) }}" method="POST">
-        @csrf
-        {{-- @method('DELETE') --}}
-        <button class="btn btn-primary" type="submit">Borrar imagen</button>
-    </form>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
-    {{-- <script src="{{ asset('js/admin/select.js') }}"></script>
-    --}}
+    </form>
+
 @endsection

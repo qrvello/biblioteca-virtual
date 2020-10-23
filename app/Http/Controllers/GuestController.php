@@ -169,10 +169,24 @@ class GuestController extends Controller
 
     public function publications()
     {
-        $contents = Content::orderByDesc('created_at')->paginate(2);
         $publications = Publication::orderByDesc('created_at')
-            ->orderByDesc('id')
             ->paginate(6);
+        return view('publications.index', compact('publications'));
+    }
+
+    public function publications_categories()
+    {
+        $categories = PublicationCategory::orderByDesc('created_at')
+        ->paginate(6);
+        return view('publications.categories', compact('categories'));
+    }
+
+    // Muestra publicaciones de una categoría en especifico
+    public function publications_categories_show($category)
+    {
+        $publications = Publication::orderByDesc('created_at')
+        ->where('publication_category_id', $category)
+        ->paginate(6);
         return view('publications.index', compact('publications'));
     }
 

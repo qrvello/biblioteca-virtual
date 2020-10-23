@@ -32,12 +32,7 @@
                 padrinos, los excombatientes, esta fecha es el término de la guerra de Malvinas.
             </p></h3>
         </div>
-        <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 300px">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13126.150547422327!2d-58.585296!3d-34.666378!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11314b4ab3608e8c!2sEscuela%20De%20Educaci%C3%B3n%20Secundaria%20N%C2%BA5%20%22Islas%20Malvinas%22!5e0!3m2!1ses-419!2sar!4v1600469932430!5m2!1ses-419!2sar"
-                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0"></iframe>
-        </div>
+
     </div>
 </section>
 

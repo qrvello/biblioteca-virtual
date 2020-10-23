@@ -77,7 +77,8 @@ class AdminController extends Controller
 
         $category = Category::orderByDesc('id')
             ->where(function ($query) use ($search) {
-                $query->where('title', 'like', "%$search%");
+                $query->where('title', 'like', "%$search%")
+                    ->orWhere('description', 'like', "%$search%");
             })
             ->orderByDesc('created_at')
             ->paginate(15);

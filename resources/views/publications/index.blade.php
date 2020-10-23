@@ -8,17 +8,17 @@
         <div class="container">
             <h2 class="section-header text-uppercase">Novedades</h2>
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="section-header">Efemérides</h1>
-                    @forelse($publications->chunk(2) as $chunk)
+                <div class="col-md-12 mt-5">
+                    @forelse($publications->chunk(3) as $chunk)
                         <div class="card-deck">
                             @foreach ($chunk as $publication)
                                 <x-card-publication-full :publication="$publication" />
-                                <x-modal-publication :publication="$publication" />
                             @endforeach
                         </div>
                     @empty
-                        Aún no hay publicaciones.
+                        <div class="alert alert-warning" role="alert">
+                            Aún no hay publicaciones.
+                        </div>
                     @endforelse
                 </div>
             </div>

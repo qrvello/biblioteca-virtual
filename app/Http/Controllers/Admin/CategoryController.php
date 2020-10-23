@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
         $category->save();
 
-        return redirect('/admin/categorias');
+        return redirect('/admin/categorias')->with('status', 'Categoría actualizada satisfactoriamente.');
     }
 
     public function store(Request $request)
@@ -36,13 +36,13 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
 
         $category->save();
-        $status = "Agregaste la categoría correctamente";
-        return back()->with(compact('status'));
+
+        return back()->with('status', 'Creaste la categoría satisfactoriamente.');
     }
 
     public function destroy($category)
     {
-        Category::destroy($category->id);
+        Category::destroy($category);
         return redirect('/admin/categorias'); // TODO borrar categorias hijos
     }
 }

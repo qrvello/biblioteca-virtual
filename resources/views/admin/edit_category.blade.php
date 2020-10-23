@@ -9,7 +9,7 @@
 <!-- Content Wrapper. Contains page content -->
 
     <!-- Main content -->
-    <form action="{{ url('/admin/categoria/editar/}'.$category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
+    <form action="{{ url('/admin/categoria/editar/'.$category->id)}}" method="POST" autocomplete="off" enctype="multipart/form-data">
             @method('PUT')
             @csrf
         <section class="content">

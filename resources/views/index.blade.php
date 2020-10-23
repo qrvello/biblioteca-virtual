@@ -74,7 +74,6 @@
                 <div class="card-deck">
                     @foreach ($efemerides as $publication)
                         <x-card-publication :publication="$publication" />
-                        <x-modal-publication :publication="$publication" />
                     @endforeach
                 </div>
             @endif
@@ -86,7 +85,6 @@
                 <div class="card-deck">
                     @foreach ($news as $publication)
                         <x-card-publication :publication="$publication" />
-                        <x-modal-publication :publication="$publication" />
                     @endforeach
                 </div>
             @endif
@@ -98,13 +96,12 @@
                 <div class="card-deck">
                     @foreach ($journalistic_notes as $publication)
                         <x-card-publication :publication="$publication" />
-                        <x-modal-publication :publication="$publication" />
                     @endforeach
                 </div>
             @endif
             @if ($publications != null)
                 <div class="text-center mt-5">
-                    <a href="{{ url('publicaciones') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
+                    <a href="{{ url('/novedades/categorias') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
                 </div>
             @endif
 

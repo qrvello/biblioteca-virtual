@@ -6,7 +6,7 @@ use App\PublicationCategory;
 class Publication extends Model
 {
     protected $fillable = [
-        'title', 'image', 'description',
+        'title', 'image', 'description', 'publication_category_id'
     ];
 
     // Relación: una publicación pertenece a una categoría

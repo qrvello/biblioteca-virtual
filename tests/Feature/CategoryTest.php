@@ -29,14 +29,13 @@ class CategoryTest extends TestCase
         $content = factory(Content::class)->create([
             'category_id' => $category->id,
         ]);
-        $this->get('/categoria/'.$category->id)
+        $this->get('categoria/'.$category->id)
             ->assertStatus(200)
             ->assertSee($category->title)
             ->assertSee($category->description)
             ->assertSee($content->title)
             ->assertSee($content->author)
             ->assertSee($content->description)
-            ->assertSee($content->matter)
-            ->assertSee($content->created_at->format('d/m/Y'));
+            ->assertSee($content->matter);
     }
 }
