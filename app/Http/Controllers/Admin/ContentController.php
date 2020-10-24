@@ -5,14 +5,33 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Content;
-use App\Http\Requests\ContentStoreRequest;
-use App\Http\Requests\ContentUpdateRequest;
+use App\Http\Requests\ContentRequest;
 use App\Services\ContentService;
 use App\Subcategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ContentController extends Controller
 {
+    public function list(Request $request, ContentService $contentService)
+    {
+        if ($search = trim($request->get('search'))) {
+
+            $contents = $contentService->search($request);
+
+            if (count($contents)) {
+                return view('admin.contents', compact('contents', 'search'));
+            } else {
+                $error = "No se encontraron resultados con tu busqueda de '$search'";
+                return view('admin.contents', compact('contents', 'error'));
+            }
+        }
+
+        $contents = Content::orderBy('created_at', 'desc')
+            ->paginate(5);
+        return view('admin.contents', compact('contents'));
+    }
+
     /**
      * Show the form for create a content.
      *
@@ -40,11 +59,11 @@ class ContentController extends Controller
     /**
      * Update a content.
      *
-     * @param ContentUpdateRequest $request
+     * @param ContentRequest $request
      * @param Content $content
      * @return Response
      */
-    public function update(ContentUpdateRequest $request, Content $content, ContentService $contentService)
+    public function update(ContentRequest $request, Content $content, ContentService $contentService)
     {
         if ($request->hasFile('image')) {
             // Delete old image
@@ -85,7 +104,7 @@ class ContentController extends Controller
         }
     }
 
-    public function store(ContentStoreRequest $request, ContentService $contentService)
+    public function store(ContentRequest $request, ContentService $contentService)
     {
         $content = new Content();
 

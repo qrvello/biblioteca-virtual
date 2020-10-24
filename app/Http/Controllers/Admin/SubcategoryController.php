@@ -10,6 +10,14 @@ use App\Subcategory;
 
 class SubcategoryController extends Controller
 {
+    public function list()
+    {
+        $subcategories = Subcategory::orderBy('category_id', 'asc')
+        ->paginate(9);
+
+        return view('admin.subcategories', compact('subcategories'));
+    }
+
     public function create()
     {
         $categories = Category::whereHas('subcategories')->orWhereDoesntHave('contents')->get();

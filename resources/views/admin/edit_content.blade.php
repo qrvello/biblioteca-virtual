@@ -108,7 +108,23 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="matter">Materia</label>
-                                    <input type="text" class="form-control" value="{{ $content->matter }} " name="matter">
+                                    <input type="text" class="form-control" value="{{ $content->matter }}" name="matter">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="level">Nivel</label>
+                                    <input type="text" class="form-control" value="{{ $content->level }}" name="level">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="cdd">CDD</label>
+                                    <input type="text" class="form-control" value="{{ $content->cdd }}" name="cdd">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="isbn">ISBN</label>
+                                    <input type="text" class="form-control" value="{{ $content->isbn }}" name="isbn">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="matter">Acceso</label>
+                                    <input type="text" class="form-control" value="{{ $content->access }}" name="access">
                                 </div>
                                 <div class="form-group col-mb-6">
                                     <label for="category_id">Categoría</label>

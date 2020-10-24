@@ -22,7 +22,7 @@ Route::get('/novedades/categoria/{category}', 'GuestController@publications_cate
 Route::middleware('auth')->group(function () {
     Route::get('/admin', 'Admin\AdminController@index');
 
-    Route::get('/admin/categorias', 'Admin\AdminController@categories');
+    Route::get('/admin/categorias', 'Admin\CategoryController@list');
     Route::get('/admin/categoria/crear', 'Admin\CategoryController@create');
     Route::post('/admin/categoria/crear', 'Admin\CategoryController@store');
     Route::put('/admin/categoria/editar/{category}', 'Admin\CategoryController@update');
@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/categoria/editar/{category}', 'Admin\CategoryController@edit')
         ->where('category', '[0-9]+');
 
-    Route::get('/admin/subcategorias', 'Admin\AdminController@subcategories');
+    Route::get('/admin/subcategorias', 'Admin\SubcategoryController@list');
     Route::get('/admin/subcategoria/crear', 'Admin\SubcategoryController@create');
     Route::post('/admin/subcategoria/crear', 'Admin\SubcategoryController@store');
     Route::get('/admin/subcategoria/editar/{subcategory}', 'Admin\SubcategoryController@edit')
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/subcategoria/borrar/{subcategory}', 'Admin\SubcategoryController@destroy')
         ->where('subcategory', '[0-9]+');
 
-    Route::get('/admin/contenidos', 'Admin\AdminController@contents');
+    Route::get('/admin/contenidos', 'Admin\ContentController@list');
     Route::get('/admin/contenido/crear', 'Admin\ContentController@create');
     Route::post('/admin/contenido/crear', 'Admin\ContentController@store');
     Route::put('/admin/contenido/editar/{content}', 'Admin\ContentController@update')
@@ -52,17 +52,7 @@ Route::middleware('auth')->group(function () {
         ->where('content', '[0-9]+');
     Route::post('/admin/contenido/borrar/imagen/{content}', 'Admin\ContentController@destroy_image');
 
-    Route::get('/admin/contenidos', 'Admin\AdminController@contents');
-    Route::get('/admin/contenido/crear', 'Admin\ContentController@create');
-    Route::post('/admin/contenido/crear', 'Admin\ContentController@store');
-    Route::put('/admin/contenido/editar/{content}', 'Admin\ContentController@update')
-    ->where('content', '[0-9]+');
-    Route::delete('/admin/contenido/borrar/{content}', 'Admin\ContentController@destroy')
-    ->where('content', '[0-9]+');
-    Route::get('/admin/contenido/editar/{content}', 'Admin\ContentController@edit')
-    ->where('content', '[0-9]+');
-
-    Route::get('/admin/publicaciones', 'Admin\AdminController@publications');
+    Route::get('/admin/publicaciones', 'Admin\PublicationController@list');
     Route::get('/admin/publicacion/crear', 'Admin\PublicationController@create');
     Route::post('/admin/publicacion/crear', 'Admin\PublicationController@store');
     Route::put('/admin/publicacion/editar/{publication}', 'Admin\PublicationController@update')

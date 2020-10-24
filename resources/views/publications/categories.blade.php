@@ -33,7 +33,7 @@
                     </div>
                 </div>
             @endforeach
-        {{ $categories->links() }}
+        {{-- $categories->links() --}}
         @endif
 
         {{-- Paginación --}}

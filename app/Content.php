@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     protected $fillable = [
-        'image', 'file', 'author', 'editorial', 'title', 'description', 'matter', 'active', 'category_id', 'subcategory_id', 'link'
+        'image', 'file', 'author', 'editorial', 'title', 'description', 'matter', 'active', 'category_id', 'subcategory_id', 'link', 'isbn', 'level', 'access', 'cdd'
     ];
 
     // Relación: un contenido pertenece a una categoría

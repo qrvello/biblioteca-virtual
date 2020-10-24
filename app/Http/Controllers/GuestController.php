@@ -8,7 +8,6 @@ use App\Content;
 use App\Publication;
 use App\PublicationCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class GuestController extends Controller
 {
@@ -186,7 +185,7 @@ class GuestController extends Controller
     {
         $publications = Publication::orderByDesc('created_at')
         ->where('publication_category_id', $category)
-        ->paginate(6);
+        ->get();
         return view('publications.index', compact('publications'));
     }
 

@@ -10,6 +10,15 @@ use App\PublicationCategory;
 
 class PublicationController extends Controller
 {
+    public function list()
+    {
+        $publications = Publication::orderByDesc('created_at')
+        ->orderByDesc('id')
+            ->with('publication_category')
+            ->paginate(9);
+        return view('admin.publications.list', compact('publications'));
+    }
+
     public function create(){
         $categories = PublicationCategory::all();
         return view('admin.publications.create', compact('categories'));
