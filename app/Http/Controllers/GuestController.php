@@ -186,7 +186,17 @@ class GuestController extends Controller
         $publications = Publication::orderByDesc('created_at')
         ->where('publication_category_id', $category)
         ->get();
-        return view('publications.index', compact('publications'));
+
+        if ($category == 1) {
+            $title = 'Noticias Escolares';
+        }
+        if($category == 2){
+            $title = 'Efemérides';
+        } else {
+            $title = 'Notas periodísticas';
+        }
+
+        return view('publications.index', compact('publications','title'));
     }
 
     // Manda subcategorías dependiendo la categoría seleccionada

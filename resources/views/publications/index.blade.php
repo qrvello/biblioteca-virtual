@@ -7,12 +7,12 @@
     <section class="page-section" id="novedades">
         <div class="container">
             <h1 class="section-header text-uppercase">Novedades</h1>
-            <h2 class="section-header text-center">Efemérides</h2>
+            <h2 class="section-header text-center">{{$title}}</h2>
         </div>
         <div id="efemerides" class="carousel slide mb-4" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <h2 class="section-header text-center">Efemérides</h2>
+                    <h2 class="section-header text-center">{{$title}}</h2>
                 </div>
 
                 @forelse($publications->chunk(3) as $chunk)

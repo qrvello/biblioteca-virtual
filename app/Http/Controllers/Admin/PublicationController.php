@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\PublicationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Publication;
