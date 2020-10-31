@@ -56,7 +56,6 @@
             @if (isset($contents) && count($contents) >= 1)
                 <div class="text-center mb-5">
                     <h2 class="section-heading text-uppercase">Ultimos libros ingresados</h2>
-                    <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
                 </div>
                 <div class="card-deck">
                     @foreach ($contents as $content)
@@ -66,46 +65,22 @@
                 </div>
             @endif
 
-            @if (isset($efemerides) && count($efemerides) >= 1)
-                <div class="text-center my-5">
-                    <h2 class="section-heading text-uppercase">Efemérides mensual</h2>
-                    <h3 class="section-subheading"></h3>
-                </div>
-                <div class="card-deck">
-                    @foreach ($efemerides as $publication)
-                        <x-card-publication :publication="$publication" />
-                    @endforeach
-                </div>
-            @endif
-            @if (isset($news) && count($news) >= 1)
-                <div class="text-center my-5">
-                    <h2 class="section-heading text-uppercase">Noticias escolares</h2>
-                    <h3 class="section-subheading">Aquí se encuentran las entradas más recientes de la página.</h3>
-                </div>
-                <div class="card-deck">
-                    @foreach ($news as $publication)
-                        <x-card-publication :publication="$publication" />
-                    @endforeach
-                </div>
-            @endif
-            @if (isset($journalistic_notes) && count($journalistic_notes) >= 1)
-                <div class="text-center my-5">
-                    <h2 class="section-heading text-uppercase">Notas periodísticas</h2>
-                    <h3 class="section-subheading">Acá se encuentras las ultimas notas periodísticas.</h3>
-                </div>
-                <div class="card-deck">
-                    @foreach ($journalistic_notes as $publication)
-                        <x-card-publication :publication="$publication" />
-                    @endforeach
-                </div>
-            @endif
-            @if ($publications != null)
-                <div class="text-center mt-5">
-                    <a href="{{ url('/novedades/categorias') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
-                </div>
+            @if (isset($categories) && count($categories) >= 1)
+                @foreach ($categories as $category)
+                    <div class="text-center my-5">
+                        <h2 class="section-heading text-uppercase">{{ $category->name }}</h2>
+                    </div>
+                    <div class="card-deck">
+                        @foreach ($category->publications as $publication)
+                            <x-card-publication :publication="$publication" />
+                        @endforeach
+                    </div>
+                @endforeach
             @endif
 
-
+            <div class="text-center mt-5">
+                <a href="{{ url('/novedades/categorias') }}" class="btn btn-secondary col-lg-3">Ver todas las novedades</a>
+            </div>
 
             <!-- Servicios-->
             <div class="text-center mt-5">

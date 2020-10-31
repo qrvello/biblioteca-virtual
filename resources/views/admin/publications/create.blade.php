@@ -34,6 +34,10 @@
                                     @endforeach
                                 </select>
                             </div>
+                            {{-- Subida de imágenes --}}
+                            <div class="form-group col-md-12">
+                                <x-upload-image />
+                            </div>
                             <div class="form-group">
                                 <label for="title">Titulo</label>
                                 <input type="text" class="form-control" name="title" placeholder="">

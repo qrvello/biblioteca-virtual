@@ -13,6 +13,7 @@ class SubcategoryController extends Controller
     public function list()
     {
         $subcategories = Subcategory::orderBy('category_id', 'asc')
+        ->with('category')
         ->paginate(9);
 
         return view('admin.subcategories', compact('subcategories'));

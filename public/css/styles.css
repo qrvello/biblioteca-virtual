@@ -6345,7 +6345,7 @@ a.close.disabled {
     align-items: center;
     justify-content: center;
     width: 15%;
-    color: #fff;
+    color: rgb(0, 0, 0);
     text-align: center;
     opacity: 0.5;
     transition: opacity 0.15s ease;
@@ -6360,7 +6360,7 @@ a.close.disabled {
 .carousel-control-prev:focus,
 .carousel-control-next:hover,
 .carousel-control-next:focus {
-    color: #fff;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     outline: 0;
     opacity: 0.9;

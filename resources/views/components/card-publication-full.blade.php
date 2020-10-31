@@ -1,4 +1,4 @@
-<div class="shadow card mb-3">
+<div class="shadow card mb-3 ml-3">
 <a class="portfolio-link" data-toggle="modal" href="#publicacion{{ $publication->id }}">
     @if ($publication->image)
         <img class="card-img-top" src="{{ asset('/storage/imagenes/contenido/' . $publication->image) }}">

@@ -37,38 +37,36 @@
                                     </div>
                                 @endif
 
-                                <div class="ml-auto p-2">
+                                <div class="ml-auto col-md-4 p-2">
                                     <form action="{{ url('/admin/contenidos') }}">
                                         <div class="input-group input-group-sm float-right mb-2">
+                                            <div class="input-group input-group-sm float-right mb-2">
+                                                <select class="custom-select" name="orderby">
+                                                    <option selected disabled>Orden</option>
+                                                    <option value="asc">Ascendente</option>
+                                                    <option value="desc">Descendente</option>
+                                                </select>
+                                                <select class="custom-select" name="order">
+                                                    <option selected disabled>Por</option>
+                                                    <option value="title">Titulo</option>
+                                                    <option value="category_id">Categoria</option>
+                                                    <option value="matter">Materia</option>
+                                                    <option value="author">Autor</option>
+                                                    <option value="created_at">Fecha de creación</option>
+                                                    <option value="updated_at">Fecha de actualización</option>
+                                                    <option value="access">Acceso</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        Ordenar</button>
+                                                </div>
+                                            </div>
                                             <input type="text" name="search" class="form-control ">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fas fa-search"></i></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                    <form action="{{ url('/admin/contenidos') }}">
-                                        <div class="input-group input-group-sm float-right">
-                                            <select class="custom-select" name="orderby">
-                                                <option selected disabled>Orden</option>
-                                                <option value="asc">Ascendente</option>
-                                                <option value="desc">Descendente</option>
-                                            </select>
-                                            <select class="custom-select" name="order">
-                                                <option selected disabled>Por</option>
-                                                <option value="title">Titulo</option>
-                                                <option value="category_id">Categoria</option>
-                                                <option value="matter">Materia</option>
-                                                <option value="author">Autor</option>
-                                                <option value="created_at">Fecha de creación</option>
-                                                <option value="updated_at">Fecha de actualización</option>
-                                                <option value="access">Acceso</option>
-                                            </select>
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-default">
-                                                    Ordenar</button>
-                                            </div>
-                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -163,7 +161,7 @@
                                             @endif
 
                                             @if ($content->subcategory)
-                                                <td>{{ $content->subcategory->category->title }}</td>
+                                                <td>{{ $content->category->title }}</td>
                                                 <td>{{ $content->subcategory->title }}</td>
                                             @else
                                                 <td>{{ $content->category->title }}</td>

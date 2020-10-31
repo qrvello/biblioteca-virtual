@@ -21,12 +21,20 @@ class PublicationController extends Controller
     }
 
     public function create(){
-        $categories = PublicationCategory::all();
+        $categories = PublicationCategory::get(['name', 'id']);
         return view('admin.publications.create', compact('categories'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, PublicationService $publicationservice){
         $publication = new Publication();
+
+        // Verifica si existe una imagen y lo guarda
+        if ($request->hasFile('image')) {
+            // Agrega la nueva imagen
+            $nameImage = $publicationservice->storeImage($request->file('image'));
+            $publication->image = $nameImage;
+        }
+
         $publication->title = $request->input('title');
         $publication->description = $request->input('description');
         $publication->publication_category_id = $request->input('publication_category_id');
@@ -39,7 +47,18 @@ class PublicationController extends Controller
         return view('admin.publications.edit', compact('publication', 'categories'));
     }
 
-    public function update(Request $request, Publication $publication){
+    public function update(Request $request, Publication $publication, PublicationService $publicationservice){
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            $oldNameImage = $publication->image;
+            Storage::delete('imagenes/contenido/' . $oldNameImage);
+
+            // Add new image
+            $nameImage = $publicationservice->storeImage($request->file('image'));
+            $publication->image = $nameImage;
+        }
+
         $publication->title = $request->input('title');
         $publication->description = $request->input('description');
         $publication->publication_category_id = $request->input('publication_category_id');

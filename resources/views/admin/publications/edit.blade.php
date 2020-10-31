@@ -43,6 +43,23 @@
                                     @endforeach
                                 </select>
                             </div>
+                            {{-- Edición/Subida de imágen --}}
+                                @if ($publication->image)
+                                    <div class="form-group col-md-6">
+                                        <img src="{{ asset('storage/imagenes/publicacion/' . $publication->image) }}"
+                                            width="100%">
+                                    </div>
+                                @endif
+                                <div class="form-group col-md-12">
+                                    <div class="input-group">
+                                        @if ($publication->image)
+                                            <label for="image">Imagen</label>
+                                            <input type="file" name="image">
+                                        @else
+                                            <x-upload-image />
+                                        @endif
+                                    </div>
+                                </div>
                             <div class="form-group">
                                 <label for="title">Titulo</label>
                                 <input type="text" class="form-control" name="title" value="{{ $publication->title }}"

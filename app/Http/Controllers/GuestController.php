@@ -7,65 +7,25 @@ use App\Subcategory;
 use App\Content;
 use App\Publication;
 use App\PublicationCategory;
+use App\Services\PublicationCategoryService;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
-    public function index()
+    public function index(PublicationCategoryService $publicationCategoryService)
     {
-        $news_id = PublicationCategory::where('name', 'Noticias escolares')
-            ->get('id')
-            ->first();
-        if ($news_id) {
-            $news = Publication::orderByDesc('created_at')
-                ->where('publication_category_id', $news_id->id)
-                ->take(3)
-                ->get();
-        } else {
-            $news = null;
-        }
-        // Devuelve la vista index con 3 Noticias escolares ordenadas de manera decreciente por fecha de creación.
+        $categories = PublicationCategory::get(['name', 'id']);
 
-        $efemerides_id = PublicationCategory::where('name', 'Efemérides')
-            ->get('id')
-            ->first();
-        if ($efemerides_id) {
-            $efemerides = Publication::orderByDesc('created_at')
-                ->where('publication_category_id', $efemerides_id->id)
-                ->take(3)
-                ->get();
-        } else {
-            $efemerides = null;
-        }
+        // Take 3 publication per category
+        $categories = $publicationCategoryService->getLastPublications($categories);
 
-        // Devuelve la vista index con 3 Efemérides ordenadas de manera decreciente por fecha de creación.
-
-        $journalistic_notes_id = PublicationCategory::where('name', 'Notas periodísticas')
-            ->get('id')
-            ->first();
-        if ($journalistic_notes_id) {
-            $journalistic_notes = Publication::orderByDesc('created_at')
-                ->where('publication_category_id', $journalistic_notes_id->id)
-                ->take(3)
-                ->get();
-        } else {
-            $journalistic_notes = null;
-        }
-        // Devuelve la vista index con 3 Notas periódisticas ordenadas de manera decreciente por fecha de creación.
-
-        $contents = Content::orderByDesc('created_at')
-            ->take(3)
+        $contents = Content::orderBy('created_at', 'desc')
+            ->with('category')
+            ->with('subcategory')
+            ->take(2)
             ->get();
-        if (!$contents) {
-            $contents = null;
-        }
 
-        $publications = Publication::get()->first();
-        if(!$publications){
-            $publications = null;
-        }
-
-        return view('index', compact('news', 'efemerides', 'journalistic_notes', 'contents', 'publications'));
+        return view('index', compact('categories', 'contents'));
     }
 
     public function nosotros()
@@ -82,6 +42,8 @@ class GuestController extends Controller
                 return $this->search($search);
             } else {
                 $contents = Content::where('active', 1)
+                    ->with('category')
+                    ->with('subcategory')
                     ->orderBy('created_at', 'desc')
                     ->paginate(6);
                 return view('content.index', compact('contents'));
@@ -122,6 +84,8 @@ class GuestController extends Controller
     public function categories()
     {
         $categories = Category::orderByDesc('created_at')
+            ->with('subcategories')
+            ->with('contents')
             ->orderBy('title', 'asc')
             ->paginate(8);
         return view('content.categories', compact('categories'));
@@ -183,6 +147,10 @@ class GuestController extends Controller
     // Muestra publicaciones de una categoría en especifico
     public function publications_categories_show($category)
     {
+        $first = Publication::orderByDesc('created_at')
+            ->where('publication_category_id', $category)
+            ->take(1)
+            ->get();
         $publications = Publication::orderByDesc('created_at')
         ->where('publication_category_id', $category)
         ->get();
@@ -192,16 +160,17 @@ class GuestController extends Controller
         }
         if($category == 2){
             $title = 'Efemérides';
-        } else {
+        }
+        if($category == 3){
             $title = 'Notas periodísticas';
         }
 
-        return view('publications.index', compact('publications','title'));
+        return view('publications.index', compact('publications','title','first'));
     }
 
     // Manda subcategorías dependiendo la categoría seleccionada
     public function byCategory($id)
     {
-        return Subcategory::where('category_id', $id)->get();
+        return Subcategory::where('category_id', $id)->get(['title', 'id']);
     }
 }

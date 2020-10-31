@@ -66,4 +66,26 @@ class ContentService
             return $contents;
 
     }
+
+    public function order($request)
+    {
+        if ($request->get('order')) {
+            $order = trim($request->get('order'));
+        } else {
+            $order = 'created_at';
+        }
+
+        if ($request->get('orderby')) {
+            $orderby = trim($request->get('orderby'));
+        } else {
+            $orderby = 'desc';
+        }
+
+        $contents = Content::orderBy($order, $orderby)
+        ->with('category')
+        ->with('subcategory')
+        ->paginate(5);
+
+        return $contents;
+    }
 }

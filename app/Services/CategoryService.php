@@ -6,7 +6,7 @@ use App\Category;
 
 class CategoryService
 {
-    function search($search)
+    public function search($search)
     {
         $categories = Category::orderByDesc('created_at')
             ->where(function ($query) use ($search) {
@@ -17,4 +17,5 @@ class CategoryService
 
         return $categories;
     }
+
 }

@@ -15,10 +15,11 @@ class ContentController extends Controller
 {
     public function list(Request $request, ContentService $contentService)
     {
+
+
         if ($search = trim($request->get('search'))) {
 
             $contents = $contentService->search($request);
-
             if (count($contents)) {
                 return view('admin.contents', compact('contents', 'search'));
             } else {
@@ -27,7 +28,16 @@ class ContentController extends Controller
             }
         }
 
+        if ($order = trim($request->get('order'))) {
+
+            $contents = $contentService->order($request);
+
+                return view('admin.contents', compact('contents'));
+        }
+
         $contents = Content::orderBy('created_at', 'desc')
+            ->with('category')
+            ->with('subcategory')
             ->paginate(5);
         return view('admin.contents', compact('contents'));
     }
@@ -39,7 +49,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::get(['title', 'id']);
         return view('admin.create_content', compact('categories'));
     }
 

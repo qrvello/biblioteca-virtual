@@ -38,7 +38,7 @@
         @if ($content->subcategory)
 
             <p class="card-text">
-                <strong>Categoría:</strong>
+                <strong>Subategoría:</strong>
                 <a href="{{ action('GuestController@subcategory_show', $content->subcategory_id) }}">
                     {{ $content->subcategory->title }}
                 </a>
