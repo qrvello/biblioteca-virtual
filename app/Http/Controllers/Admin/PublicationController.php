@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PublicationRequest;
 use App\Services\PublicationService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Publication;
 use App\PublicationCategory;
@@ -25,13 +25,13 @@ class PublicationController extends Controller
         return view('admin.publications.create', compact('categories'));
     }
 
-    public function store(Request $request, PublicationService $publicationservice){
+    public function store(PublicationRequest $request, PublicationService $publicationService){
         $publication = new Publication();
 
         // Verifica si existe una imagen y lo guarda
         if ($request->hasFile('image')) {
             // Agrega la nueva imagen
-            $nameImage = $publicationservice->storeImage($request->file('image'));
+            $nameImage = $publicationService->storeImage($request->file('image'));
             $publication->image = $nameImage;
         }
 
@@ -47,15 +47,15 @@ class PublicationController extends Controller
         return view('admin.publications.edit', compact('publication', 'categories'));
     }
 
-    public function update(Request $request, Publication $publication, PublicationService $publicationservice){
+    public function update(PublicationRequest $request, Publication $publication, PublicationService $publicationService){
 
         if ($request->hasFile('image')) {
             // Delete old image
             $oldNameImage = $publication->image;
-            Storage::delete('imagenes/contenido/' . $oldNameImage);
+            Storage::delete('imagenes/publicaciones/' . $oldNameImage);
 
             // Add new image
-            $nameImage = $publicationservice->storeImage($request->file('image'));
+            $nameImage = $publicationService->storeImage($request->file('image'));
             $publication->image = $nameImage;
         }
 

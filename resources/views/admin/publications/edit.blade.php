@@ -46,7 +46,7 @@
                             {{-- Edición/Subida de imágen --}}
                                 @if ($publication->image)
                                     <div class="form-group col-md-6">
-                                        <img src="{{ asset('storage/imagenes/publicacion/' . $publication->image) }}"
+                                        <img src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}"
                                             width="100%">
                                     </div>
                                 @endif

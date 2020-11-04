@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Services;
-
-use App\Publication;
 use Intervention\Image\Facades\Image;
 
 
@@ -12,7 +10,7 @@ class PublicationService
     {
         // Resize and store image
         $nameImage = time() . '.' . $image->getClientOriginalName();
-        $rute = public_path('storage/imagenes/contenido/') . $nameImage;
+        $rute = public_path('storage/imagenes/publicaciones/') . $nameImage;
         Image::make($image)
             ->resize(900, null, function ($constraint) {
                 $constraint->aspectRatio();

@@ -6270,7 +6270,8 @@ a.close.disabled {
 
 .carousel-inner {
     position: relative;
-    width: 100%;
+    align-items: center;
+    width: 80%;
     overflow: hidden;
 }
 .carousel-inner::after {

@@ -6,7 +6,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form action="{{ url('/admin/publicacion/crear')}}" method="POST" autocomplete="off">
+        <form action="{{ url('/admin/publicacion/crear')}}" method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-md-center">
 

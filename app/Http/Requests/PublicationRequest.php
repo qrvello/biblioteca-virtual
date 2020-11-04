@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContentRequest extends FormRequest
+class PublicationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,7 @@ class ContentRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'description' => 'required',
-            'category_id' => 'required',
-            'subcategory_id' => 'exists:categories,id' // TODO validar subcategory_id pertenezca a category_id
+            'publication_category_id' => 'required'
         ];
     }
 }

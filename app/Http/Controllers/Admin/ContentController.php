@@ -15,10 +15,7 @@ class ContentController extends Controller
 {
     public function list(Request $request, ContentService $contentService)
     {
-
-
         if ($search = trim($request->get('search'))) {
-
             $contents = $contentService->search($request);
             if (count($contents)) {
                 return view('admin.contents', compact('contents', 'search'));
@@ -29,10 +26,8 @@ class ContentController extends Controller
         }
 
         if ($order = trim($request->get('order'))) {
-
             $contents = $contentService->order($request);
-
-                return view('admin.contents', compact('contents'));
+            return view('admin.contents', compact('contents'));
         }
 
         $contents = Content::orderBy('created_at', 'desc')
@@ -145,4 +140,5 @@ class ContentController extends Controller
         Storage::delete(['imagenes/contenido/' . $content->image, 'public/archivos/' . $content->file]);
         return back()->with('status', 'Contenido borrado satisfactoriamente.');
     }
+
 }

@@ -9,6 +9,7 @@ use App\Publication;
 use App\PublicationCategory;
 use App\Services\PublicationCategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
@@ -140,35 +141,21 @@ class GuestController extends Controller
     public function publications_categories()
     {
         $categories = PublicationCategory::orderByDesc('created_at')
-        ->paginate(6);
+            ->paginate(6);
         return view('publications.categories', compact('categories'));
     }
 
     // Muestra publicaciones de una categoría en especifico
-    public function publications_categories_show($category)
+    public function publications_categories_show(PublicationCategory $category)
     {
-        $first = Publication::orderByDesc('created_at')
-            ->where('publication_category_id', $category)
-            ->take(1)
-            ->get();
         $publications = Publication::orderByDesc('created_at')
-        ->where('publication_category_id', $category)
-        ->get();
+            ->where('publication_category_id', $category->id)
+            ->paginate(5);
 
-        if ($category == 1) {
-            $title = 'Noticias Escolares';
-        }
-        if($category == 2){
-            $title = 'Efemérides';
-        }
-        if($category == 3){
-            $title = 'Notas periodísticas';
-        }
-
-        return view('publications.index', compact('publications','title','first'));
+        return view('publications.index', compact('publications', 'category'));
     }
 
-    // Manda subcategorías dependiendo la categoría seleccionada
+    // Manda subcategorías al select dependiendo la categoría seleccionada
     public function byCategory($id)
     {
         return Subcategory::where('category_id', $id)->get(['title', 'id']);

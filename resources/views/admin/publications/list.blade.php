@@ -47,7 +47,7 @@
                                     <tr>
                                         @if ($publication->image)
                                             <td>
-                                                <img height="30%" class="" src="{{ asset('storage/imagenes/contenido/' . $publication->image) }}" alt="Card image cap">
+                                                <img height="30%" class="" src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}" alt="Card image cap">
                                             </td>
                                         @else
                                             <td></td>
