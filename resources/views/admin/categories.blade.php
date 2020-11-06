@@ -71,7 +71,6 @@
                                                             <x-slot name="message">¿Desea borrar la categoría?</x-slot>
                                                             <x-slot name="message"> Al borrar la subcategoría se borraran <strong>TODOS</strong> los contenidos que pertenezcan al mismo. ¿Desea borrarlo?</x-slot>
                                                         </x-alert-confirm-delete>
-                                                        {{-- // TODO arreglar alerta --}}
                                                     </form>
 
                                                     <a href="{{ url('admin/categoria/editar/' . $category->id) }}" type="button" class="btn">

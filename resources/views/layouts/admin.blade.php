@@ -26,9 +26,6 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ url('/admin')}}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ url('/') }}" class="nav-link">Principal</a>
                 </li>
             </ul>
@@ -62,16 +59,43 @@
                     <!-- Add icons to the links using the .nav-icon class
 					with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
-                        <a href="{{ url('/admin') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
                             <p>
-                                Panel
+                                Listar
+                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/contenidos') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Contenido</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/categorias') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Categorías</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/admin/subcategorias')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Subcategorías</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/admin/publicaciones')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Publicaciones</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
+                            <i class="nav-icon fas fa-plus"></i>
                             <p>
                                 Crear
                                 <i class="fas fa-angle-left right"></i>
@@ -100,41 +124,6 @@
                                 <a href="{{url('/admin/publicacion/crear')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Publicación</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Editar
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ url('/admin/contenidos') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Contenido</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/admin/categorias') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Categorías</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/admin/subcategorias')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Subcategorías</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{url('/admin/publicaciones')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Publicaciones</p>
                                 </a>
                             </li>
                         </ul>

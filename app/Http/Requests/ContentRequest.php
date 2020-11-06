@@ -27,7 +27,6 @@ class ContentRequest extends FormRequest
             'title' => 'required|max:255',
             'description' => 'required',
             'category_id' => 'required',
-            'subcategory_id' => 'exists:categories,id' // TODO validar subcategory_id pertenezca a category_id
         ];
     }
 }

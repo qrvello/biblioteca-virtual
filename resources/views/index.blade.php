@@ -93,7 +93,7 @@
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-book fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">Audiolibros y libros electrónicos</h4>
+                    <h4 class="my-3">Libros</h4>
                     <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                         architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>

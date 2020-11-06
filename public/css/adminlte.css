@@ -208,6 +208,7 @@ svg {
 }
 
 table {
+    table-layout: fixed;
   border-collapse: collapse;
 }
 
