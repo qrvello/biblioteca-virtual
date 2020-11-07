@@ -10,6 +10,7 @@ use App\Services\ContentService;
 use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ContentController extends Controller
 {
@@ -136,8 +137,10 @@ class ContentController extends Controller
 
     public function destroy(Content $content)
     {
+        File::delete('storage/imagenes/contenido/' . $content->image);
+        File::delete('storage/archivos/' . $content->file);
+
         Content::destroy($content->id);
-        Storage::delete(['imagenes/contenido/' . $content->image, 'public/archivos/' . $content->file]);
         return back()->with('status', 'Contenido borrado satisfactoriamente.');
     }
 
