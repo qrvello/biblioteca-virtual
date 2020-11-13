@@ -1,4 +1,4 @@
-<div class="shadow-sm card mb-3" onclick="modal({{ $publication }}, null, null, '{{($publication->created_at)->formatLocalized('%d de %B de %Y') }}')" data-toggle="modal" href="#modal">
+<div class="shadow-sm card mb-3" onclick="modal({{ $publication }}, '{{($publication->created_at)->formatLocalized('%d de %B de %Y') }}')" data-toggle="modal" href="#modal">
     @if ($publication->image)
     <img class="card-img-top" loading="lazy"
         src="{{ asset('/storage/imagenes/publicaciones/' . $publication->image) }}">

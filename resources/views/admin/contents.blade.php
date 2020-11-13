@@ -9,6 +9,26 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+        @if (isset($search))
+        {{-- Cantidad de resultados de la búsqueda
+                --}}
+        <div class="alert alert-info align-middle" role="alert">
+            Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
+        </div>
+
+        @endif
+
+        @if (isset($error))
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+        @endif
+
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -16,26 +36,6 @@
 
                         <div class="d-flex">
 
-                            @if (isset($search))
-                            {{-- Cantidad de resultados de la búsqueda
-                                    --}}
-                            <div class="alert alert-info align-middle" role="alert">
-                                Hay {{ $contents->total() }} resultados para tu búsqueda de '{{ $search }}'.
-                            </div>
-
-                            @endif
-
-                            @if (isset($error))
-                            <div class="alert alert-danger" role="alert">
-                                {{ $error }}
-                            </div>
-                            @endif
-
-                            @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                            @endif
 
                             <div class="ml-auto col-md-4 p-2">
                                 <form action="{{ url('/admin/contenidos') }}">
@@ -71,9 +71,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body table-responsive p-0">
+                    <div class="justify-content-center">
                         {{ $contents->withQueryString()->links() }}
-                        <table class="table table-bordered table-hover">
+
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <div class="card-body table-responsive p-0">
                             <thead>
                                 <tr>
                                     <th>Imagen</th>
@@ -89,41 +92,39 @@
                             <tbody>
 
                                 @foreach ($contents as $content)
-                                <tr data-toggle="modal"
-                                    onclick="modal( {{ $content }}, {{ $content->category }}, {{ $content->subcategory }} )"
-                                    data-target="#modal">
+                                <tr onclick="modal( {{ $content}} , '{{ Carbon\Carbon::parse($content->date_published)->format('d/m/Y')}}', true )">
 
                                     @if ($content->image)
-                                    <td>
+                                    <td data-toggle="modal" data-target="#modal">
                                         <img class="img-fluid"
                                             src="{{ asset('storage/imagenes/contenido/' . $content->image) }}"
                                             alt="Card image cap">
                                         </a>
                                     </td>
                                     @else
-                                    <td></td>
+                                    <td data-toggle="modal" data-target="#modal"></td>
                                     @endif
                                     </td>
-                                    <td>{{ $content->title }}</td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->title }}</td>
                                     @if ($content->author)
-                                    <td>{{ $content->author }}</td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->author }}</td>
                                     @else
-                                    <td></td>
+                                    <td data-toggle="modal" data-target="#modal"></td>
                                     @endif
-                                    <td>{{ $content->description }}</td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->description }}</td>
                                     @if ($content->subcategory)
-                                    <td>{{ $content->category->title }}</td>
-                                    <td>{{ $content->subcategory->title }}</td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->category->title }}</td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->subcategory->title }}</td>
                                     @else
-                                    <td>{{ $content->category->title }}</td>
-                                    <td></td>
+                                    <td data-toggle="modal" data-target="#modal">{{ $content->category->title }}</td>
+                                    <td data-toggle="modal" data-target="#modal"></td>
                                     @endif
-                                    <td>
+                                    <td data-toggle="modal" data-target="#modal">
                                         @if ($content->active)<span class="badge badge-success">Activo</span>
                                         @else<span class="badge badge-danger">No activo</span> @endif
                                     </td>
 
-                                    <td class="align-items-center">
+                                    <td>
                                         <form action="{{ url('/admin/contenido/borrar/' . $content->id) }}"
                                             method="POST">
                                             {{ csrf_field() }}
@@ -139,24 +140,21 @@
                                             </x-alert-confirm-delete>
                                         </form>
 
-                                        <a href="{{ url('/admin/contenido/editar/' . $content->id) }}" type="button"
-                                            class="btn">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn" data-toggle="modal"
-                                            data-target="#contentModal{{ $content->id }}">
-                                            <i class="fa fa-window-restore" aria-hidden="true"></i>
-                                        </button>
+                                        <span class="">
+                                            <a href="{{ url('/admin/contenido/editar/' . $content->id) }}" type="button"
+                                                class="btn">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                        </table>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!-- /.content -->

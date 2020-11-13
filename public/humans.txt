@@ -1,0 +1,24 @@
+
+/* TEAM */
+
+    Desarrollador: Santiago Nahuel Curvello.
+    Sitio web: santiagocurvello.com.ar
+    Contacto: santicurvello@gmail.com
+    Ubicacion: Moreno, Buenos Aires, Argentina.
+    Twitter: @qrvello
+    
+    Desarrollador: Luciano Leonel Ferreiros.
+    Ubicacion: La Matanza, Buenos Aires, Argentina.
+    Contacto: lucho.ferreiros.lf@gmail.com
+                     
+/* SITE */
+
+    Last update: 13/11/2020
+    Tecnologias: Laravel, PHP, HTML5, CSS3, JavaScript
+
+
+/* OTHERS */
+
+    Herramientas: Visual Studio Code
+   
+                        

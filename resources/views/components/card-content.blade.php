@@ -1,4 +1,4 @@
-<div onclick="modal( {{ $content }}, {{ $content->category }}, {{ $content->subcategory }} )" data-toggle="modal"
+<div onclick="modal( {{ $content }} )" data-toggle="modal"
     href="#modal" class="card mb-3 shadow">
 
     @if ($content->image)
