@@ -9,7 +9,6 @@ use App\Http\Requests\ContentRequest;
 use App\Services\ContentService;
 use App\Subcategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class ContentController extends Controller
@@ -74,7 +73,7 @@ class ContentController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image
             $oldNameImage = $content->image;
-            Storage::delete('imagenes/contenido/' . $oldNameImage);
+            File::delete('storage/imagenes/contenido/' . $oldNameImage);
 
             // Add new image
             $nameImage = $contentService->storeImage($request->file('image'));
@@ -84,7 +83,7 @@ class ContentController extends Controller
         if ($request->hasFile('file')) {
             // Delete old file
             $oldFilename = $content->file;
-            Storage::delete('public/archivos/' . $oldFilename);
+            File::delete('storage/archivos/' . $oldFilename);
 
             // Add new file
             $filename = $contentService->storeFile($request->file('file'));
@@ -101,7 +100,7 @@ class ContentController extends Controller
     {
         // Si existe la imagen, la borra de la base de datos y del storage
         if ($content->image) {
-            Storage::delete('imagenes/contenido/' . $content->image);
+            File::delete('storage/imagenes/contenido/' . $content->image);
             $content->image = null;
             $content->save();
             return back()->with('status', 'Imagen borrada exitosamente.');

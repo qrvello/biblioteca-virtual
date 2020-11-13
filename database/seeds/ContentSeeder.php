@@ -27,8 +27,5 @@ class ContentSeeder extends Seeder
             'category_id' => 3,
         ]);
 
-        factory(Content::class, 10)->create([
-            'category_id' => 8,
-        ]);
     }
 }

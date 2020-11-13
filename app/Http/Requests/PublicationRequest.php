@@ -26,7 +26,7 @@ class PublicationRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'description' => 'required',
-            'publication_category_id' => 'required'
+            'publication_category_id' => 'required',
         ];
     }
 }

@@ -3,10 +3,11 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\PublicationCategory;
+
 class Publication extends Model
 {
     protected $fillable = [
-        'title', 'image', 'description', 'publication_category_id', 'id'
+        'title', 'image', 'description', 'publication_category_id', 'id', 
     ];
 
     // Relación: una publicación pertenece a una categoría

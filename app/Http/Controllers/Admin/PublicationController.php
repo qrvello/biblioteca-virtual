@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PublicationRequest;
 use App\Services\PublicationService;
-use Illuminate\Support\Facades\Storage;
 use App\Publication;
 use App\PublicationCategory;
+use Illuminate\Support\Facades\File;
 
 class PublicationController extends Controller
 {
@@ -39,7 +39,7 @@ class PublicationController extends Controller
         $publication->description = $request->input('description');
         $publication->publication_category_id = $request->input('publication_category_id');
         $publication->save();
-        return back()->with('status', 'Publicación creada satisfactoriamente.');
+        return redirect('admin/publicaciones')->with('status', 'Publicación creada satisfactoriamente.');
     }
 
     public function edit(Publication $publication){
@@ -48,11 +48,11 @@ class PublicationController extends Controller
     }
 
     public function update(PublicationRequest $request, Publication $publication, PublicationService $publicationService){
-
+        
         if ($request->hasFile('image')) {
             // Delete old image
             $oldNameImage = $publication->image;
-            Storage::delete('imagenes/publicaciones/' . $oldNameImage);
+            File::delete('storage/imagenes/publicaciones/' . $oldNameImage);
 
             // Add new image
             $nameImage = $publicationService->storeImage($request->file('image'));
@@ -63,13 +63,14 @@ class PublicationController extends Controller
         $publication->description = $request->input('description');
         $publication->publication_category_id = $request->input('publication_category_id');
         $publication->save();
-        return back()->with('status', 'Publicación editada satisfactoriamente.');
+        return redirect('admin/publicaciones')->with('status', 'Publicación editada satisfactoriamente.');
 
     }
 
     public function destroy(Publication $publication){
         Publication::destroy($publication->id);
-        return back()->with('status', 'Publicación borrada satisfactoriamente.');
+        File::delete('storage/imagenes/publicaciones/' . $publication->image);
+        return redirect('admin/publicaciones')->with('status', 'Publicación borrada satisfactoriamente.');
     }
 
 }

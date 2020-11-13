@@ -15,6 +15,8 @@
             <x-carousel-publications :publications="$publications"/>
 
             {{$publications->links()}}
+
+            <x-modal-content/>
         @else
 
             <div class="alert alert-warning" role="alert">
@@ -24,5 +26,8 @@
         @endif
     </div>
 </section>
+@endsection
 
+@section('scripts')
+<script src="{{asset('js/modal_content.js')}}"></script>
 @endsection

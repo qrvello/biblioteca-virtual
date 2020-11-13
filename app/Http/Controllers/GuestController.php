@@ -7,6 +7,7 @@ use App\Subcategory;
 use App\Content;
 use App\Publication;
 use App\PublicationCategory;
+use App\Services\GuestService;
 use App\Services\PublicationCategoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +24,7 @@ class GuestController extends Controller
         $contents = Content::orderBy('created_at', 'desc')
             ->with('category')
             ->with('subcategory')
+            ->where('active', true)
             ->take(2)
             ->get();
 
@@ -34,53 +36,31 @@ class GuestController extends Controller
         return view('nosotros');
     }
 
-    public function contents(Request $request)
+    public function contents(Request $request, GuestService $guestService)
     {
-        if ($request) {
+        if ($request->search) {
             // Si existe la variable search en get, usa el método search, sino devuelve la vista con todos los contenidos.
             $search = trim($request->get('search'));
             if ($search) {
-                return $this->search($search);
-            } else {
-                $contents = Content::where('active', 1)
-                    ->with('category')
-                    ->with('subcategory')
-                    ->orderBy('created_at', 'desc')
-                    ->paginate(6);
-                return view('content.index', compact('contents'));
+                return $guestService->search($search);
             }
+        } else {
+            $contents = Content::where('active', 1)
+                ->with('category')
+                ->with('subcategory')
+                ->orderBy('created_at', 'desc')
+                ->paginate(6);
+            return view('content.index', compact('contents'));
         }
     }
 
     public function download_file(Content $content)
     {
-        return response()->download(public_path('storage/archivos/' . $content->file));
+        $extension = \File::extension($content->file);
+        return response()->download(public_path('storage/archivos/' . $content->file), $content->title . $extension);
     }
 
-    public function search($search)
-    {
-        $contents = Content::where('active', 1)
-            ->where(function ($query) use ($search) {
-                $query->where('title', 'like', "%$search%")
-                    ->orWhere('editorial', 'like', "%$search%")
-                    ->orWhere('description', 'like', "%$search%")
-                    ->orWhere('date_published', 'like', "%$search%")
-                    ->orWhere('matter', 'like', "%$search%")
-                    ->orWhere('author', 'like', "%$search%");
-            })
-            ->with('category')
-            ->with('subcategory')
-            ->orderByDesc('created_at')
-            ->orderByDesc('id')
-            ->paginate(6);
 
-        if (count($contents) >= 1) {
-            return view('content.index', compact('contents', 'search'));
-        } else {
-            $error = "No hay coincidencias con tu búsqueda de '$search'.";
-            return view('content.index', compact('contents', 'error'));
-        }
-    }
 
     public function categories()
     {

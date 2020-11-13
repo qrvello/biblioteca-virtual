@@ -49,8 +49,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/nosotros') }}">Institución</a>
                     </li>
                     @auth
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Panel</a>
-                        </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/admin') }}">Panel</a>
+                    </li>
                     @endauth
                 </ul>
 
@@ -64,31 +64,29 @@
 
     <!-- Footer-->
     <footer class="footer py-4">
-        <div class="">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="container">
-                        <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
-                            <div class="p-2 bd-highlight"><b>Biblioteca</b> "Islas Malvinas"<br><br>
-                                Tel.: <a href="tel:4450-5044">4450-5044</a><br>
-                                ANEXO: Miguel Cane 2991. Tel.: <a href="tel:4460-5748">4460-5748</a><br>
-                                Bermúdez 2936, Villa Luzuriaga, Provincia de Buenos Aires - C.P. 1753<br>
-                                Correo electrónico: <a
-                                    href="mailto:bibliotecaees5069@gmail.com">bibliotecaees5069@gmail.com</a><br>
-                                Cuando se renueven las actividades escolares van a poder acercarse de lunes a viernes,
-                                por la mañana de 8:00 a 11:30 hs. y a la tarde de 13:30 a 17:00 hs</div>
-                            <div class="p-2 bd-highlight">Copyright © Biblioteca Digital 2020</div>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="d-flex text-center flex-column mb-3">
+                <div class="p-2">
+                    <p>
+                        <b>Biblioteca</b> Islas Malvinas
+                    </p>
+                    <p>
+                        Bermúdez 2936, Villa Luzuriaga, Provincia de Buenos Aires - C.P. 1753.
+                    </p>
+                    <b>Correo electrónico: </b><a
+                        href="mailto:bibliotecaees5069@gmail.com">bibliotecaees5069@gmail.com</a>
+                    <p>
+                    </p>
+                    <p>
+                        Cuando se renueven las actividades escolares van a poder acercarse los alumnos de lunes a
+                        viernes, por
+                        la mañana de 8:00 a 11:30 hs. y a la tarde de 13:30 a 17:00 hs.
+                    </p>
                 </div>
-                <div class="col-md-4">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13125.957572122856!2d-58.578837!3d-34.667596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11314b4ab3608e8c!2sEscuela%20De%20Educaci%C3%B3n%20Secundaria%20N%C2%BA5%20%22Islas%20Malvinas%22!5e0!3m2!1ses-419!2sar!4v1602026100503!5m2!1ses-419!2sar"
-                        width="400" height="200" frameborder="0" style="border:0; border-radius: 2rem;"
-                        allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                </div>
+                <div class="p-2">Copyright © Biblioteca Digital 2020</div>
             </div>
         </div>
+
     </footer>
 
     {{-- Scripts --}}
@@ -99,7 +97,8 @@
     <!-- Core theme JS-->
     <script src=" {{ asset('js/scripts.js') }}"></script>
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-
+    
+    @yield('scripts')
+    
 </body>
-
 </html>

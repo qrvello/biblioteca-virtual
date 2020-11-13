@@ -3,8 +3,7 @@
     <div class="carousel-inner mx-auto">
         @foreach ($publications as $publication)
         <div class="carousel-item @if($publication == $publications->first()) active @endif">
-            <x-card-publication-full :publication="$publication" />
-            <x-modal-publication :publication="$publication" />
+            <x-card-publication :publication="$publication" />
         </div>
         @endforeach
     </div>

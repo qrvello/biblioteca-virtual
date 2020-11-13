@@ -89,14 +89,15 @@
                             <tbody>
 
                                 @foreach ($contents as $content)
-                                <tr>
+                                <tr data-toggle="modal"
+                                    onclick="modal( {{ $content }}, {{ $content->category }}, {{ $content->subcategory }} )"
+                                    data-target="#modal">
 
                                     @if ($content->image)
                                     <td>
-                                        <a href="" data-toggle="modal" data-target="#contentModal{{ $content->id }}">
-                                            <img class="img-fluid"
-                                                src="{{ asset('storage/imagenes/contenido/' . $content->image) }}"
-                                                alt="Card image cap">
+                                        <img class="img-fluid"
+                                            src="{{ asset('storage/imagenes/contenido/' . $content->image) }}"
+                                            alt="Card image cap">
                                         </a>
                                     </td>
                                     @else
@@ -147,90 +148,6 @@
                                             data-target="#contentModal{{ $content->id }}">
                                             <i class="fa fa-window-restore" aria-hidden="true"></i>
                                         </button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="contentModal{{ $content->id }}" tabindex="-1"
-                                            role="dialog" aria-labelledby="" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h2 class="modal-title" id="">{{ $content->title }}</h2>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        @if($content->image)
-                                                        <img width="100%" class=""
-                                                            src="{{ asset('storage/imagenes/contenido/' . $content->image) }}"
-                                                            alt="Card image cap">
-                                                        @endif
-                                                        <div class="modal-body">
-                                                            <ul class="list-inline">
-                                                                <li>Descripción: {{ $content->description }}</li>
-                                                                <li>Fecha de creación:
-                                                                    {{ $content->created_at->format('d/m/Y') }}
-                                                                </li>
-                                                                <li>Fecha de actualización:
-                                                                    {{ $content->updated_at->format('d/m/Y') }}
-                                                                </li>
-                                                                @if($content->author)
-                                                                <li>Autor/a: {{ $content->author }}</li>
-                                                                @endif
-                                                                @if($content->editorial)
-                                                                <li>Editorial: {{ $content->editorial }}</li>
-                                                                @endif
-                                                                @if($content->matter)
-                                                                <li>Materia: {{ $content->matter }}</li>
-                                                                @endif
-                                                                @if ($content->subcategory)
-                                                                <li>Subcategoría: {{ $content->subcategory->title }}
-                                                                </li>
-                                                                @else
-                                                                <li>Categoría: {{ $content->category->title }}</li>
-                                                                @endif
-                                                                @if ($content->description)
-                                                                <li>Descripción{{ $content->description }}</li>
-                                                                @endif
-                                                                @if ($content->editorial)
-                                                                <li>Editorial: {{ $content->editorial }}</li>
-                                                                @endif
-                                                                @if ($content->file)
-                                                                <li>Archivo: {{ $content->file }}</li>
-                                                                @endif
-
-                                                                @if ($content->matter)
-                                                                <li>Materia: {{ $content->matter }}</li>
-                                                                @endif
-
-                                                                @if ($content->link)
-                                                                <li>Link: {{ $content->link }}</li>
-                                                                @endif
-
-                                                                @if ($content->access)
-                                                                <li>Acceso: {{ $content->access }}</li>
-                                                                @endif
-
-                                                                @if ($content->level)
-                                                                <li>Nivel: {{ $content->level }}</li>
-                                                                @endif
-
-                                                                @if ($content->cdd)
-                                                                <li>CDD {{ $content->cdd }}</li>
-                                                                @endif
-
-                                                                @if ($content->isbn)
-                                                                <li>{{ $content->isbn }}</li>
-                                                                @endif
-
-                                                                @if ($content->access)
-                                                                <li>Acceso: {{ $content->access }}</li>
-                                                                @endif
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -243,7 +160,11 @@
     </div>
 </section>
 <!-- /.content -->
-
+<x-modal-content />
 </div>
 <!-- /.content-wrapper -->
+@endsection
+
+@section('scripts')
+<script src="{{asset('js/modal_content.js')}}"></script>
 @endsection

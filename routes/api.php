@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/categoria/{id}/subcategorias', 'GuestController@byCategory');
+Route::get('/content/{id}', 'GuestController@content');

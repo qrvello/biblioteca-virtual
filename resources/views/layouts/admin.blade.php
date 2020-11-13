@@ -165,4 +165,5 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('admins/js/adminlte.js')}}"></script>
     <script src="{{ asset('js/admin/app.js')}}"></script>
+    @yield('scripts')
 </body>
