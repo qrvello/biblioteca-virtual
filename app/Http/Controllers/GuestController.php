@@ -57,7 +57,7 @@ class GuestController extends Controller
     public function download_file(Content $content)
     {
         $extension = \File::extension($content->file);
-        return response()->download(public_path('storage/archivos/' . $content->file), $content->title . $extension);
+        return response()->download(public_path('storage/archivos/' . $content->file), $content->title . '.' . $extension);
     }
 
 

@@ -70,7 +70,7 @@ function modal(content, date, admin = false) {
     if (content['file']) {
         modal_body.innerHTML += /*html*/ `
             <div class="mt-3">
-                <a class="btn btn-outline-info" href="descargar/${content['id']}">
+                <a class="btn btn-outline-info" href="/descargar/${content['id']}">
                     <i class="fas fa-download"></i>
                     Descargar
                 </a>

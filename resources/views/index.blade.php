@@ -84,35 +84,32 @@
         <!-- Servicios-->
         <div class="text-center mt-5">
             <h2 class="section-heading text-uppercase">Contenido</h2>
-            <h3 class="section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
         <div class="row text-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-book fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Libros</h4>
-                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                    architecto quo inventore harum ex magni, dicta impedit.</p>
+                <p class="text-dark">Son material exclusivo sobre la documentación de libros en formato papel y formato digital.</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-university fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Material de estudio</h4>
-                <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                    architecto quo inventore harum ex magni, dicta impedit.</p>
+                <p class="text-dark">Será acompañado de pdf's, links entre otra información hipertextual.</p>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <span class="fa-stack fa-4x">
                     <i class="fas fa-circle fa-stack-2x text-primary"></i>
                     <i class="fas fa-play-circle fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Videos</h4>
                 <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-                    architecto quo inventore harum ex magni, dicta impedit.</p>
+                    architecto quo inventore harum ex magni, dicta impedit.</p> --}}
             </div>
         </div>
     </div>

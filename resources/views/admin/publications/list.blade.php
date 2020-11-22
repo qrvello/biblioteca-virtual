@@ -65,9 +65,8 @@
                                                         </button>
                                                         <!-- Modal -->
                                                         <x-alert-confirm-delete :id="$publication->id">
-                                                            <x-slot name="title">Borrar subcategoría</x-slot>
-                                                            <x-slot name="message">¿Desea borrar la categoría?</x-slot>
-                                                            <x-slot name="message"> Al borrar la subcategoría se borraran <strong>TODOS</strong> los contenidos que pertenezcan al mismo. ¿Desea borrarlo?</x-slot>
+                                                            <x-slot name="title">Borrar publicación</x-slot>
+                                                            <x-slot name="message">¿Desea borrar la publicación?</x-slot>
                                                         </x-alert-confirm-delete>
                                                     </form>
                                                     <a href="{{ url('admin/publicacion/editar/' . $publication->id) }}" type="button" class="btn">
