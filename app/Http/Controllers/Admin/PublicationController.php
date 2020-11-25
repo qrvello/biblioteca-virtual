@@ -37,6 +37,7 @@ class PublicationController extends Controller
 
         $publication->title = $request->input('title');
         $publication->description = $request->input('description');
+        $publication->link = $request->input('link');
         $publication->publication_category_id = $request->input('publication_category_id');
         $publication->save();
         return redirect('admin/publicaciones')->with('status', 'Publicación creada satisfactoriamente.');
@@ -61,6 +62,7 @@ class PublicationController extends Controller
 
         $publication->title = $request->input('title');
         $publication->description = $request->input('description');
+        $publication->link = $request->input('link');
         $publication->publication_category_id = $request->input('publication_category_id');
         $publication->save();
         return redirect('admin/publicaciones')->with('status', 'Publicación editada satisfactoriamente.');

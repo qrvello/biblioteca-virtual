@@ -39,6 +39,7 @@
                                         <th>Titulo</th>
                                         <th>Descripción</th>
                                         <th>Categoría</th>
+                                        <th>Link</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -47,7 +48,7 @@
                                     <tr>
                                         @if ($publication->image)
                                             <td>
-                                                <img height="30%" class="" src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}" alt="Card image cap">
+                                                <img class="img-fluid" src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}" alt="Card image cap">
                                             </td>
                                         @else
                                             <td></td>
@@ -55,6 +56,7 @@
                                         <td>{{ $publication->title }}</td>
                                         <td>{{ $publication->description }}</td>
                                         <td>{{ $publication->publication_category->name }}</td>
+                                        <td><a href="{{ $publication->link }}">{{ $publication->link }}</a></td>
                                         <td class="admin-button">
                                             <form action="{{ url('admin/publicacion/borrar/' . $publication->id) }}"
                                                 method="POST">

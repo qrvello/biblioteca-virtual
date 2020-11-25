@@ -25,13 +25,6 @@
 
                     <div class="card-body">
                         <div class="form-row">
-                            @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger">
-                                {{ $error }}
-                            </div>
-                            @endforeach
-                            @endif
                             <div class="form-group col-md-12">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -49,6 +42,9 @@
                             {{-- Subida de imágenes --}}
                             <div class="form-group col-md-12">
                                 <x-upload-image />
+                                @error('image')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group col-md-6">
@@ -64,6 +60,11 @@
                             <div class="form-group col-md-6">
                                 <label for="editorial">Editorial</label>
                                 <input type="text" class="form-control" name="editorial">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="link">Link</label>
+                                <input type="text" class="form-control" name="link">
                             </div>
 
                             <div class="form-group col-md-6">

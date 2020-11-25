@@ -7,6 +7,12 @@
     <div class="card-body d-flex flex-column">
         <h3 class="card-title">{{ $publication->title }}</h3>
         <p class=card-text>{{ $publication->description }}</p>
+        @if ($publication->link)
+        <p class="card-text">
+            <strong>Link: </strong>
+            <a target="_blank" href="{{ $publication->link }}">{{ $publication->link }}</a>
+        </p>
+        @endif
         <div class="card-text mt-auto">
             <p>
                 <strong>{{ ($publication->created_at)->formatLocalized('%d de %B de %Y') }}</strong>

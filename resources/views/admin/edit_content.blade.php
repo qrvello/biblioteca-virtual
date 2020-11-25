@@ -53,15 +53,24 @@
                                     <div class="input-group">
                                         @if ($content->image)
                                             <label for="image">Imagen</label>
-                                            <input type="file" name="image">
+                                            <input type="file" name="image" accept="image/png, image/jpeg">
+                                            @error('image')
+                                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                            @enderror
                                         @else
                                             <x-upload-image />
+                                            @error('image')
+                                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                            @enderror
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="file">Archivo</label>
                                     <input type="file" class="form-control" value="{{ $content->file }} " name="file">
+                                    @error('file')
+                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">

@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="publication_category_id">Categoría</label>
-                            <select class="custom-select" name="publication_category_id">
+                            <select required class="custom-select @error('publication_category_id') is-invalid @enderror" name="publication_category_id">
                                 {{-- Foreach de las categorías, dejando seleccionada la que ya tenía --}}
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" @if ($category->id ==
@@ -46,26 +46,48 @@
                         </div>
                         {{-- Edición/Subida de imágen --}}
                         @if ($publication->image)
-                        <div class="form-group col-md-6">
-                            <img src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}"
+                        <div class="form-group col-md-3">
+                            <img class="img-fluid" src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}"
                                 width="100%">
                         </div>
-                        <label for="image">Imagen</label>
-                        <input type="file" name="image">
+                        <div class="form-group col-md-9">
+                            <label for="image">Imagen</label>
+                            <input type="file" name="image">
+                        </div>
+                        @error('image')
+                        <div class="alert alert-danger mt-3">{{ $message }}</div>
+                        @enderror
                         @else
                         <div class="form-group col-md-12">
                             <x-upload-image />
+                            @error('image')
+                            <div class="alert alert-danger mt-3">{{ $message }}</div>
+                            @enderror
                         </div>
                         @endif
                         <div class="form-group">
                             <label for="title">Titulo</label>
                             <input type="text" class="form-control" name="title" value="{{ $publication->title }}"
-                                placeholder="">
+                                placeholder="Título" required>
+                                @error('title')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="form-group">
                             <label for="description">Descripción</label>
-                            <textarea class="form-control" name="description"
-                                rows="3">{{ $publication->description }}</textarea>
+                            <textarea required
+                                class="form-control @error('description') is-invalid @enderror"
+                                name="description"
+                                rows="3"
+                                placeholder="Descripción">{{ $publication->description }}</textarea>
+                                @error('description')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="link">Link</label>
+                            <input type="text" class="form-control" value="{{ $publication->link }}" name="link"
+                                placeholder="https://www.ejemplo.com.ar">
                         </div>
                     </div>
                     <div class="form-group text-center">
