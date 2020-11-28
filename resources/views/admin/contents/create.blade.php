@@ -64,7 +64,11 @@
 
                             <div class="form-group col-md-6">
                                 <label for="link">Link</label>
-                                <input type="text" class="form-control" name="link">
+                                <input type="url" class="form-control" name="link">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="yt_link">Link de video de YouTube</label>
+                                <input type="url" class="form-control" name="yt_link">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -94,6 +98,7 @@
                                 <label for="matter">Materia</label>
                                 <input type="text" class="form-control" name="matter">
                             </div>
+                            
                             <div class="form-group col-md-6">
                                 <label for="level">Nivel</label>
                                 <input type="text" class="form-control" name="level">

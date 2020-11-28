@@ -49,8 +49,7 @@
                         <div class="form-group">
                             <label for="title">Titulo</label>
                             <input type="text" value="{{ old('title') }}"
-                                class="form-control @error('title') is-invalid @enderror" name="title"
-                                placeholder="Título" required>
+                                class="form-control @error('title') is-invalid @enderror " name="title" required>
                             @error('title')
                             <div class="alert alert-danger mt-3">{{ $message }}</div>
                             @enderror
@@ -61,7 +60,8 @@
                                 required
                                 class="form-control @error('description') is-invalid @enderror"
                                 name="description"
-                                rows="3" placeholder="Descripción">
+                                rows="3"
+                                placeholder="Descripcion">
                                 {{ old('description') }}
                             </textarea>
                             @error('description')
@@ -70,8 +70,12 @@
                         </div>
                         <div class="form-group">
                             <label for="link">Link</label>
-                            <input type="text" class="form-control" value="{{ old('link') }}" name="link"
+                            <input type="url" class="form-control" value="{{ old('link') }}" name="link"
                                 placeholder="https://www.ejemplo.com.ar">
+                        </div>
+                        <div class="form-group">
+                            <label for="yt_link">Link de video de YouTube</label>
+                            <input type="url" class="form-control" name="yt_link" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                         </div>
                     </div>
                     <div class="form-group text-center">

@@ -34,7 +34,7 @@ class ContentController extends Controller
             ->with('category')
             ->with('subcategory')
             ->paginate(5);
-        return view('admin.contents', compact('contents'));
+        return view('admin.contents.list', compact('contents'));
     }
 
     /**
@@ -45,7 +45,7 @@ class ContentController extends Controller
     public function create()
     {
         $categories = Category::get(['title', 'id']);
-        return view('admin.create_content', compact('categories'));
+        return view('admin.contents.create', compact('categories'));
     }
 
     /**
@@ -58,7 +58,7 @@ class ContentController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::where('category_id', $content->category_id)->get();
-        return view('admin.edit_content', compact('content', 'categories', 'subcategories'));
+        return view('admin.contents.edit', compact('content', 'categories', 'subcategories'));
     }
 
     /**
@@ -104,6 +104,19 @@ class ContentController extends Controller
             $content->image = null;
             $content->save();
             return back()->with('status', 'Imagen borrada exitosamente.');
+        } else {
+            return back();
+        }
+    }
+
+    public function destroy_file(Content $content)
+    {
+        // Si existe la imagen, la borra de la base de datos y del storage
+        if ($content->file) {
+            File::delete('storage/archivos/' . $content->file);
+            $content->file = null;
+            $content->save();
+            return back()->with('status', 'Archivo borrado exitosamente.');
         } else {
             return back();
         }

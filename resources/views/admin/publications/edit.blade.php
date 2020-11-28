@@ -46,25 +46,33 @@
                         </div>
                         {{-- Edición/Subida de imágen --}}
                         @if ($publication->image)
+                        
                         <div class="form-group col-md-3">
-                            <img class="img-fluid" src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}"
-                                width="100%">
+                            <img src="{{ asset('storage/imagenes/publicaciones/' . $publication->image) }}" width="100%">
                         </div>
-                        <div class="form-group col-md-9">
-                            <label for="image">Imagen</label>
-                            <input type="file" name="image">
+
+                        <div class="form-group col-md-6 my-auto">
+                            <a class="btn btn-outline-danger" onclick="event.preventDefault();
+                                                        document.getElementById('delete-image-form').submit();">Borrar imagen</a>
                         </div>
-                        @error('image')
-                        <div class="alert alert-danger mt-3">{{ $message }}</div>
-                        @enderror
-                        @else
-                        <div class="form-group col-md-12">
-                            <x-upload-image />
-                            @error('image')
-                            <div class="alert alert-danger mt-3">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        
                         @endif
+                        <div class="form-group col-md-12">
+                            <div class="input-group">
+                                @if ($publication->image)
+                                <label for="image">Imagen</label>
+                                <input type="file" name="image" accept="image/png, image/jpeg">
+                                @error('image')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                @else
+                                <x-upload-image />
+                                @error('image')
+                                <div class="alert alert-danger mt-3">{{ $message }}</div>
+                                @enderror
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="title">Titulo</label>
                             <input type="text" class="form-control" name="title" value="{{ $publication->title }}"
@@ -86,8 +94,12 @@
                         </div>
                         <div class="form-group">
                             <label for="link">Link</label>
-                            <input type="text" class="form-control" value="{{ $publication->link }}" name="link"
+                            <input type="url" class="form-control" value="{{ $publication->link }}" name="link"
                                 placeholder="https://www.ejemplo.com.ar">
+                        </div>
+                        <div class="form-group">
+                            <label for="yt_link">Link de video de YouTube</label>
+                            <input type="url" class="form-control" @if($publication->yt_link) value="{{ 'https://www.youtube.com/watch?v='.$publication->yt_link }}" @endif placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" name="yt_link">
                         </div>
                     </div>
                     <div class="form-group text-center">
@@ -108,6 +120,9 @@
         </div>
 
         </div>
+    </form>
+    <form id="delete-image-form" action="{{ url('/admin/publicacion/borrar/imagen/'.$publication->id) }}" method="POST">
+        @csrf
     </form>
 </section>
 <!-- /.content -->

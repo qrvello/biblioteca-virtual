@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Content;
 use App\Category;
+use App\Http\Requests\SubcategoryRequest;
 use App\Subcategory;
 
 class SubcategoryController extends Controller
@@ -13,54 +13,41 @@ class SubcategoryController extends Controller
     public function list()
     {
         $subcategories = Subcategory::orderBy('category_id', 'asc')
-        ->with('category')
-        ->paginate(9);
-
-        return view('admin.subcategories', compact('subcategories'));
+            ->with('category')
+            ->paginate(9);
+        return view('admin.subcategories.list', compact('subcategories'));
     }
 
     public function create()
     {
         $categories = Category::whereHas('subcategories')->orWhereDoesntHave('contents')->get();
-
-        return view('admin.create_subcategory', compact('categories'));
+        return view('admin.subcategories.create', compact('categories'));
     }
 
     public function edit(Subcategory $subcategory)
     {
-        return view('admin.edit_subcategory', compact('subcategory'));
+        return view('admin.subcategories.edit', compact('subcategory'));
     }
 
-    public function update(Request $request, Subcategory $subcategory)
+    public function update(SubcategoryRequest $request, Subcategory $subcategory)
     {
-        $subcategory->title = $request->input('title');
-        $subcategory->description = $request->input('description');
-        $subcategory->save();
+        $subcategory->update($request->all());
 
-        $status = "Editaste la subcategoría correctamente";
-        return back()->with(compact('status'));
+        return redirect('/admin/subcategorias')->with('status', 'Actualizaste la subcategoría correctamente.');
     }
 
-    public function store(Request $request)
+    public function store(SubcategoryRequest $request)
     {
         $subcategory = new Subcategory();
-        $subcategory->category_id = $request->input('category_id');
-        $subcategory->title = $request->input('title');
-        $subcategory->description = $request->input('description');
-
+        $subcategory->fill($request->all());
         $subcategory->save();
-        $status = "Agregaste la subcategoría correctamente";
-        return back()->with(compact('status'));
+
+        return redirect('/admin/subcategorias')->with('status', 'Creaste la subcategoría correctamente.');
     }
 
-    public function destroy($id)
+    public function destroy(Subcategory $subcategory)
     {
-        Subcategory::destroy($id);
+        Subcategory::destroy($subcategory->id);
         return redirect('/admin/subcategorias');
-
-    }
-
-    public function show()
-    {
     }
 }

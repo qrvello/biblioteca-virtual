@@ -27,6 +27,23 @@ class ContentRequest extends FormRequest
             'title' => 'required|max:255',
             'description' => 'required',
             'category_id' => 'required',
+            'image' => 'image'
+        ];
+    }
+
+    /**
+     * Retornan los mensajes de error.
+     *
+     * @return array
+     */
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'El campo título es requerido.',
+            'description.required' => 'El campo descripción es requerido.',
+            'category_id.required' => 'Seleccionar una categoría es requerido.',
+            'image.image' => 'El archivo a subir debe ser una imagen.',
         ];
     }
 }

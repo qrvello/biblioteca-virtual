@@ -4,16 +4,22 @@ const modal_body = document.getElementById("modal-body");
 function modal(content, date, admin = false) {
 
     modal_body.innerHTML = /*html*/ `<h2 class="text-uppercase">${content.title}</h2><br>`;
-
     // Si el contenido tiene una categoria significa que es un contenido
     if (content.image && content.category) {
         modal_body.innerHTML += /*html*/ `<img class="img-fluid d-block mx-auto" loading="lazy" src='/storage/imagenes/contenido/${content.image}' />`
     }
-    // TODO Agregar campos para panel administrativo
+    
     // Si el contenido no tiene una categoria significa que es un contenido
-    console.log(content.category)
     if (content.image && content.category === undefined) {
         modal_body.innerHTML += /*html*/ `<img class="img-fluid d-block mx-auto" loading="lazy" src='/storage/imagenes/publicaciones/${content.image}' />`
+    }
+
+    if (content.yt_link) {
+        modal_body.innerHTML += /*html*/
+        `<div class="embed-responsive embed-responsive-16by9 my-3">
+            <iframe class="embed-responsive-item" loading="lazy" src="https://www.youtube.com/embed/${content.yt_link}" allowfullscreen></iframe>
+        </div>
+        `
     }
 
     if (content.description) {
@@ -51,10 +57,10 @@ function modal(content, date, admin = false) {
         }
     }
     if (content.link) {
-        modal_body.innerHTML += /*html*/ `Link: <a href="${content.link}">${content.link}</a><br>`
+        modal_body.innerHTML += /*html*/ `<p class="card-text">Link: <a href="${content.link}">${content.link}</a></p>`
     }
     if (date) {
-        modal_body.innerHTML += /*html*/ `Fecha de publicacion: <br>${date}</br><br>`
+        modal_body.innerHTML += /*html*/ `Fecha de publicacion: ${date}<br>`
     }
 
     if (content.subcategory) {

@@ -92,7 +92,8 @@
                             <tbody>
 
                                 @foreach ($contents as $content)
-                                <tr onclick="modal( {{ $content}} , '{{ Carbon\Carbon::parse($content->date_published)->format('d/m/Y')}}', true )">
+                                <tr
+                                    onclick="modal( {{ $content}} , '{{ Carbon\Carbon::parse($content->date_published)->format('d/m/Y')}}', true )">
 
                                     @if ($content->image)
                                     <td data-toggle="modal" data-target="#modal">
@@ -124,7 +125,7 @@
                                         @else<span class="badge badge-danger">No activo</span> @endif
                                     </td>
 
-                                    <td>
+                                    <td class="my-auto">
                                         <form action="{{ url('/admin/contenido/borrar/' . $content->id) }}"
                                             method="POST">
                                             {{ csrf_field() }}

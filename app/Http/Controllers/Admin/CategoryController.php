@@ -26,17 +26,17 @@ class CategoryController extends Controller
         $categories = Category::orderByDesc('created_at')
             ->paginate(15);
 
-        return view('admin.categories', compact('categories'));
+        return view('admin.categories.list', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.create_category');
+        return view('admin.categories.create');
     }
 
     public function edit(Category $category)
     {
-        return view('admin.edit_category', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     public function update(CategoryRequest $request, Category $category)

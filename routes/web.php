@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/contenido/editar/{content}', 'Admin\ContentController@edit')
         ->where('content', '[0-9]+');
     Route::post('/admin/contenido/borrar/imagen/{content}', 'Admin\ContentController@destroy_image');
+    Route::post('/admin/contenido/borrar/archivo/{content}', 'Admin\ContentController@destroy_file');
 
     Route::get('/admin/publicaciones', 'Admin\PublicationController@list');
     Route::get('/admin/publicacion/crear', 'Admin\PublicationController@create');
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function () {
     ->where('publication', '[0-9]+');
     Route::get('/admin/publicacion/editar/{publication}', 'Admin\PublicationController@edit')
     ->where('publication', '[0-9]+');
+    Route::post('/admin/contenido/borrar/publicacion/{publication}', 'Admin\PublicationController@destroy_image');
+
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -22,10 +22,10 @@
                                     </div>
                                 </h3>
                             @endif
-                            @if ($error ?? '')
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $error }}
-                                </div>
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
                             @endif
                             <div class="card-tools">
                                 <form action="{{ url('/admin/categorias') }}">

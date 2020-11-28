@@ -39,6 +39,7 @@ class PublicationController extends Controller
         $publication->description = $request->input('description');
         $publication->link = $request->input('link');
         $publication->publication_category_id = $request->input('publication_category_id');
+        $publication->yt_link = $request->input('yt_link');
         $publication->save();
         return redirect('admin/publicaciones')->with('status', 'Publicación creada satisfactoriamente.');
     }
@@ -61,6 +62,7 @@ class PublicationController extends Controller
         }
 
         $publication->title = $request->input('title');
+        $publication->yt_link = $request->input('yt_link');
         $publication->description = $request->input('description');
         $publication->link = $request->input('link');
         $publication->publication_category_id = $request->input('publication_category_id');
@@ -75,4 +77,16 @@ class PublicationController extends Controller
         return redirect('admin/publicaciones')->with('status', 'Publicación borrada satisfactoriamente.');
     }
 
+    public function destroy_image(Publication $publication)
+    {
+        // Si existe la imagen, la borra de la base de datos y del storage
+        if ($publication->image) {
+            File::delete('storage/imagenes/publicaciones/' . $publication->image);
+            $publication->image = null;
+            $publication->save();
+            return back()->with('status', 'Imagen borrada exitosamente.');
+        } else {
+            return back();
+        }
+    }
 }

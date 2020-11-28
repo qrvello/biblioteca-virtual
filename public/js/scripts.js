@@ -77,3 +77,5 @@ inputSearch.addEventListener("keyup", function (event) {
         document.getElementById("search_button").click();
     }
 });
+
+
