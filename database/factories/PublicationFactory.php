@@ -10,6 +10,6 @@ $factory->define(Publication::class, function (Faker $faker) {
         // 'user_id'=>random_int(1, 5),
         'title'=>$faker->sentence(2),
         'description'=>$faker->text(30),
-        'publication_category_id'=> random_int(1, 3)
+        'publication_category_id'=> random_int(1, 2)
     ];
 });

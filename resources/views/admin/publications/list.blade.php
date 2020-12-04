@@ -61,7 +61,7 @@
                                     <td>{{ $publication->publication_category->name }}</td>
                                     <td><a href="{{ $publication->link }}">{{ $publication->link }}</a></td>
                                     <td>
-                                        @if($publication->link)
+                                        @if($publication->yt_link)
                                             <a
                                             href="{{ 'https://www.youtube.com/watch?v='.$publication->yt_link }}">{{ 'https://www.youtube.com/watch?v='.$publication->yt_link }}</a>
                                         @endif

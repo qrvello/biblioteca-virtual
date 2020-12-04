@@ -57,7 +57,7 @@
         <div class="text-center mb-5">
             <h2 class="section-heading text-uppercase">Ultimos libros ingresados</h2>
         </div>
-        <div class="card-deck">
+        <div class="card-columns">
             @foreach ($contents as $content)
             <x-card-content :content="$content" />
             @endforeach
@@ -69,7 +69,7 @@
         <div class="text-center my-5">
             <h2 class="section-heading text-uppercase">{{ $category->name }}</h2>
         </div>
-        <div class="card-deck">
+        <div class="card-columns">
             @foreach ($category->publications as $publication)
             <x-card-publication :publication="$publication" />
             @endforeach
@@ -92,7 +92,8 @@
                     <i class="fas fa-book fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="my-3">Libros</h4>
-                <p class="text-dark">Son material exclusivo sobre la documentación de libros en formato papel y formato digital.</p>
+                <p class="text-dark">Son material exclusivo sobre la documentación de libros en formato papel y formato
+                    digital.</p>
             </div>
             <div class="col-md-6">
                 <span class="fa-stack fa-4x">
@@ -110,8 +111,8 @@
                 <h4 class="my-3">Videos</h4>
                 <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
                     architecto quo inventore harum ex magni, dicta impedit.</p> --}}
-            </div>
         </div>
+    </div>
     </div>
 </section>
 <x-modal-content />

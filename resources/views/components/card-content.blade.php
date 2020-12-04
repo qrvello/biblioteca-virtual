@@ -1,5 +1,5 @@
 <div onclick="modal( {{ $content }} )" data-toggle="modal"
-    href="#modal" class="card mb-3 shadow">
+    href="#modal" class="card mb-3">
 
     @if ($content->image)
     <img loading="lazy" class="card-img-top" src="{{ '/storage/imagenes/contenido/' . $content->image }}">

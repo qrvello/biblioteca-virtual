@@ -16,7 +16,7 @@ class GuestController extends Controller
 {
     public function index(PublicationCategoryService $publicationCategoryService)
     {
-        $categories = PublicationCategory::get(['name', 'id']);
+        $categories = PublicationCategory::has('publications')->get(['name', 'id']);
 
         // Take 3 publication per category
         $categories = $publicationCategoryService->getLastPublications($categories);
@@ -25,7 +25,7 @@ class GuestController extends Controller
             ->with('category')
             ->with('subcategory')
             ->where('active', true)
-            ->take(2)
+            ->take(3)
             ->get();
 
         return view('index', compact('categories', 'contents'));
